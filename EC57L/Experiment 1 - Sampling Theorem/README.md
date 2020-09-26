@@ -41,9 +41,20 @@ Perfect Sampling
 
 Output of v2Sampling.m with an input of 200 Hz. <a href="./Part 1/v2sampling.m">Download v2sampling.m</a>
 
- <div align="center">
-    <img src="./Part 1/Sampling.svg">
- </div>
+<div align="center">
+<img src="./Part 1/Sampling.svg">
+</div>
 
  ### Part 2
 
+Calculating DTFT, DFT and IDFT
+- Entire code in part 2 should be available for working with any of the above.
+
+<div align="center">
+    <img src="./Part 2/dft_dtft_from time.svg">
+    DTFT and DFT for a signal x(n) = [1 3 5 7]
+</div>
+<div align="center">
+    <img src="./Part 2/idft from freq.svg">
+    IDFT from a signal X(K) = [16, -4+4i, -4, -4-4i]
+</div>
