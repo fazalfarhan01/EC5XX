@@ -39,8 +39,11 @@ Perfect Sampling
  Over Sampling
  - fs >> 2 * fm
 
-Output of v2Sampling.m with an input of 200 Hz. <a href="./v2sampling.m">Download v2sampling.m</a>
+Output of v2Sampling.m with an input of 200 Hz. <a href="./Part 1/v2sampling.m">Download v2sampling.m</a>
 
  <div align="center">
-    <img src="./Sampling.svg">
+    <img src="./Part 1/Sampling.svg">
  </div>
+
+ ### Part 2
+
