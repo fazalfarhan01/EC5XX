@@ -1,7 +1,7 @@
-function DTFT = dtft(sequence)
+function DFT = dft(sequence)
 
 sequenceLength = length(sequence);
 twiddleFactorMatrix = twiddleFactor(sequenceLength);
-DTFT = twiddleFactorMatrix*sequence';
+DFT = twiddleFactorMatrix*sequence';
     
 end

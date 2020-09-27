@@ -1,52 +1,44 @@
 clear;
 clc;
 close all;
+% Starting fresh
+
 sequence = input("Enter the Sequence in time domain: ");
 
 lengthOfSequence = length(sequence);
 
-DFT = dft(sequence)
+DFT = dft(sequence);
 [DTFT pointLength] = dtft(sequence);
+
+round(DFT)
 
 % Plotting Amplitude Graph
 
 subplot(2, 1, 1);
-
-plot(abs(DTFT), "lineWidth", 1);
+plot(linspace(0, lengthOfSequence, pointLength), abs(DTFT), "lineWidth", 1);
 hold on;
 grid on;
-stem((0:lengthOfSequence-1)*(pointLength/lengthOfSequence),abs(DFT), "lineWidth", 1.5);
+stem(linspace(0, lengthOfSequence-1, lengthOfSequence), abs(DFT), "lineWidth", 1.5);
 hold off;
-set(get(gca, 'XLabel'), 'String', 'n -->');
-set(get(gca, 'YLabel'), 'String', 'DTFT/DFT Amplitude');
-set(get(gca, 'Title'), 'String', 'Amplitude of DTFT & DFT from a time domain signal');
-for index = 0:lengthOfSequence-1
-    text((index)*(pointLength/lengthOfSequence), abs(DFT(index+1)), strcat('\rightarrow', num2str(abs(DFT(index+1)))));
+setPlotAttributes('n -->', 'DTFT/DFT Amplitude', 'Amplitude of DTFT & DFT from a time domain signal')
+
+for index = 0:lengthOfSequence - 1
+    text(index, abs(DFT(index + 1)), strcat('\rightarrow', num2str(round(abs(DFT(index + 1)), 2))));
 end
 
-axisData = axis;
-axisLength = axisData(2) - axisData(1);
-axisHeight = axisData(4) - axisData(3);
-padding = 0.1; % Relative to the overall output
-axis([axisData(1)-padding*axisLength axisData(2)+padding*axisLength axisData(3)-padding*axisHeight axisData(4)+padding*axisHeight]);
+setAxisLimits(axis);
 
 % Plotting Phase Graph
 
+phase = angle(round(DFT, 6)) * 180 / pi;
+
 subplot(2, 1, 2);
-stem((0:lengthOfSequence-1)*(pointLength/lengthOfSequence), angle(DFT), "lineWidth", 1.5);
-set(get(gca, 'XLabel'), 'String', 'n -->');
-set(get(gca, 'YLabel'), 'String', 'Angle in Degrees (°)');
-set(get(gca, 'Title'), 'String', 'Angle of DFT from time domain Signal');
-for index = 0:lengthOfSequence-1
-    text((index)*(pointLength/lengthOfSequence), angle(DFT(index+1)), strcat('\rightarrow', num2str(round(angle(DFT(index+1))*180/pi)), '°'));
+stem(linspace(0, lengthOfSequence-1, lengthOfSequence), phase, "lineWidth", 1.5);
+grid on;
+setPlotAttributes('n -->', 'Angle in Degrees (°)', 'Angle of DFT from time domain Signal')
+
+for index = 0:lengthOfSequence - 1
+    text(index, phase(index + 1), strcat('\rightarrow', num2str(phase(index + 1)), '°'));
 end
 
-axisData = axis;
-axisLength = axisData(2) - axisData(1);
-axisHeight = axisData(4) - axisData(3);
-padding = 0.1; % Relative to the overall output
-axis([axisData(1)-padding*axisLength axisData(2)+padding*axisLength axisData(3)-padding*axisHeight axisData(4)+padding*axisHeight]);
-
-
-% clear all;
-% clc;
+setAxisLimits(axis);
