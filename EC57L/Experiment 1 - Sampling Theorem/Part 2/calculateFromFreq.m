@@ -7,7 +7,7 @@ round(IDFT)
 
 figure;
 stem(linspace(0, lengthOfSequence-1, lengthOfSequence) ,abs(IDFT), "lineWidth", 1.5);
-set(get(gca, 'XLabel'), 'String', 'n -->');
+set(get(gca, 'XLabel'), 'String', 'n \rightarrow');
 set(get(gca, 'YLabel'), 'String', 'Amplitude in time domain');
 set(get(gca, 'Title'), 'String', 'Inverse DFT from Freq domain to time domain.');
 grid on;
