@@ -10,7 +10,7 @@ lengthOfSequence = length(sequence);
 DFT = dft(sequence);
 [DTFT pointLength] = dtft(sequence);
 
-round(DFT)
+DFT
 
 % Plotting Amplitude Graph
 
