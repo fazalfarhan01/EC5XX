@@ -9,8 +9,11 @@ lengthOfSequence = length(sequence);
 
 DFT = dft(sequence);
 [DTFT pointLength] = dtft(sequence);
+"Calculated using manually coded function"
+round(DFT, 3)
 
-DFT
+"Calculated using builtin coded function"
+round(fft(sequence).', 3)
 
 % Plotting Amplitude Graph
 
