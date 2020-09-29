@@ -3,7 +3,7 @@ sequence = input("Enter the sequence in frequency domain: ");
 lengthOfSequence = length(sequence);
 IDFT = idft(sequence);
 
-round(IDFT)
+round(IDFT, 4)
 
 figure;
 stem(linspace(0, lengthOfSequence-1, lengthOfSequence) ,abs(IDFT), "lineWidth", 1.5);
