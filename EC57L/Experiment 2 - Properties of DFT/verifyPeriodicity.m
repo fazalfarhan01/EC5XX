@@ -6,6 +6,7 @@ sequence = input("Enter the input sequence: ");
 
 
 N = length(sequence);
+disp(strcat("Period N: ", num2str(N)))
 n = 1:N;
 k = n;
 xAxis = n-1;
