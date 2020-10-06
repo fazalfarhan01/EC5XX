@@ -2,11 +2,11 @@ clear all;
 close all;
 clc
 
-% sequence = input("Enter the sequence: ");
-% m = input("Enter the number of shifts: ");
+sequence = input("Enter the sequence: ");
+m = input("Enter the number of shifts: ");
 
-sequence = [4 -4 5 -5];
-m = 2;
+% sequence = [4 -4 5 -5];
+% m = 2;
 
 N = length(sequence);
 

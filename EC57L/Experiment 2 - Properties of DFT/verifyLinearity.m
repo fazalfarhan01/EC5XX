@@ -4,11 +4,11 @@ clc;
 
 widthOfLine = 1;
 
-% sequence1 = input("Enter sequence 1: \n");
-% sequence2 = input("Enter sequence 2: \n");
+sequence1 = input("Enter sequence 1: \n");
+sequence2 = input("Enter sequence 2: \n");
 
-sequence1 = [1 2 3 4];
-sequence2 = [5 6 7 8];
+% sequence1 = [1 2 3 4];
+% sequence2 = [5 6 7 8];
 
 figure("Name", "Using manually coded functions !");
 
