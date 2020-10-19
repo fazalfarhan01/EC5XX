@@ -47,8 +47,7 @@ disp(DFT1);
 disp('DFT of sequence 2: ');
 disp(DFT2);
 
-xAxis = 0:N-1;
-
+xAxis = 0:N1-1;
 subplot(2, 2, 1);
 localY = abs(DFT1);
 stem(xAxis, localY, "lineWidth", widthOfLine);
@@ -69,6 +68,7 @@ for index = xAxis
     text(index, localY1, strcat("\leftarrow", num2str(round(localY1, 1))));
 end
 
+xAxis = 0:N2-1;
 subplot(2, 2, 3);
 localY = abs(DFT2);
 stem(xAxis, localY, "lineWidth", widthOfLine);
@@ -89,8 +89,10 @@ for index = xAxis
     text(index, localY1, strcat("\leftarrow", num2str(round(localY1, 1))));
 end
 
+
 figure(2);
 
+xAxis = 0:N-1;
 subplot(2, 1, 1);
 localY = timeDomain;
 stem(xAxis, localY, "lineWidth", widthOfLine);
