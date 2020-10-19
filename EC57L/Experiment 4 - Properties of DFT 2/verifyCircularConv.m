@@ -27,19 +27,23 @@ if N1 ~= N2
     sequence2 = [sequence2 zeros(1,N-N2)];
 end
 
-freqDomain = zeros(1,N);
+% % METHOD 1
+% freqDomain = zeros(1,N);
 
-for i = 0:N-1
-    for j = 0:N-1
-        freqDomain(mod(i+j,N)+1) = freqDomain(mod(i+j,N)+1) + sequence1(i+1)*sequence2(j+1);
-    end
-end
+% for i = 0:N-1
+%     for j = 0:N-1
+%         freqDomain(mod(i+j,N)+1) = freqDomain(mod(i+j,N)+1) + sequence1(i+1)*sequence2(j+1);
+%     end
+% end
+
+% % METHOD 2
+freqDomain = idft(DFT1.*DFT2)
 
 disp("Circular Convolution in time domain: ");
 disp(timeDomain.');
 
 disp("Circular Convolution in frequency domain: ");
-disp(freqDomain);
+disp(abs(freqDomain).');
 
 disp("DFT of sequence 1: ");
 disp(DFT1);
@@ -104,7 +108,7 @@ for index = xAxis
 end
 
 subplot(2, 1, 2);
-localY = freqDomain;
+localY = abs(freqDomain);
 stem(xAxis, localY, "lineWidth", widthOfLine);
 setAxisLimits(axis);
 setPlotAttributes("n \rightarrow", "Amplitude", "Convolution in Frequency Domain");
