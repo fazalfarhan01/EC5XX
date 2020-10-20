@@ -23,7 +23,7 @@ disp(X);
 disp("X(-n) is: ");
 disp(x1);
 
-disp("Conjugate of DFT of x(-n) ==> X*(-k)N");
+disp("Conjugate of DFT of x(-n) ==> X*((-k))N");
 disp(X1);
 
 if round(X,2) == round(X1,2)
