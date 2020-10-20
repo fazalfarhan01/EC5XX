@@ -37,7 +37,7 @@ end
 % end
 
 % % METHOD 2
-freqDomain = idft(DFT1.*DFT2)
+freqDomain = idft(dft(sequence1).*dft(sequence2));
 
 disp("Circular Convolution in time domain: ");
 disp(timeDomain.');

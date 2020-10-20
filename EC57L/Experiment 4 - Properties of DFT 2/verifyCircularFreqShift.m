@@ -4,12 +4,12 @@ clc;
 
 widthOfLine = 1;
 
-% sequence = input("Enter the sequence x(n): ");
-% m = input("Enter the value (m) to be shifted: ");
+sequence = input("Enter the sequence x(n): ");
+m = input("Enter the value (m) to be shifted: ");
 
 
-sequence = [4 5 6 7];
-m = 1;
+% sequence = [4 5 6 7];
+% m = 1;
 
 N = length(sequence);
 
