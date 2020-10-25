@@ -1,4 +1,4 @@
-function convolutionResult = circularConv(sequence1, sequence2)
+function convolutionResult = circularConvolution(sequence1, sequence2)
     N1 = length(sequence1);
     N2 = length(sequence2);
 
