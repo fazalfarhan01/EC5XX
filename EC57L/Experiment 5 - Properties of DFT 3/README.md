@@ -42,6 +42,8 @@
     Thus the Parseval's theorem is verified...!
     ```
 
+---
+
 3. Circular Convolution using Linear
     - [circularConvolutionUsingLinear.m](./circularConvolutionUsingLinear.m)
 
@@ -52,6 +54,9 @@
     Circular Convolution using Linear Convolution is: 
         73    59    40    61    82
     ```
+
+---
+
 4. Linear Convolution using Circular
     - [linearConvolutionUsingCircular.m](./linearConvolutionUsingCircular.m)
 
