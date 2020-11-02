@@ -9,24 +9,24 @@ function [y, outputStages] = dit_fft(x)
 
     outputStages = zeros(N, 1);
 
-    for stage = 1:totalStages; % stages of transformation
+    for stage = 1:totalStages;
 
-        for index = 0:(2^stage):(N - 1); % series of "butterflies" for each stage
+        for index = 0:(2^stage):(N - 1);
 
             for n = 0:(Half - 1); % creating "butterfly" and saving the results
-                pos = n + index + 1; % index of the data sample
-                pow = (2^(totalStages - stage)) * n; % part of power of the complex multiplier
-                w = exp((-1i) * (2 * pi) * pow / N); % complex multiplier
-                a = x(pos) + x(pos + Half) .* w; % 1-st part of the "butterfly" creating operation
-                b = x(pos) - x(pos + Half) .* w; % 2-nd part of the "butterfly" creating operation
-                x(pos) = a; % saving computation of the 1-st part
-                x(pos + Half) = b; % saving computation of the 2-nd part
+                pos = n + index + 1;
+                pow = (2^(totalStages - stage)) * n;
+                w = exp((-1i) * (2 * pi) * pow / N);
+                a = x(pos) + x(pos + Half) .* w;
+                b = x(pos) - x(pos + Half) .* w;
+                x(pos) = a;
+                x(pos + Half) = b;
             end
 
         end
 
         outputStages = [outputStages transpose(x)];
-        Half = 2 * Half; % computing the next "Half" value
+        Half = 2 * Half;
     end
 
     outputStages = outputStages(:, 2:end);
