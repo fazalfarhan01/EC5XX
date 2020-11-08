@@ -1,3 +1,6 @@
+% 1. Radix 2 | DIT FFT Algorhithm
+
+
 function [y, outputStages] = dit_fft(x)
 
     p = nextpow2(length(x));
