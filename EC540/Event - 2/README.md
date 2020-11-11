@@ -154,15 +154,13 @@ Time Domain Parameters of transfer function with ζ = 0.01, ωn = 10
 ```
 
 ## Plots
+### Case 1 Plot
 <img src="./case-1-plot.svg" alt="Case 1 Plot">
-<p style="text-align:center;"><b>Case 1 Plot</b></p>
 
 ---
-
+### Case 2 Plot
 <img src="./case-2-plot.svg" alt="Case 1 Plot">
-<p style="text-align:center;"><b>Case 2 Plot</b></p>
 
 ---
-
+### Case 3 Plot
 <img src="./case-3-plot.svg" alt="Case 1 Plot">
-<p style="text-align:center;"><b>Case 3 Plot</b></p>
