@@ -15,11 +15,11 @@ locations in MATLAB.
 ## Solution
 - Mass Spring System
 
-<img style="text-align: center;" src="./BlockDiagram.svg" alt="Mass Spring System" width="300">
+<img src="./BlockDiagram.svg" alt="Mass Spring System" width="300">
 
 - Free Body Diagram
 
-<img style="text-align: center;" src="./FreeBodyDiagram.svg" alt="Free Body Diagram" width="300">
+<img src="./FreeBodyDiagram.svg" alt="Free Body Diagram" width="300">
 
 
 According to Newton's Laws of motion:
@@ -115,3 +115,54 @@ function setAxisLimits(axisData)
     axis([axisData(1) - padding * axisLength axisData(2) + padding * axisLength axisData(3) - padding * axisHeight axisData(4) + padding * axisHeight]);
 end
 ```
+
+---
+
+# RESULTS
+## Command Window Output
+
+```MATLAB
+Time Domain Parameters of transfer function with ζ = 0.7, ωn = 10
+        RiseTime: 0.2127
+    SettlingTime: 0.5979
+     SettlingMin: 9.0010e-04
+     SettlingMax: 0.0010
+       Overshoot: 4.5986
+      Undershoot: 0
+            Peak: 0.0010
+        PeakTime: 0.4408
+
+Time Domain Parameters of transfer function with ζ = 0.3, ωn = 10
+        RiseTime: 0.1324
+    SettlingTime: 1.1230
+     SettlingMin: 8.6139e-04
+     SettlingMax: 0.0014
+       Overshoot: 37.1410
+      Undershoot: 0
+            Peak: 0.0014
+        PeakTime: 0.3224
+
+Time Domain Parameters of transfer function with ζ = 0.01, ωn = 10
+        RiseTime: 0.1050
+    SettlingTime: 38.9674
+     SettlingMin: 6.0902e-05
+     SettlingMax: 0.0020
+       Overshoot: 96.9071
+      Undershoot: 0
+            Peak: 0.0020
+        PeakTime: 0.3142
+```
+
+## Plots
+<img src="./case-1-plot.svg" alt="Case 1 Plot">
+<p style="text-align:center;"><b>Case 1 Plot</b></p>
+
+---
+
+<img src="./case-2-plot.svg" alt="Case 1 Plot">
+<p style="text-align:center;"><b>Case 2 Plot</b></p>
+
+---
+
+<img src="./case-3-plot.svg" alt="Case 1 Plot">
+<p style="text-align:center;"><b>Case 3 Plot</b></p>
