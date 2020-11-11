@@ -13,11 +13,14 @@ locations in MATLAB.
 
 --- 
 ## Solution
-![Mass Spring System](./BlockDiagram.svg)
 - Mass Spring System
 
-![Free Body Diagram](./FreeBodyDiagram.svg)
+<img style="text-align: center;" src="./BlockDiagram.svg" alt="Mass Spring System" width="300">
+
 - Free Body Diagram
+
+<img style="text-align: center;" src="./FreeBodyDiagram.svg" alt="Free Body Diagram" width="300">
+
 
 According to Newton's Laws of motion:
 
@@ -58,3 +61,57 @@ According to Newton's Laws of motion:
 - __ω<sub>n</sub>__ = 10
 - <a href="https://www.codecogs.com/eqnedit.php?latex=K_{s}&space;=&space;1000&space;N/m" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K_{s}&space;=&space;1000&space;N/m" title="K_{s} = 1000 N/m" /></a>
 - <a href="https://www.codecogs.com/eqnedit.php?latex=K_{f}&space;=&space;140&space;N/m^{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K_{f}&space;=&space;2&space;N/m^{2}" title="K_{f} = 2 N/m^{2}" /></a>
+
+---
+
+# MATLAB CODE
+## Main Code
+
+```MATLAB
+clear all;
+close all;
+clc;
+
+% DECLARING CONSTANTS STATICALLY
+% frictionConstant = [140 60 2];
+% springConstant = 1000;
+
+% MORE DYNAMIC CONSTANT CALCULATION
+massOfBlock = 10;
+zetaValues = [0.7, 0.3, 0.01];
+naturalFrequency = 10;
+
+springConstant = naturalFrequency^2 * massOfBlock;
+frictionConstant = 2*zetaValues*sqrt(springConstant*massOfBlock);
+
+for index = 1:length(frictionConstant)
+    figure;
+    G = tf([1], [massOfBlock frictionConstant(index) springConstant]);
+    response = stepplot(G, "m");
+    grid on;
+    legend(strcat("ζ = ", num2str(zetaValues(index)), ", ωn = 10"));
+    disp(strcat("Time Domain Parameters of transfer function with ", "ζ = ", num2str(zetaValues(index)), ", ωn = 10"))
+    disp(stepinfo(G));
+
+    response.showCharacteristic('PeakResponse');
+    response.showCharacteristic('RiseTime');
+    response.showCharacteristic('SettlingTime');
+    response.showCharacteristic('SteadyState');
+
+    setAxisLimits(axis);
+end
+```
+
+## Helper Snippets
+```MATLAB
+% THIS SNIPPET IS TO ADD PADDING TO THE PLOT
+
+function setAxisLimits(axisData)
+    % RELATIVE TO THE OVERALL PLOT 
+    % 0.1 IS 10% AND 0.5 IS 50%
+    padding = 0.05;
+    axisLength = axisData(2) - axisData(1);
+    axisHeight = axisData(4) - axisData(3);
+    axis([axisData(1) - padding * axisLength axisData(2) + padding * axisLength axisData(3) - padding * axisHeight axisData(4) + padding * axisHeight]);
+end
+```
