@@ -65,8 +65,7 @@ According to Newton's Laws of motion:
 ---
 
 # MATLAB CODE
-## Main Code
-
+## Main Code | [solution.m](solution.m)
 ```MATLAB
 clear all;
 close all;
@@ -103,6 +102,7 @@ end
 ```
 
 ## Helper Snippets
+1. [setAxisLimits.m](./setAxisLimits.m)
 ```MATLAB
 % THIS SNIPPET IS TO ADD PADDING TO THE PLOT
 
@@ -113,6 +113,13 @@ function setAxisLimits(axisData)
     axisLength = axisData(2) - axisData(1);
     axisHeight = axisData(4) - axisData(3);
     axis([axisData(1) - padding * axisLength axisData(2) + padding * axisLength axisData(3) - padding * axisHeight axisData(4) + padding * axisHeight]);
+end
+```
+2. [labelOnPlot.m](./labelOnPlot.m)
+```MATLAB
+function labelOnPlot(A)
+    text(real(A(1)), imag(A(1)), strcat("\rightarrow",num2str(A(1))));
+    text(real(A(2)), imag(A(2)), strcat("\rightarrow",num2str(A(2))));
 end
 ```
 

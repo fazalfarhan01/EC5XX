@@ -32,7 +32,7 @@ for index = 1:length(frictionConstant)
     response.showCharacteristic('RiseTime');
     response.showCharacteristic('SettlingTime');
     response.showCharacteristic('SteadyState');
-    setAxisLimits(axis);
+    setAxisLimits(axis, 0.05);
 
     subplot(1, 2, 2);
     pzmap(G, "r");
@@ -40,5 +40,6 @@ for index = 1:length(frictionConstant)
     poleZeroMap = findobj(gca, 'Type', 'Line');
     poleZeroMap(3).MarkerSize = 20;
     legend(strcat("ζ = ", num2str(zetaValues(index)), ", ωn = 10"));
-    setAxisLimits(axis);
+    labelOnPlot(pzmap(G));
+    setAxisLimits(axis, 0.1);
 end
