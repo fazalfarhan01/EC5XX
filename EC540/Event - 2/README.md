@@ -24,43 +24,43 @@ locations in MATLAB.
 
 According to Newton's Laws of motion:
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=F(t)&space;-&space;\{K_{s}x(t)&space;&plus;&space;K_{f}\frac{\mathrm{d}&space;x(t)}{\mathrm{d}&space;t}\}&space;=&space;M\frac{\partial^2&space;x(t)}{\partial&space;t^2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F(t)&space;-&space;\{K_{s}x(t)&space;&plus;&space;K_{f}\frac{\mathrm{d}&space;x(t)}{\mathrm{d}&space;t}\}&space;=&space;M\frac{\partial^2&space;x(t)}{\partial&space;t^2}" title="F(t) - \{K_{s}x(t) + K_{f}\frac{\mathrm{d} x(t)}{\mathrm{d} t}\} = M\frac{\partial^2 x(t)}{\partial t^2}" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=F(t)&space;-&space;\{K_{s}x(t)&space;&plus;&space;K_{f}\frac{\mathrm{d}&space;x(t)}{\mathrm{d}&space;t}\}&space;=&space;M\frac{\partial^2&space;x(t)}{\partial&space;t^2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;F(t)&space;-&space;\{K_{s}x(t)&space;&plus;&space;K_{f}\frac{\mathrm{d}&space;x(t)}{\mathrm{d}&space;t}\}&space;=&space;M\frac{\partial^2&space;x(t)}{\partial&space;t^2}" title="F(t) - \{K_{s}x(t) + K_{f}\frac{\mathrm{d} x(t)}{\mathrm{d} t}\} = M\frac{\partial^2 x(t)}{\partial t^2}" /></a>
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=f(t)\Rightarrow&space;u(t)&space;|&space;x(t)&space;\Rightarrow&space;y(t)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?f(t)\Rightarrow&space;u(t)&space;|&space;x(t)&space;\Rightarrow&space;y(t)" title="f(t)\Rightarrow u(t) | x(t) \Rightarrow y(t)" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=f(t)\Rightarrow&space;u(t)&space;|&space;x(t)&space;\Rightarrow&space;y(t)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;f(t)\Rightarrow&space;u(t)&space;|&space;x(t)&space;\Rightarrow&space;y(t)" title="f(t)\Rightarrow u(t) | x(t) \Rightarrow y(t)" /></a>
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=u(t)&space;=&space;M\frac{\partial^2&space;y(t)}{\partial&space;t^2}&space;&plus;&space;K_{s}y(t)&space;&plus;&space;K_{f}\frac{\partial&space;y(t)}{\partial&space;t}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?u(t)&space;=&space;M\frac{\partial^2&space;y(t)}{\partial&space;t^2}&space;&plus;&space;K_{s}y(t)&space;&plus;&space;K_{f}\frac{\partial&space;y(t)}{\partial&space;t}" title="u(t) = M\frac{\partial^2 y(t)}{\partial t^2} + K_{s}y(t) + K_{f}\frac{\partial y(t)}{\partial t}" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=u(t)&space;=&space;M\frac{\partial^2&space;y(t)}{\partial&space;t^2}&space;&plus;&space;K_{s}y(t)&space;&plus;&space;K_{f}\frac{\partial&space;y(t)}{\partial&space;t}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;u(t)&space;=&space;M\frac{\partial^2&space;y(t)}{\partial&space;t^2}&space;&plus;&space;K_{s}y(t)&space;&plus;&space;K_{f}\frac{\partial&space;y(t)}{\partial&space;t}" title="u(t) = M\frac{\partial^2 y(t)}{\partial t^2} + K_{s}y(t) + K_{f}\frac{\partial y(t)}{\partial t}" /></a>
 
 ### In Laplace Domain
-<a href="https://www.codecogs.com/eqnedit.php?latex=U(S)&space;=&space;[MS^{2}&space;&plus;&space;K_{s}&space;&plus;&space;K_{f}S]\times&space;Y(S)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?U(S)&space;=&space;[MS^{2}&space;&plus;&space;K_{s}&space;&plus;&space;K_{f}S]\times&space;Y(S)" title="U(S) = [MS^{2} + K_{s} + K_{f}S]\times Y(S)" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=U(S)&space;=&space;[MS^{2}&space;&plus;&space;K_{s}&space;&plus;&space;K_{f}S]\times&space;Y(S)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;U(S)&space;=&space;[MS^{2}&space;&plus;&space;K_{s}&space;&plus;&space;K_{f}S]\times&space;Y(S)" title="U(S) = [MS^{2} + K_{s} + K_{f}S]\times Y(S)" /></a>
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\frac{Y(S)}{U(S)}&space;=&space;G(S)&space;=&space;\frac{1}{MS^{2}&plus;K_{f}S&plus;K_{s}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{Y(S)}{U(S)}&space;=&space;G(S)&space;=&space;\frac{1}{MS^{2}&plus;K_{f}S&plus;K_{s}}" title="\frac{Y(S)}{U(S)} = G(S) = \frac{1}{MS^{2}+K_{f}S+K_{s}}" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\frac{Y(S)}{U(S)}&space;=&space;G(S)&space;=&space;\frac{1}{MS^{2}&plus;K_{f}S&plus;K_{s}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;\frac{Y(S)}{U(S)}&space;=&space;G(S)&space;=&space;\frac{1}{MS^{2}&plus;K_{f}S&plus;K_{s}}" title="\frac{Y(S)}{U(S)} = G(S) = \frac{1}{MS^{2}+K_{f}S+K_{s}}" /></a>
 
 ### Comparing with the Standard Second Order Equation
-<a href="https://www.codecogs.com/eqnedit.php?latex=G(S)&space;=&space;\frac{\omega&space;_{n}^{2}}{S^{2}&plus;2\zeta\omega&space;_{n}S&plus;\omega&space;_{n}^{2}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?G(S)&space;=&space;\frac{\omega&space;_{n}^{2}}{S^{2}&plus;2\zeta\omega&space;_{n}S&plus;\omega&space;_{n}^{2}}" title="G(S) = \frac{\omega _{n}^{2}}{S^{2}+2\zeta\omega _{n}S+\omega _{n}^{2}}" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=G(S)&space;=&space;\frac{\omega&space;_{n}^{2}}{S^{2}&plus;2\zeta\omega&space;_{n}S&plus;\omega&space;_{n}^{2}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;G(S)&space;=&space;\frac{\omega&space;_{n}^{2}}{S^{2}&plus;2\zeta\omega&space;_{n}S&plus;\omega&space;_{n}^{2}}" title="G(S) = \frac{\omega _{n}^{2}}{S^{2}+2\zeta\omega _{n}S+\omega _{n}^{2}}" /></a>
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\omega&space;_{n}&space;=&space;\sqrt{\frac{K_{s}}{M}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\omega&space;_{n}&space;=&space;\sqrt{\frac{K_{s}}{M}}" title="\omega _{n} = \sqrt{\frac{K_{s}}{M}}" /></a> and <a href="https://www.codecogs.com/eqnedit.php?latex=\zeta&space;=&space;\frac{K_{f}}{2\sqrt{K_{s}M}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\zeta&space;=&space;\frac{K_{f}}{2\sqrt{K_{s}M}}" title="\zeta = \frac{K_{f}}{2\sqrt{K_{s}M}}" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\omega&space;_{n}&space;=&space;\sqrt{\frac{K_{s}}{M}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;\omega&space;_{n}&space;=&space;\sqrt{\frac{K_{s}}{M}}" title="\omega _{n} = \sqrt{\frac{K_{s}}{M}}" /></a> and <a href="https://www.codecogs.com/eqnedit.php?latex=\zeta&space;=&space;\frac{K_{f}}{2\sqrt{K_{s}M}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;\zeta&space;=&space;\frac{K_{f}}{2\sqrt{K_{s}M}}" title="\zeta = \frac{K_{f}}{2\sqrt{K_{s}M}}" /></a>
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=K_{s}&space;=&space;\omega&space;_{n}^{2}\times&space;M" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K_{s}&space;=&space;\omega&space;_{n}^{2}\times&space;M" title="K_{s} = \omega _{n}^{2}\times M" /></a> and <a href="https://www.codecogs.com/eqnedit.php?latex=K_{f}&space;=&space;2\zeta&space;\times&space;\sqrt{K_{s}\times&space;M}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K_{f}&space;=&space;2\zeta&space;\times&space;\sqrt{K_{s}\times&space;M}" title="K_{f} = 2\zeta \times \sqrt{K_{s}\times M}" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=K_{s}&space;=&space;\omega&space;_{n}^{2}\times&space;M" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{s}&space;=&space;\omega&space;_{n}^{2}\times&space;M" title="K_{s} = \omega _{n}^{2}\times M" /></a> and <a href="https://www.codecogs.com/eqnedit.php?latex=K_{f}&space;=&space;2\zeta&space;\times&space;\sqrt{K_{s}\times&space;M}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{f}&space;=&space;2\zeta&space;\times&space;\sqrt{K_{s}\times&space;M}" title="K_{f} = 2\zeta \times \sqrt{K_{s}\times M}" /></a>
 ### Case 1:
 - __M__ = 10 Kg
 - __ζ__ = 0.7
 - __ω<sub>n</sub>__ = 10
-- <a href="https://www.codecogs.com/eqnedit.php?latex=K_{s}&space;=&space;1000&space;N/m" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K_{s}&space;=&space;1000&space;N/m" title="K_{s} = 1000 N/m" /></a>
-- <a href="https://www.codecogs.com/eqnedit.php?latex=K_{f}&space;=&space;140&space;N/m^{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K_{f}&space;=&space;140&space;N/m^{2}" title="K_{f} = 140 N/m^{2}" /></a>
+- <a href="https://www.codecogs.com/eqnedit.php?latex=K_{s}&space;=&space;1000&space;N/m" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{s}&space;=&space;1000&space;N/m" title="K_{s} = 1000 N/m" /></a>
+- <a href="https://www.codecogs.com/eqnedit.php?latex=K_{f}&space;=&space;140&space;N/m^{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{f}&space;=&space;140&space;N/m^{2}" title="K_{f} = 140 N/m^{2}" /></a>
 
 ### Case 2:
 - __M__ = 10 Kg
 - __ζ__ = 0.3
 - __ω<sub>n</sub>__ = 10
-- <a href="https://www.codecogs.com/eqnedit.php?latex=K_{s}&space;=&space;1000&space;N/m" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K_{s}&space;=&space;1000&space;N/m" title="K_{s} = 1000 N/m" /></a>
-- <a href="https://www.codecogs.com/eqnedit.php?latex=K_{f}&space;=&space;140&space;N/m^{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K_{f}&space;=&space;60&space;N/m^{2}" title="K_{f} = 60 N/m^{2}" /></a>
+- <a href="https://www.codecogs.com/eqnedit.php?latex=K_{s}&space;=&space;1000&space;N/m" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{s}&space;=&space;1000&space;N/m" title="K_{s} = 1000 N/m" /></a>
+- <a href="https://www.codecogs.com/eqnedit.php?latex=K_{f}&space;=&space;140&space;N/m^{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{f}&space;=&space;60&space;N/m^{2}" title="K_{f} = 60 N/m^{2}" /></a>
 
 ### Case 3:
 - __M__ = 10 Kg
 - __ζ__ = 0.01
 - __ω<sub>n</sub>__ = 10
-- <a href="https://www.codecogs.com/eqnedit.php?latex=K_{s}&space;=&space;1000&space;N/m" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K_{s}&space;=&space;1000&space;N/m" title="K_{s} = 1000 N/m" /></a>
-- <a href="https://www.codecogs.com/eqnedit.php?latex=K_{f}&space;=&space;140&space;N/m^{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K_{f}&space;=&space;2&space;N/m^{2}" title="K_{f} = 2 N/m^{2}" /></a>
+- <a href="https://www.codecogs.com/eqnedit.php?latex=K_{s}&space;=&space;1000&space;N/m" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{s}&space;=&space;1000&space;N/m" title="K_{s} = 1000 N/m" /></a>
+- <a href="https://www.codecogs.com/eqnedit.php?latex=K_{f}&space;=&space;140&space;N/m^{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{f}&space;=&space;2&space;N/m^{2}" title="K_{f} = 2 N/m^{2}" /></a>
 
 ---
 
