@@ -20,7 +20,7 @@ frictionConstant = 2 * zetaValues * sqrt(springConstant * massOfBlock);
 
 for index = 1:length(frictionConstant)
     figure;
-    G = tf([1], [massOfBlock frictionConstant(index) springConstant]);
+    G = tf([1], [massOfBlock frictionConstant(index) springConstant])
 
     subplot(1, 2, 1);
     response = stepplot(G, "m");

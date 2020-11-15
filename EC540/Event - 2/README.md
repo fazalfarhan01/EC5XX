@@ -1,6 +1,49 @@
-# EC540 Event 2
-- Submission Date: ___17th November 2020___
+<div style="text-align: center;">
+    <img src="https://jssstuniv.in/wp-content/uploads/2019/03/logo-for-web-site.jpg" alt="JSS STU Logo"
+        style="width: 300px;">
+        <br>
+        <br>
+    <h2>A Report on</h2>
+    <h1>Problem solving using analytical methods and MATLAB
+    </h1>
+    <br>
+    <br>
+    <h2> Submitted for the fulfillment of the CIE (Event-2) for the course</h2>
+    <h1>Control Systems - EC540</h1>
+    <br>
+    <br>
+    <br>
+    <h3>Submitted by: <br><br>
+        <table
+            style="margin-left: auto; margin-right: auto; padding: 10px; border: 1px solid black; border-collapse: collapse;">
+            <tr>
+                <td>Name</td>
+                <td>Mohamed Farhan Fazal</td>
+            </tr>
+            <tr>
+                <td>USN</td>
+                <td>01JST18EC055</td>
+            </tr>
+            <tr>
+                <td>Roll No.</td>
+                <td>29</td>
+            </tr>
+        </table>
+    </h3>
+    <br>
+    <br>
+    <h4>Under the guidance of</h4>
+    <h2>Dr. Sudarshan Patilkulkarni</h2>
+    <h3>Associate Professor <br>
+        DEPARTMENT OF ELECTRONICS AND COMMUNICATION <br>
+        SJCE MYSURU- 570006</h3>
+</div>
+
 ---
+
+<div style="page-break-after: always"></div>
+
+
 ## Problem Statement:
 For the mass spring system derive expressions for __ζ__ and __ω<sub>n</sub>__. If __M=10 Kg__, determine
 spring and friction constant for following cases: 
@@ -64,6 +107,8 @@ According to Newton's Laws of motion:
 
 ---
 
+<div style="page-break-after: always"></div>
+
 # MATLAB CODE
 ## Main Code | [solution.m](solution.m)
 ```MATLAB
@@ -101,6 +146,8 @@ for index = 1:length(frictionConstant)
 end
 ```
 
+<div style="page-break-after: always"></div>
+
 ## Helper Snippets
 1. [setAxisLimits.m](./setAxisLimits.m)
 ```MATLAB
@@ -125,10 +172,19 @@ end
 
 ---
 
+<div style="page-break-after: always"></div>
+
 # RESULTS
 ## Command Window Output
 
 ```MATLAB
+G =
+            1
+  ---------------------
+  10 s^2 + 140 s + 1000
+ 
+Continuous-time transfer function.
+
 Time Domain Parameters of transfer function with ζ = 0.7, ωn = 10
         RiseTime: 0.2127
     SettlingTime: 0.5979
@@ -138,6 +194,14 @@ Time Domain Parameters of transfer function with ζ = 0.7, ωn = 10
       Undershoot: 0
             Peak: 0.0010
         PeakTime: 0.4408
+
+
+G =
+           1
+  --------------------
+  10 s^2 + 60 s + 1000
+ 
+Continuous-time transfer function.
 
 Time Domain Parameters of transfer function with ζ = 0.3, ωn = 10
         RiseTime: 0.1324
@@ -149,6 +213,14 @@ Time Domain Parameters of transfer function with ζ = 0.3, ωn = 10
             Peak: 0.0014
         PeakTime: 0.3224
 
+
+G =
+           1
+  -------------------
+  10 s^2 + 2 s + 1000
+ 
+Continuous-time transfer function.
+
 Time Domain Parameters of transfer function with ζ = 0.01, ωn = 10
         RiseTime: 0.1050
     SettlingTime: 38.9674
@@ -159,15 +231,40 @@ Time Domain Parameters of transfer function with ζ = 0.01, ωn = 10
             Peak: 0.0020
         PeakTime: 0.3142
 ```
+<div style="page-break-after: always"></div>
 
 ## Plots
 ### Case 1 Plot
 <img src="./case-1-plot.svg" alt="Case 1 Plot">
 
 ---
+
 ### Case 2 Plot
 <img src="./case-2-plot.svg" alt="Case 1 Plot">
 
 ---
+
+<div style="page-break-after: always"></div>
+
 ### Case 3 Plot
 <img src="./case-3-plot.svg" alt="Case 1 Plot">
+
+---
+
+## Derivation and Calculations ![Page 1](Calculations\1.jpg)
+
+<div style="page-break-after: always"></div>
+
+![Page 1](Calculations\2.jpg)
+
+<div style="page-break-after: always"></div>
+
+![Page 1](Calculations\3.jpg)
+
+<div style="page-break-after: always"></div>
+
+## Conclusion
+From the above results and observations, we can conclude the following
+- The system in all the 3 cases is __stable__ as the poles of the system in all the 3 cases are to the ___left___ of the Imaginary Axis on the ___S-plane___
+- Friction co-efficient <a href="https://www.codecogs.com/eqnedit.php?latex=\bg_white&space;K_{f}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{f}" title="K_{f}" /></a> is directly proportial to ζ , hence as ζ decreses, <a href="https://www.codecogs.com/eqnedit.php?latex=\bg_white&space;K_{f}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{f}" title="K_{f}" /></a> also decreases.
+- As the value of friction co-efficient decreses, that is when the effect of friction decreases ,the number of oscillations increses, which means, there is an increase in the __settling time__, and also the __maximum overshoot__ is relatively ___higher___ as seen in case 3 with ___ζ=0.01___.
