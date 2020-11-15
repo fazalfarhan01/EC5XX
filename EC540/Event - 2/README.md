@@ -251,15 +251,15 @@ Time Domain Parameters of transfer function with ζ = 0.01, ωn = 10
 
 ---
 
-## Derivation and Calculations ![Page 1](Calculations\1.jpg)
+## Derivation and Calculations![Page 1](Calculations/1.jpg)
 
 <div style="page-break-after: always"></div>
 
-![Page 1](Calculations\2.jpg)
+![Page 1](Calculations/2.jpg)
 
 <div style="page-break-after: always"></div>
 
-![Page 1](Calculations\3.jpg)
+![Page 1](Calculations/3.jpg)
 
 <div style="page-break-after: always"></div>
 
