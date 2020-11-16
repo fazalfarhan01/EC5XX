@@ -106,6 +106,18 @@ According to Newton's Laws of motion:
 - <a href="https://www.codecogs.com/eqnedit.php?latex=K_{f}&space;=&space;140&space;N/m^{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{f}&space;=&space;2&space;N/m^{2}" title="K_{f} = 2 N/m^{2}" /></a>
 
 ---
+<div style="page-break-after: always"></div>
+
+
+## Derivation and Calculations![Page 1](Calculations/1.jpg)
+
+<div style="page-break-after: always"></div>
+
+![Page 1](Calculations/2.jpg)
+
+<div style="page-break-after: always"></div>
+
+![Page 1](Calculations/3.jpg)
 
 <div style="page-break-after: always"></div>
 
@@ -153,10 +165,15 @@ end
 ```MATLAB
 % THIS SNIPPET IS TO ADD PADDING TO THE PLOT
 
-function setAxisLimits(axisData)
-    % RELATIVE TO THE OVERALL PLOT 
+function setAxisLimits(axisData, padding)
+    % RELATIVE TO THE OVERALL PLOT
     % 0.1 IS 10% AND 0.5 IS 50%
-    padding = 0.05;
+
+    arguments
+        axisData;
+        padding = 0.05; % PADDING DEFALUTS TO 5%
+    end
+
     axisLength = axisData(2) - axisData(1);
     axisHeight = axisData(4) - axisData(3);
     axis([axisData(1) - padding * axisLength axisData(2) + padding * axisLength axisData(3) - padding * axisHeight axisData(4) + padding * axisHeight]);
@@ -251,19 +268,8 @@ Time Domain Parameters of transfer function with ζ = 0.01, ωn = 10
 
 ---
 
-## Derivation and Calculations![Page 1](Calculations/1.jpg)
 
-<div style="page-break-after: always"></div>
-
-![Page 1](Calculations/2.jpg)
-
-<div style="page-break-after: always"></div>
-
-![Page 1](Calculations/3.jpg)
-
-<div style="page-break-after: always"></div>
-
-## Conclusion
+## Conclusion/Inference
 From the above results and observations, we can conclude the following
 - The system in all the 3 cases is __stable__ as the poles of the system in all the 3 cases are to the ___left___ of the Imaginary Axis on the ___S-plane___
 - Friction co-efficient <a href="https://www.codecogs.com/eqnedit.php?latex=\bg_white&space;K_{f}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{f}" title="K_{f}" /></a> is directly proportial to ζ , hence as ζ decreses, <a href="https://www.codecogs.com/eqnedit.php?latex=\bg_white&space;K_{f}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{f}" title="K_{f}" /></a> also decreases.

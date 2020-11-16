@@ -6,7 +6,7 @@ function setAxisLimits(axisData, padding)
 
     arguments
         axisData;
-        padding = 0.05;
+        padding = 0.05; % PADDING DEFALUTS TO 5%
     end
 
     axisLength = axisData(2) - axisData(1);
