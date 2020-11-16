@@ -58,11 +58,11 @@ locations in MATLAB.
 ## Solution
 - Mass Spring System
 
-<img src="./BlockDiagram.svg" alt="Mass Spring System" width="300">
+<img src="./svgs/BlockDiagram.svg" alt="Mass Spring System" width="300">
 
 - Free Body Diagram
 
-<img src="./FreeBodyDiagram.svg" alt="Free Body Diagram" width="300">
+<img src="./svgs/FreeBodyDiagram.svg" alt="Free Body Diagram" width="300">
 
 
 According to Newton's Laws of motion:
@@ -122,7 +122,7 @@ According to Newton's Laws of motion:
 <div style="page-break-after: always"></div>
 
 # MATLAB CODE
-## Main Code | [solution.m](solution.m)
+## Main Code | [solution.m](./code/solution.m)
 ```MATLAB
 clear all;
 close all;
@@ -161,7 +161,7 @@ end
 <div style="page-break-after: always"></div>
 
 ## Helper Snippets
-1. [setAxisLimits.m](./setAxisLimits.m)
+1. [setAxisLimits.m](./code/setAxisLimits.m)
 ```MATLAB
 % THIS SNIPPET IS TO ADD PADDING TO THE PLOT
 
@@ -179,7 +179,7 @@ function setAxisLimits(axisData, padding)
     axis([axisData(1) - padding * axisLength axisData(2) + padding * axisLength axisData(3) - padding * axisHeight axisData(4) + padding * axisHeight]);
 end
 ```
-2. [labelOnPlot.m](./labelOnPlot.m)
+2. [labelOnPlot.m](./code/labelOnPlot.m)
 ```MATLAB
 function labelOnPlot(A)
     text(real(A(1)), imag(A(1)), strcat("\rightarrow",num2str(A(1))));
@@ -252,19 +252,19 @@ Time Domain Parameters of transfer function with ζ = 0.01, ωn = 10
 
 ## Plots
 ### Case 1 Plot
-<img src="./case-1-plot.svg" alt="Case 1 Plot">
+<img src="./svgs/case-1-plot.svg" alt="Case 1 Plot">
 
 ---
 
 ### Case 2 Plot
-<img src="./case-2-plot.svg" alt="Case 1 Plot">
+<img src="./svgs/case-2-plot.svg" alt="Case 1 Plot">
 
 ---
 
 <div style="page-break-after: always"></div>
 
 ### Case 3 Plot
-<img src="./case-3-plot.svg" alt="Case 1 Plot">
+<img src="./svgs/case-3-plot.svg" alt="Case 1 Plot">
 
 ---
 

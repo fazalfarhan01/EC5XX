@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<div style="text-align: center;">
+    <img src="https://jssstuniv.in/wp-content/uploads/2019/03/logo-for-web-site.jpg" alt="JSS STU Logo"
+        style="width: 300px;">
+        <br>
+        <br>
+    <h2>A Report on</h2>
+    <h1>Problem solving using analytical methods and MATLAB
+    </h1>
+    <br>
+    <br>
+    <h2> Submitted for the fulfillment of the CIE (Event-2) for the course</h2>
+    <h1>Control Systems - EC540</h1>
+    <br>
+    <br>
+    <br>
+    <h3>Submitted by: <br><br>
+        <table
+            style="margin-left: auto; margin-right: auto; padding: 10px; border: 1px solid black; border-collapse: collapse;">
+            <tr>
+                <td>Name</td>
+                <td>Mohamed Farhan Fazal</td>
+            </tr>
+            <tr>
+                <td>USN</td>
+                <td>01JST18EC055</td>
+            </tr>
+            <tr>
+                <td>Roll No.</td>
+                <td>29</td>
+            </tr>
+        </table>
+    </h3>
+    <br>
+    <br>
+    <h4>Under the guidance of</h4>
+    <h2>Dr. Sudarshan Patilkulkarni</h2>
+    <h3>Associate Professor <br>
+        DEPARTMENT OF ELECTRONICS AND COMMUNICATION <br>
+        SJCE MYSURU- 570006</h3>
+</div>
+<hr>
+<div style="page-break-after: always"></div>
+<h2 id="problem-statement">Problem Statement:</h2>
+<p>For the mass spring system derive expressions for <strong>ζ</strong> and <strong>ω<sub>n</sub></strong>. If <strong>M=10 Kg</strong>, determine<br>
+spring and friction constant for following cases:</p>
+<ol>
+<li>ζ = 0.7, ωn = 10</li>
+<li>ζ = 0.3, ωn = 10</li>
+<li>ζ = 0.01, ωn = 10</li>
+</ol>
+<p>Show the plots for step responses and pole-zero<br>
+locations in MATLAB.</p>
+<hr>
+<h2 id="solution">Solution</h2>
+<ul>
+<li>Mass Spring System</li>
+</ul>
+<img src="./svgs/BlockDiagram.svg" alt="Mass Spring System" width="300">
+<ul>
+<li>Free Body Diagram</li>
+</ul>
+<img src="./svgs/FreeBodyDiagram.svg" alt="Free Body Diagram" width="300">
+<p>According to Newton's Laws of motion:</p>
+<p><a href="https://www.codecogs.com/eqnedit.php?latex=F(t)&space;-&space;\{K_{s}x(t)&space;&plus;&space;K_{f}\frac{\mathrm{d}&space;x(t)}{\mathrm{d}&space;t}\}&space;=&space;M\frac{\partial^2&space;x(t)}{\partial&space;t^2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;F(t)&space;-&space;\{K_{s}x(t)&space;&plus;&space;K_{f}\frac{\mathrm{d}&space;x(t)}{\mathrm{d}&space;t}\}&space;=&space;M\frac{\partial^2&space;x(t)}{\partial&space;t^2}" title="F(t) - \{K_{s}x(t) + K_{f}\frac{\mathrm{d} x(t)}{\mathrm{d} t}\} = M\frac{\partial^2 x(t)}{\partial t^2}" /></a></p>
+<p><a href="https://www.codecogs.com/eqnedit.php?latex=f(t)\Rightarrow&space;u(t)&space;|&space;x(t)&space;\Rightarrow&space;y(t)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;f(t)\Rightarrow&space;u(t)&space;|&space;x(t)&space;\Rightarrow&space;y(t)" title="f(t)\Rightarrow u(t) | x(t) \Rightarrow y(t)" /></a></p>
+<p><a href="https://www.codecogs.com/eqnedit.php?latex=u(t)&space;=&space;M\frac{\partial^2&space;y(t)}{\partial&space;t^2}&space;&plus;&space;K_{s}y(t)&space;&plus;&space;K_{f}\frac{\partial&space;y(t)}{\partial&space;t}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;u(t)&space;=&space;M\frac{\partial^2&space;y(t)}{\partial&space;t^2}&space;&plus;&space;K_{s}y(t)&space;&plus;&space;K_{f}\frac{\partial&space;y(t)}{\partial&space;t}" title="u(t) = M\frac{\partial^2 y(t)}{\partial t^2} + K_{s}y(t) + K_{f}\frac{\partial y(t)}{\partial t}" /></a></p>
+<h3 id="in-laplace-domain">In Laplace Domain</h3>
+<p><a href="https://www.codecogs.com/eqnedit.php?latex=U(S)&space;=&space;[MS^{2}&space;&plus;&space;K_{s}&space;&plus;&space;K_{f}S]\times&space;Y(S)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;U(S)&space;=&space;[MS^{2}&space;&plus;&space;K_{s}&space;&plus;&space;K_{f}S]\times&space;Y(S)" title="U(S) = [MS^{2} + K_{s} + K_{f}S]\times Y(S)" /></a></p>
+<p><a href="https://www.codecogs.com/eqnedit.php?latex=\frac{Y(S)}{U(S)}&space;=&space;G(S)&space;=&space;\frac{1}{MS^{2}&plus;K_{f}S&plus;K_{s}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;\frac{Y(S)}{U(S)}&space;=&space;G(S)&space;=&space;\frac{1}{MS^{2}&plus;K_{f}S&plus;K_{s}}" title="\frac{Y(S)}{U(S)} = G(S) = \frac{1}{MS^{2}+K_{f}S+K_{s}}" /></a></p>
+<h3 id="comparing-with-the-standard-second-order-equation">Comparing with the Standard Second Order Equation</h3>
+<p><a href="https://www.codecogs.com/eqnedit.php?latex=G(S)&space;=&space;\frac{\omega&space;_{n}^{2}}{S^{2}&plus;2\zeta\omega&space;_{n}S&plus;\omega&space;_{n}^{2}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;G(S)&space;=&space;\frac{\omega&space;_{n}^{2}}{S^{2}&plus;2\zeta\omega&space;_{n}S&plus;\omega&space;_{n}^{2}}" title="G(S) = \frac{\omega _{n}^{2}}{S^{2}+2\zeta\omega _{n}S+\omega _{n}^{2}}" /></a></p>
+<p><a href="https://www.codecogs.com/eqnedit.php?latex=\omega&space;_{n}&space;=&space;\sqrt{\frac{K_{s}}{M}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;\omega&space;_{n}&space;=&space;\sqrt{\frac{K_{s}}{M}}" title="\omega _{n} = \sqrt{\frac{K_{s}}{M}}" /></a> and <a href="https://www.codecogs.com/eqnedit.php?latex=\zeta&space;=&space;\frac{K_{f}}{2\sqrt{K_{s}M}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;\zeta&space;=&space;\frac{K_{f}}{2\sqrt{K_{s}M}}" title="\zeta = \frac{K_{f}}{2\sqrt{K_{s}M}}" /></a></p>
+<p><a href="https://www.codecogs.com/eqnedit.php?latex=K_{s}&space;=&space;\omega&space;_{n}^{2}\times&space;M" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{s}&space;=&space;\omega&space;_{n}^{2}\times&space;M" title="K_{s} = \omega _{n}^{2}\times M" /></a> and <a href="https://www.codecogs.com/eqnedit.php?latex=K_{f}&space;=&space;2\zeta&space;\times&space;\sqrt{K_{s}\times&space;M}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{f}&space;=&space;2\zeta&space;\times&space;\sqrt{K_{s}\times&space;M}" title="K_{f} = 2\zeta \times \sqrt{K_{s}\times M}" /></a></p>
+<h3 id="case-1">Case 1:</h3>
+<ul>
+<li><strong>M</strong> = 10 Kg</li>
+<li><strong>ζ</strong> = 0.7</li>
+<li><strong>ω<sub>n</sub></strong> = 10</li>
+<li><a href="https://www.codecogs.com/eqnedit.php?latex=K_{s}&space;=&space;1000&space;N/m" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{s}&space;=&space;1000&space;N/m" title="K_{s} = 1000 N/m" /></a></li>
+<li><a href="https://www.codecogs.com/eqnedit.php?latex=K_{f}&space;=&space;140&space;N/m^{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{f}&space;=&space;140&space;N/m^{2}" title="K_{f} = 140 N/m^{2}" /></a></li>
+</ul>
+<h3 id="case-2">Case 2:</h3>
+<ul>
+<li><strong>M</strong> = 10 Kg</li>
+<li><strong>ζ</strong> = 0.3</li>
+<li><strong>ω<sub>n</sub></strong> = 10</li>
+<li><a href="https://www.codecogs.com/eqnedit.php?latex=K_{s}&space;=&space;1000&space;N/m" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{s}&space;=&space;1000&space;N/m" title="K_{s} = 1000 N/m" /></a></li>
+<li><a href="https://www.codecogs.com/eqnedit.php?latex=K_{f}&space;=&space;140&space;N/m^{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{f}&space;=&space;60&space;N/m^{2}" title="K_{f} = 60 N/m^{2}" /></a></li>
+</ul>
+<h3 id="case-3">Case 3:</h3>
+<ul>
+<li><strong>M</strong> = 10 Kg</li>
+<li><strong>ζ</strong> = 0.01</li>
+<li><strong>ω<sub>n</sub></strong> = 10</li>
+<li><a href="https://www.codecogs.com/eqnedit.php?latex=K_{s}&space;=&space;1000&space;N/m" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{s}&space;=&space;1000&space;N/m" title="K_{s} = 1000 N/m" /></a></li>
+<li><a href="https://www.codecogs.com/eqnedit.php?latex=K_{f}&space;=&space;140&space;N/m^{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{f}&space;=&space;2&space;N/m^{2}" title="K_{f} = 2 N/m^{2}" /></a></li>
+</ul>
+<hr>
+<div style="page-break-after: always"></div>
+<h2 id="derivation-and-calculationspage-1">Derivation and Calculations<img src="Calculations/1.jpg" alt="Page 1"></h2>
+<div style="page-break-after: always"></div>
+<p><img src="Calculations/2.jpg" alt="Page 1"></p>
+<div style="page-break-after: always"></div>
+<p><img src="Calculations/3.jpg" alt="Page 1"></p>
+<div style="page-break-after: always"></div>
+<h1 id="matlab-code">MATLAB CODE</h1>
+<h2 id="main-code--solutionm">Main Code | <a href="./code/solution.m">solution.m</a></h2>
+<pre class="hljs"><code><div>clear all;
+close all;
+clc;
+
+<span class="hljs-comment">% DECLARING CONSTANTS STATICALLY</span>
+<span class="hljs-comment">% frictionConstant = [140 60 2];</span>
+<span class="hljs-comment">% springConstant = 1000;</span>
+
+<span class="hljs-comment">% MORE DYNAMIC CONSTANT CALCULATION</span>
+massOfBlock = <span class="hljs-number">10</span>;
+zetaValues = [<span class="hljs-number">0.7</span>, <span class="hljs-number">0.3</span>, <span class="hljs-number">0.01</span>];
+naturalFrequency = <span class="hljs-number">10</span>;
+
+springConstant = naturalFrequency^<span class="hljs-number">2</span> * massOfBlock;
+frictionConstant = <span class="hljs-number">2</span>*zetaValues*<span class="hljs-built_in">sqrt</span>(springConstant*massOfBlock);
+
+<span class="hljs-keyword">for</span> index = <span class="hljs-number">1</span>:<span class="hljs-built_in">length</span>(frictionConstant)
+    <span class="hljs-built_in">figure</span>;
+    G = tf([<span class="hljs-number">1</span>], [massOfBlock frictionConstant(index) springConstant]);
+    response = stepplot(G, <span class="hljs-string">"m"</span>);
+    grid on;
+    <span class="hljs-built_in">legend</span>(strcat(<span class="hljs-string">"ζ = "</span>, num2str(zetaValues(index)), <span class="hljs-string">", ωn = 10"</span>));
+    <span class="hljs-built_in">disp</span>(strcat(<span class="hljs-string">"Time Domain Parameters of transfer function with "</span>, <span class="hljs-string">"ζ = "</span>, num2str(zetaValues(index)), <span class="hljs-string">", ωn = 10"</span>))
+    <span class="hljs-built_in">disp</span>(stepinfo(G));
+
+    response.showCharacteristic(<span class="hljs-string">'PeakResponse'</span>);
+    response.showCharacteristic(<span class="hljs-string">'RiseTime'</span>);
+    response.showCharacteristic(<span class="hljs-string">'SettlingTime'</span>);
+    response.showCharacteristic(<span class="hljs-string">'SteadyState'</span>);
+
+    setAxisLimits(axis);
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<div style="page-break-after: always"></div>
+<h2 id="helper-snippets">Helper Snippets</h2>
+<ol>
+<li><a href="./code/setAxisLimits.m">setAxisLimits.m</a></li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-comment">% THIS SNIPPET IS TO ADD PADDING TO THE PLOT</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setAxisLimits</span><span class="hljs-params">(axisData, padding)</span></span>
+    <span class="hljs-comment">% RELATIVE TO THE OVERALL PLOT</span>
+    <span class="hljs-comment">% 0.1 IS 10% AND 0.5 IS 50%</span>
+
+    arguments
+        axisData;
+        padding = <span class="hljs-number">0.05</span>; <span class="hljs-comment">% PADDING DEFALUTS TO 5%</span>
+    <span class="hljs-keyword">end</span>
+
+    axisLength = axisData(<span class="hljs-number">2</span>) - axisData(<span class="hljs-number">1</span>);
+    axisHeight = axisData(<span class="hljs-number">4</span>) - axisData(<span class="hljs-number">3</span>);
+    axis([axisData(<span class="hljs-number">1</span>) - padding * axisLength axisData(<span class="hljs-number">2</span>) + padding * axisLength axisData(<span class="hljs-number">3</span>) - padding * axisHeight axisData(<span class="hljs-number">4</span>) + padding * axisHeight]);
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<ol start="2">
+<li><a href="./code/labelOnPlot.m">labelOnPlot.m</a></li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">labelOnPlot</span><span class="hljs-params">(A)</span></span>
+    text(<span class="hljs-built_in">real</span>(A(<span class="hljs-number">1</span>)), <span class="hljs-built_in">imag</span>(A(<span class="hljs-number">1</span>)), strcat(<span class="hljs-string">"\rightarrow"</span>,num2str(A(<span class="hljs-number">1</span>))));
+    text(<span class="hljs-built_in">real</span>(A(<span class="hljs-number">2</span>)), <span class="hljs-built_in">imag</span>(A(<span class="hljs-number">2</span>)), strcat(<span class="hljs-string">"\rightarrow"</span>,num2str(A(<span class="hljs-number">2</span>))));
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<hr>
+<div style="page-break-after: always"></div>
+<h1 id="results">RESULTS</h1>
+<h2 id="command-window-output">Command Window Output</h2>
+<pre class="hljs"><code><div>G =
+            <span class="hljs-number">1</span>
+  ---------------------
+  <span class="hljs-number">10</span> s^<span class="hljs-number">2</span> + <span class="hljs-number">140</span> s + <span class="hljs-number">1000</span>
+ 
+Continuous-time transfer <span class="hljs-function"><span class="hljs-keyword">function</span>.</span>
+
+Time Domain Parameters of transfer <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">with</span> ζ = 0.7, ω<span class="hljs-title">n</span> = 10</span>
+        RiseTime: <span class="hljs-number">0.2127</span>
+    SettlingTime: <span class="hljs-number">0.5979</span>
+     SettlingMin: <span class="hljs-number">9.0010e-04</span>
+     SettlingMax: <span class="hljs-number">0.0010</span>
+       Overshoot: <span class="hljs-number">4.5986</span>
+      Undershoot: <span class="hljs-number">0</span>
+            Peak: <span class="hljs-number">0.0010</span>
+        PeakTime: <span class="hljs-number">0.4408</span>
+
+
+G =
+           <span class="hljs-number">1</span>
+  --------------------
+  <span class="hljs-number">10</span> s^<span class="hljs-number">2</span> + <span class="hljs-number">60</span> s + <span class="hljs-number">1000</span>
+ 
+Continuous-time transfer <span class="hljs-function"><span class="hljs-keyword">function</span>.</span>
+
+Time Domain Parameters of transfer <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">with</span> ζ = 0.3, ω<span class="hljs-title">n</span> = 10</span>
+        RiseTime: <span class="hljs-number">0.1324</span>
+    SettlingTime: <span class="hljs-number">1.1230</span>
+     SettlingMin: <span class="hljs-number">8.6139e-04</span>
+     SettlingMax: <span class="hljs-number">0.0014</span>
+       Overshoot: <span class="hljs-number">37.1410</span>
+      Undershoot: <span class="hljs-number">0</span>
+            Peak: <span class="hljs-number">0.0014</span>
+        PeakTime: <span class="hljs-number">0.3224</span>
+
+
+G =
+           <span class="hljs-number">1</span>
+  -------------------
+  <span class="hljs-number">10</span> s^<span class="hljs-number">2</span> + <span class="hljs-number">2</span> s + <span class="hljs-number">1000</span>
+ 
+Continuous-time transfer <span class="hljs-function"><span class="hljs-keyword">function</span>.</span>
+
+Time Domain Parameters of transfer <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">with</span> ζ = 0.01, ω<span class="hljs-title">n</span> = 10</span>
+        RiseTime: <span class="hljs-number">0.1050</span>
+    SettlingTime: <span class="hljs-number">38.9674</span>
+     SettlingMin: <span class="hljs-number">6.0902e-05</span>
+     SettlingMax: <span class="hljs-number">0.0020</span>
+       Overshoot: <span class="hljs-number">96.9071</span>
+      Undershoot: <span class="hljs-number">0</span>
+            Peak: <span class="hljs-number">0.0020</span>
+        PeakTime: <span class="hljs-number">0.3142</span>
+</div></code></pre>
+<div style="page-break-after: always"></div>
+<h2 id="plots">Plots</h2>
+<h3 id="case-1-plot">Case 1 Plot</h3>
+<img src="./svgs/case-1-plot.svg" alt="Case 1 Plot">
+<hr>
+<h3 id="case-2-plot">Case 2 Plot</h3>
+<img src="./svgs/case-2-plot.svg" alt="Case 1 Plot">
+<hr>
+<div style="page-break-after: always"></div>
+<h3 id="case-3-plot">Case 3 Plot</h3>
+<img src="./svgs/case-3-plot.svg" alt="Case 1 Plot">
+<hr>
+<h2 id="conclusioninference">Conclusion/Inference</h2>
+<p>From the above results and observations, we can conclude the following</p>
+<ul>
+<li>The system in all the 3 cases is <strong>stable</strong> as the poles of the system in all the 3 cases are to the <em><strong>left</strong></em> of the Imaginary Axis on the <em><strong>S-plane</strong></em></li>
+<li>Friction co-efficient <a href="https://www.codecogs.com/eqnedit.php?latex=\bg_white&space;K_{f}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{f}" title="K_{f}" /></a> is directly proportial to ζ , hence as ζ decreses, <a href="https://www.codecogs.com/eqnedit.php?latex=\bg_white&space;K_{f}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;K_{f}" title="K_{f}" /></a> also decreases.</li>
+<li>As the value of friction co-efficient decreses, that is when the effect of friction decreases ,the number of oscillations increses, which means, there is an increase in the <strong>settling time</strong>, and also the <strong>maximum overshoot</strong> is relatively <em><strong>higher</strong></em> as seen in case 3 with <em><strong>ζ=0.01</strong></em>.</li>
+</ul>
+
+</body>
+</html>
