@@ -1,4 +1,4 @@
-<!--<div style="text-align: center;">
+<div style="text-align: center;">
     <img src="https://jssstuniv.in/wp-content/uploads/2019/03/logo-for-web-site.jpg" alt="JSS STU Logo"
         style="width: 300px;">
         <br>
@@ -42,7 +42,7 @@
 ---
 
 <div style="page-break-after: always"></div>
--->
+
 
 ## Problem Statement:
 For the mass spring system derive expressions for __ζ__ and __ω<sub>n</sub>__. If __M=10 Kg__, determine
