@@ -47,7 +47,7 @@
 - All the files are available on my GitHub. You can check them out <a href="https://github.com/fazalfarhan01/EC5XX/tree/master/EC540/Event%20-%202">here</a>
 
 ## Problem Statement:
-For the mass spring system derive expressions for ζ and __ω<sub>n</sub>__. If __M=10 Kg__, determine
+For the mass spring system derive expressions for __ζ__ and __ω<sub>n</sub>__. If __M=10 Kg__, determine
 spring and friction constant for following cases: 
 1. ζ = 0.7, ωn = 10
 2. ζ = 0.3, ωn = 10 
