@@ -1,35 +1,52 @@
 image = imread("image.jpg");
-imageBW = rgb2gray(image);
 
+% Converting to single channel image from 3 channels (RGB=>BW)
+% imageBW = rgb2gray(image);
+
+% Separating out the 3 channels of the Color Image
 R = image(:,:,1);
 G = image(:,:,2);
 B = image(:,:,3);
 
-sizeOfImage = size(imageBW);
+% Getting image size and declaring the encoding parameters
+sizeOfImage = size(R);
 xn = 0.9532;
 r = 3.9455;
 
+% Generating the key
 Key = uint8(generateKey(sizeOfImage, xn, r));
 
-
+% Generating an all 0 (black) to show the separated out channels
 allBlack = zeros(sizeOfImage);
 
+% Showing the separate channel Un-Encoded pictures
 justRed = cat(3, R, allBlack, allBlack);
 justGreen = cat(3, allBlack, G, allBlack);
 justBlue = cat(3, allBlack, allBlack, B);
 
+% Showing the separate channel Encoded pictures
 encryptedRed = cat(3, bitxor(R, Key), allBlack, allBlack);
 encryptedGreen = cat(3, allBlack, bitxor(G, Key), allBlack);
 encryptedBlue = cat(3, allBlack, allBlack, bitxor(B, Key));
 
-encryptedImage = encryptedRed + encryptedGreen + encryptedBlue;
+% Either of these techniques work
+% Separate out the channels and encrypt and combine
+% Else use BROADCASTING in MATLAB to directly generate key
+% BROADCASTING method works better.
+
+% encryptedImage = encryptedRed + encryptedGreen + encryptedBlue;
 encryptedImage = bitxor(image, Key);
 
+% Writing the encrypted image to disk
+imwrite(encryptedImage, "./encrypted.jpg");
 
+% Show the images
 figure;
-subplot(1, 2, 1);
+subplot(1, 3, 1);
+imshow(image);
+subplot(1, 3, 2);
 imshow(Key);
-subplot(1, 2, 2);
+subplot(1, 3, 3);
 imshow(encryptedImage);
 
 figure;
