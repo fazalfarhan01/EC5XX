@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configurations XML_version="1.2" id="configurations_0">
+    <configuration XML_version="1.2" id="configuration_0">
+        <instance XML_version="1.2" desc="Texas Instruments Simulator" href="connections/tisim_connection.xml" id="Texas Instruments Simulator" xml="tisim_connection.xml" xmlpath="connections"/>
+        <connection XML_version="1.2" desc="C67xxCPU Cycle Accurate Simulator" id="Texas Instruments Simulator">
+            <instance XML_version="1.2" href="drivers/tisim_c67xx.xml" id="drivers" xml="tisim_c67xx.xml" xmlpath="drivers"/>
+            <platform XML_version="1.2" id="platform_0">
+                <instance XML_version="1.2" desc="DSK6713" href="boards/dsk6713.xml" id="DSK6713" xml="dsk6713.xml" xmlpath="boards"/>
+            <board XML_version="1.2" description="Spectrum Digital C6713 DSK Board" id="DSK6713">
+                    <cpu HW_revision="1.0" XML_version="1.2" description="C671x CPU" id="TMS320C671X" isa="TMS320C671X">
+                        <property Type="stringfield" Value="C67xx" id="Device"/>
+                    </cpu>
+                </board>
+            </platform>
+        </connection>
+    </configuration>
+</configurations>
