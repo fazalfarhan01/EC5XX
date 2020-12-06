@@ -1,9 +1,10 @@
 function twiddleMatrix = twiddleFactor(sequenceLenght, needMatrix)
-    arguments
-        sequenceLenght
-        needMatrix = 1;
-    end
-    twiddleMatrix = ones([sequenceLenght sequenceLenght]);
+    %arguments
+        %sequenceLenght
+        %needMatrix = 1;
+    %end
+    needMatrix = 1;
+    twiddleMatrix = complex(ones([sequenceLenght sequenceLenght]));
     theta = 2 * pi / sequenceLenght;
 
     for index1 = 2:sequenceLenght

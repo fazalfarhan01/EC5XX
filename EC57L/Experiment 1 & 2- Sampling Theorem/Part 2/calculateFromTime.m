@@ -8,11 +8,11 @@ sequence = input("Enter the Sequence in time domain: ");
 lengthOfSequence = length(sequence);
 
 DFT = dft(sequence);
-[DTFT pointLength] = dtft(sequence);
-"Calculated using manually coded function"
+[DTFT, pointLength] = dtft(sequence);
+disp("Calculated using manually coded function");
 round(DFT, 3)
 
-"Calculated using builtin coded function"
+disp("Calculated using builtin coded function");
 round(fft(sequence).', 3)
 
 % Plotting Amplitude Graph
