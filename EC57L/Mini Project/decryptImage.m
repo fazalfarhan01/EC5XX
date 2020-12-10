@@ -1,5 +1,6 @@
 % Loading Image
-% encryptedImage = imread("encrypted.jpg");
+% encryptedImage = imread("encrypted.png");
+% decryptImage(encryptedImage);
 
 function decryptedImage = decryptImage(encryptedImage)
     % Decryption Parameters

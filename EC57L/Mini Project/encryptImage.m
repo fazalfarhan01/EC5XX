@@ -1,4 +1,4 @@
-image = imread("image.jpg");
+image = imread("image2.jpg");
 
 % Converting to single channel image from 3 channels (RGB=>BW)
 % imageBW = rgb2gray(image);
@@ -38,7 +38,7 @@ encryptedBlue = cat(3, allBlack, allBlack, bitxor(B, Key));
 encryptedImage = bitxor(image, Key);
 
 % Writing the encrypted image to disk
-imwrite(encryptedImage, "./encrypted.jpg");
+imwrite(encryptedImage, "./encrypted.png");
 
 % Show the images
 figure;
