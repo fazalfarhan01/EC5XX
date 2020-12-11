@@ -1,10 +1,13 @@
 % Loading Image
-% encryptedImage = imread("encrypted.png");
-% decryptImage(encryptedImage);
+% encryptedImage = imread("./Results/encrypted.bmp");
+encryptedImage = imread("./Results/encrypted.jpg");
+% encryptedImage = imread("./Results/encrypted.png");
+startDecryptImage(encryptedImage);
 
-function decryptedImage = decryptImage(encryptedImage)
+function decryptedImage = startDecryptImage(encryptedImage)
     % Decryption Parameters
     sizeOfImage = size(encryptedImage(:,:,1));
+    % xn = 0.9532;
     xn = 0.9532;
     r = 3.9455;
     
@@ -13,6 +16,8 @@ function decryptedImage = decryptImage(encryptedImage)
     
     % Decrypting the image
     decryptedImage = bitxor(encryptedImage, Key);
+    imwrite(decryptedImage, "./Results/decrypted.png")
+    imwrite(decryptedImage, "./Results/decrypted.jpeg")
     
     figure;
     imshow(decryptedImage);

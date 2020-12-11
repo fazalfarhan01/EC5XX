@@ -1,4 +1,8 @@
-image = imread("image2.jpg");
+clear all;
+close all;
+clc;
+
+image = imread("input.jpg");
 
 % Converting to single channel image from 3 channels (RGB=>BW)
 % imageBW = rgb2gray(image);
@@ -37,8 +41,19 @@ encryptedBlue = cat(3, allBlack, allBlack, bitxor(B, Key));
 % encryptedImage = encryptedRed + encryptedGreen + encryptedBlue;
 encryptedImage = bitxor(image, Key);
 
-% Writing the encrypted image to disk
-imwrite(encryptedImage, "./encrypted.png");
+% Writing the images to disk
+imwrite(Key,"./Results/key.png");
+imwrite(encryptedImage, "./Results/encrypted.png");
+imwrite(encryptedImage, "./Results/encrypted.jpg");
+imwrite(encryptedImage, "./Results/encrypted.bmp");
+% Un-Encrypted Images (Separated Channels)
+imwrite(justRed, "./Results/justRed.png");
+imwrite(justBlue, "./Results/justBlue.png");
+imwrite(justGreen, "./Results/justGreen.png");
+% Encrypted Images (Separated Channels)
+imwrite(encryptedRed, "./Results/encryptedRed.png");
+imwrite(encryptedBlue, "./Results/encryptedBlue.png");
+imwrite(encryptedGreen, "./Results/encryptedGreen.png");
 
 % Show the images
 figure;
