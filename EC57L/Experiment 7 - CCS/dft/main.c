@@ -1,38 +1,47 @@
 #include <stdio.h>
 #include <math.h>
-#define PI 3.1415
-int x[8];
 int main()
 {
-    int N, m, n, a, b;
-    float r, i;
+    int sequence[8];
+    const float pi = 3.1415;
+    int numberOfPointsOfDFT, index, lengthOfsequence, index2;
+    float realPart, imaginaryPart;
     printf("Enter the value of N: ");
-    scanf("%d", &N); // Number of DFT points to calculate
+    scanf("%d", &numberOfPointsOfDFT); // Number of DFT points to calculate
 
     printf("\nEnter the size of x(n): ");
-    scanf("%d", &n); // Length of x(n)
+    scanf("%d", &lengthOfsequence); // Length of x(n)
 
     printf("\nEnter the sequence x(n):");
-    for (m = 0; m < n; m++)
+    for (index = 0; index < lengthOfsequence; index++)
     {
-        scanf("%d", &x[m]); // Getting x(n)
+        scanf("%d", &sequence[index]); // Getting x(n)
     }
-    for (m = n; m < N; m++)
+    for (index = lengthOfsequence; index < numberOfPointsOfDFT; index++)
     {
-        x[m] = 0; // 0 Padding
+        sequence[index] = 0; // 0 Padding
     }
     printf("DFT of the sequence x(n) is:\n");
 
-    for (a = 0; a < N; a++)
+    for (index = 0; index < numberOfPointsOfDFT; index++)
     {
-        r = 0;
-        i = 0;
-        for (b = 0; b < n; b++)
+        realPart = 0;
+        imaginaryPart = 0;
+        for (index2 = 0; index2 < lengthOfsequence; index2++)
         {
-            r = r + (x[b] * cos(2 * PI * b * a / N));
-            i = i + (x[b] * sin(2 * PI * b * a / N));
+            realPart = realPart + (sequence[index2] * cos(2 * pi * index2 * index / numberOfPointsOfDFT));
+            imaginaryPart = imaginaryPart + (sequence[index2] * sin(2 * pi * index2 * index / numberOfPointsOfDFT));
         }
-        printf("%.2f - (%.2f j)\n", r, i);
+        if (imaginaryPart < 0)
+        {
+            printf("%.2f +", realPart);
+            printf("%.2f j\n", -imaginaryPart);
+        }
+        else
+        {
+            printf("%.2f -", realPart);
+            printf("%.2f j\n", imaginaryPart);
+        }
     }
     return 0;
 }
