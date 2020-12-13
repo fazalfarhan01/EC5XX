@@ -1,47 +1,30 @@
-#include <stdio.h>
-#include <math.h>
-int main()
-{
-    int sequence[8];
-    const float pi = 3.1415;
-    int numberOfPointsOfDFT, index, lengthOfsequence, index2;
-    float realPart, imaginaryPart;
-    printf("Enter the value of N: ");
-    scanf("%d", &numberOfPointsOfDFT); // Number of DFT points to calculate
+#include<stdio.h>
+#include<math.h>
+/*
+ * main.c
+ */
 
-    printf("\nEnter the size of x(n): ");
-    scanf("%d", &lengthOfsequence); // Length of x(n)
+int main(void) {
+	int N,k,n,i;
+	float pi=3.1416,sumre=0,sumim=0,out_real[8]={0,0},out_imag[8]={0,0};
+	int x[32];
+	printf("Enter the length of sequence: ");
+	scanf("%d", &N);
+	printf("Enter the sequence: ");
+	for(i=0;i<N;i++){
+		scanf("%d",&x[i]);
+	}
+	for(k=0;k<N;k++){
+		sumre=0;
+		sumim=0;
+		for(n=0;n<N;n++){
+			sumre=sumre+x[n]*cos(2*pi*k*n/N);
+			sumim=sumim-x[n]*sin(2*pi*k*n/N);
+		}
+		out_real[k]=sumre;
+		out_imag[k]=sumim;
+		printf("x([%d])=\t%f\t+\t%fj\n",k,out_real[k],out_imag[k]);
+	}
 
-    printf("\nEnter the sequence x(n):");
-    for (index = 0; index < lengthOfsequence; index++)
-    {
-        scanf("%d", &sequence[index]); // Getting x(n)
-    }
-    for (index = lengthOfsequence; index < numberOfPointsOfDFT; index++)
-    {
-        sequence[index] = 0; // 0 Padding
-    }
-    printf("DFT of the sequence x(n) is:\n");
-
-    for (index = 0; index < numberOfPointsOfDFT; index++)
-    {
-        realPart = 0;
-        imaginaryPart = 0;
-        for (index2 = 0; index2 < lengthOfsequence; index2++)
-        {
-            realPart = realPart + (sequence[index2] * cos(2 * pi * index2 * index / numberOfPointsOfDFT));
-            imaginaryPart = imaginaryPart + (sequence[index2] * sin(2 * pi * index2 * index / numberOfPointsOfDFT));
-        }
-        if (imaginaryPart < 0)
-        {
-            printf("%.2f +", realPart);
-            printf("%.2f j\n", -imaginaryPart);
-        }
-        else
-        {
-            printf("%.2f -", realPart);
-            printf("%.2f j\n", imaginaryPart);
-        }
-    }
-    return 0;
+	return 0;
 }
