@@ -8,19 +8,21 @@ int main()
 {
     int i, j, m, n;
 
+    printf("For Auto-Corelation, enter the same sequence twice.\n");
+
     printf("Enter length of x(n): ");
     scanf("%d", &m); // Getting Length of x(n)
-    printf("\nEnter the length of h(n): ");
+    printf("Enter the length of h(n): ");
     scanf("%d", &n); // Getting Length of h(n)
 
-    printf("\nEnter x(n): ");
+    printf("Enter x(n): ");
 
     for (i = 0; i < m; i++)
     {
         scanf("%d", &x[i]); // Getting x(n)
     }
 
-    printf("\nEnter h(n): ");
+    printf("Enter h(n): ");
     for (i = n - 1; i >= 0; i--)
     {
         scanf("%d", &h[i]); // Getting h(n)
