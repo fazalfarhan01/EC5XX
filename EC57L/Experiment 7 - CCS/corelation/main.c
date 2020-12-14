@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-int x[20], h[20], y[20], z[20];
+int x[20], h[20], y[20], z[20], result;
 
 int main()
 {
@@ -40,6 +40,7 @@ int main()
     //displaying the o/p
     for (i = 0; i < m + n - 1; i++)
     {
+    	result = y[i];
         printf("y[%d]=%d\n", i, y[i]); // Printing it to STDOUT
     }
     printf("\n");
