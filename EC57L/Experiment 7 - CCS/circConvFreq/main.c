@@ -18,6 +18,7 @@ int main(void)
         scanf("%d", &h[i]);
     }
     N = m > n ? m : n;
+    // Zero Padding the sequences
     for (i = m; i < N; i++)
     {
         x[i] = 0;
@@ -26,6 +27,7 @@ int main(void)
     {
         h[i] = 0;
     }
+    // Circ Conv
     for (i = 0; i < N; i++)
     {
         for (j = 0; j <= N; j++)

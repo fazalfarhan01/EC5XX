@@ -56,7 +56,7 @@ void main()
     }
 
     /*displaying the result*/
-    printf("the circular convolution is\n");
+    printf("Circular convolution of x(n) and h(n) is:\n");
     for (i = 0; i < n; i++)
-        printf("%d \t", y[i]);
+        printf("y[%d]=\t%d\n", i, y[i]);
 }
