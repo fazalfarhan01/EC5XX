@@ -1,0 +1,3 @@
+[submodule "EC560/Mini Project/discord-bot"]
+	path = EC560/Mini Project/discord-bot
+	url = https://github.com/DespicableMee/discord-bot.git
