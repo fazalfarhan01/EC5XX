@@ -2,54 +2,54 @@ clear all;
 close all;
 clc;
 
-minPassBandGain = 0.75;
-maxStopBandGain = 0.23;
-% passBandFrequency = 0.62;
-% stopBandFrequency = 1.88;
-digitalPassBandFrequency = 0.25 * pi;
-digitalStopBandFrequency = 0.63 * pi;
-samplingTime = 2;
-gainType = 1;
-frequencyType = 2;
-% digitalPassBandFrequency = 2 * atan(samplingTime * passBandFrequency / 2);
-% digitalStopBandFrequency = 2 * atan(samplingTime * stopBandFrequency / 2);
-passBandFrequency = (2 * tan(digitalPassBandFrequency / 2)) / samplingTime;
-stopBandFrequency = (2 * tan(digitalStopBandFrequency / 2)) / samplingTime;
+% minPassBandGain = 0.75;
+% maxStopBandGain = 0.23;
+% % passBandFrequency = 0.62;
+% % stopBandFrequency = 1.88;
+% digitalPassBandFrequency = 0.25 * pi;
+% digitalStopBandFrequency = 0.63 * pi;
+% samplingTime = 2;
+% gainType = 1;
+% frequencyType = 2;
+% % digitalPassBandFrequency = 2 * atan(samplingTime * passBandFrequency / 2);
+% % digitalStopBandFrequency = 2 * atan(samplingTime * stopBandFrequency / 2);
+% passBandFrequency = (2 * tan(digitalPassBandFrequency / 2)) / samplingTime;
+% stopBandFrequency = (2 * tan(digitalStopBandFrequency / 2)) / samplingTime;
 
-% disp('Enter the frequencies type');
-% inputDomain = input("Enter 1 for analog frequencies, 2 for digital: ");
+disp('Enter the frequencies type');
+inputDomain = input("Enter 1 for analog frequencies, 2 for digital: ");
 
-% samplingTime = input('Enter the sampling time: ');
-% gainType = input("Select Gain Type: 1 for Normal, 2 for Decibels: ");
+samplingTime = input('Enter the sampling time: ');
+gainType = input("Select Gain Type: 1 for Normal, 2 for Decibels: ");
 
-% minPassBandGain = input("Enter Passband Gain: ");
-% maxStopBandGain = input("Enter Stopband Gain: ");
+minPassBandGain = input("Enter Passband Gain: ");
+maxStopBandGain = input("Enter Stopband Gain: ");
 
-% frequencyType = input("Frequency Unit: 1 for Hz, 2 for Rad/s: ");
+frequencyType = input("Frequency Unit: 1 for Hz, 2 for Rad/s: ");
 
-% if inputDomain == 1
-%     passBandFrequency = input('Enter Passband Frequency (Analog Domain): ');
-%     stopBandFrequency = input('Enter Stopband Frequency (Analog Domain): ');
+if inputDomain == 1
+    passBandFrequency = input('Enter Passband Frequency (Analog Domain): ');
+    stopBandFrequency = input('Enter Stopband Frequency (Analog Domain): ');
 
-%     if frequencyType == 1
-%         passBandFrequency = 2 * pi * passBandFrequency;
-%         stopBandFrequency = 2 * pi * stopBandFrequency;
-%     end
+    if frequencyType == 1
+        passBandFrequency = 2 * pi * passBandFrequency;
+        stopBandFrequency = 2 * pi * stopBandFrequency;
+    end
 
-%     digitalPassBandFrequency = 2 * atan(samplingTime * passBandFrequency / 2);
-%     digitalStopBandFrequency = 2 * atan(samplingTime * stopBandFrequency / 2);
-% else
-%     digitalPassBandFrequency = input('Enter Passband Frequency (Digital Domain): ');
-%     digitalStopBandFrequency = input('Enter Stopband Frequency (Digital Domain): ');
+    digitalPassBandFrequency = 2 * atan(samplingTime * passBandFrequency / 2);
+    digitalStopBandFrequency = 2 * atan(samplingTime * stopBandFrequency / 2);
+else
+    digitalPassBandFrequency = input('Enter Passband Frequency (Digital Domain): ');
+    digitalStopBandFrequency = input('Enter Stopband Frequency (Digital Domain): ');
 
-%     if frequencyType == 1
-%         digitalPassBandFrequency = 2 * pi * digitalPassBandFrequency;
-%         digitalStopBandFrequency = 2 * pi * digitalStopBandFrequency;
-%     end
+    if frequencyType == 1
+        digitalPassBandFrequency = 2 * pi * digitalPassBandFrequency;
+        digitalStopBandFrequency = 2 * pi * digitalStopBandFrequency;
+    end
 
-%     passBandFrequency = (2 * tan(digitalPassBandFrequency / 2)) / samplingTime;
-%     stopBandFrequency = (2 * tan(digitalStopBandFrequency / 2)) / samplingTime;
-% end
+    passBandFrequency = (2 * tan(digitalPassBandFrequency / 2)) / samplingTime;
+    stopBandFrequency = (2 * tan(digitalStopBandFrequency / 2)) / samplingTime;
+end
 
 disp('Low Pass => 1');
 disp('High Pass => 2');

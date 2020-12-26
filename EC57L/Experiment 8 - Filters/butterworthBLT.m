@@ -2,6 +2,14 @@ clear all;
 close all;
 clc;
 
+% minPassBandGain = 1.9328;
+% maxStopBandGain = 13.9794;
+% passBandFrequency = 0.62;
+% stopBandFrequency = 1.88;
+% samplingTime = 1;
+% gainType = 2;
+% frequencyType = 2;
+
 gainType = input("Select Gain Type: 1 for Normal, 2 for Decibels: ");
 
 minPassBandGain = input("Enter Passband Gain: ");
@@ -19,14 +27,6 @@ disp('Band Pass => 3');
 disp('Band Stop => 4');
 
 filterType = input("Enter filter type: ")
-
-% minPassBandGain = 1.9328;
-% maxStopBandGain = 13.9794;
-% passBandFrequency = 0.62;
-% stopBandFrequency = 1.88;
-% samplingTime = 1;
-% gainType = 2;
-% frequencyType = 2;
 
 if gainType == 1
     minPassBandGain = -20 * log10(minPassBandGain);
