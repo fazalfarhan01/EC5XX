@@ -74,7 +74,7 @@ switch filterType
     case 1
         % low pass
         [normallisedAnalogNumerator, normallisedAnalogDenominator] = cheby1(selectedOrder, minPassBandGain, normallisedPassBandFrequency, "low", "s");
-        [digitalNumerator, digitalDenominator] = cheby1(selectedOrder, minPassBandGain, digitalPassBandFrequency / pi, "low");
+        [digitalNumerator, digitalDenominator] = cheby1(normallisedAnalogNumerator, normallisedAnalogDenominator, 1 / samplingTime);
     case 2
         % High Pass
         [normallisedAnalogNumerator, normallisedAnalogDenominator] = cheby1(selectedOrder, minPassBandGain, normallisedPassBandFrequency, "high", "s");
@@ -85,7 +85,7 @@ switch filterType
         [digitalNumerator, digitalDenominator] = cheby1(selectedOrder, minPassBandGain, [digitalPassBandFrequency, digitalStopBandFrequency] / pi, "bandpass");
     case 4
         % Band stop
-        [normallisedAnalogNumerator, normallisedAnalogDenominator] = cheby1(selectedOrder, minPassBandGain, [normallisedPassBandFrequency normallisedStopBandFrequency], "bandpass", "s");
+        [normallisedAnalogNumerator, normallisedAnalogDenominator] = cheby1(selectedOrder, minPassBandGain, [normallisedPassBandFrequency normallisedStopBandFrequency], "stop", "s");
         [digitalNumerator, digitalDenominator] = cheby1(selectedOrder, minPassBandGain, [digitalPassBandFrequency, digitalStopBandFrequency] / pi, "stop");
 end
 
