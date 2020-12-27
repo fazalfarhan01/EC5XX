@@ -1,7 +1,7 @@
 function twiddleMatrix = twiddleFactor(sequenceLenght, needMatrix)
     %arguments
-        %sequenceLenght
-        %needMatrix = 1;
+    %sequenceLenght
+    %needMatrix = 1;
     %end
     needMatrix = 1;
     twiddleMatrix = complex(ones([sequenceLenght sequenceLenght]));

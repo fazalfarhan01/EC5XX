@@ -2,17 +2,17 @@ clear all;
 close all;
 clc;
 
-% gainType = input("Select Gain Type: 1 for Normal, 2 for Decibels: ");
+gainType = input("Select Gain Type:\n1 for Normal\n2 for Decibels: ");
 
-% minPassBandGain = input("Enter Passband Gain: ");
-% maxStopBandGain = input("Enter Stopband Gain: ");
+minPassBandGain = input("Enter Passband Gain: ");
+maxStopBandGain = input("Enter Stopband Gain: ");
 
-% frequencyType = input("Frequency Unit: 1 for Hz, 2 for Rad/s: ");
+frequencyType = input("Frequency Unit:\n1 for Hz\n2 for Rad/s: ");
 
-% passBandFrequency = input('Enter Passband Frequency (Analog Domain): ');
-% stopBandFrequency = input('Enter Stopband Frequency (Analog Domain): ');
+passBandFrequency = input('Enter Passband Frequency (Analog Domain): ');
+stopBandFrequency = input('Enter Stopband Frequency (Analog Domain): ');
 
-% samplingTime = input('Enter the sampling time: ');
+samplingTime = input('Enter the sampling time: ');
 disp('Low Pass => 1');
 disp('High Pass => 2');
 disp('Band Pass => 3');
@@ -20,13 +20,13 @@ disp('Band Stop => 4');
 
 filterType = input("Enter filter type: ")
 
-minPassBandGain = 1.9328;
-maxStopBandGain = 13.9794;
-passBandFrequency = 0.62;
-stopBandFrequency = 1.88;
-samplingTime = 1;
-gainType = 2;
-frequencyType = 2;
+% minPassBandGain = 1.9328;
+% maxStopBandGain = 13.9794;
+% passBandFrequency = 0.62;
+% stopBandFrequency = 1.88;
+% samplingTime = 1;
+% gainType = 2;
+% frequencyType = 2;
 
 if gainType == 1
     minPassBandGain = -20 * log10(minPassBandGain);

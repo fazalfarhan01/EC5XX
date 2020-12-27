@@ -1,0 +1,2652 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>REPORT.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 style="text-align:center;">EC57L DSP - LAB</h1>
+<h2 style="text-align:center;">Lab Experiments' Report</h2>
+<hr>
+<h2 id="experiment-1-sampling-theorem">Experiment 1: Sampling Theorem</h2>
+<h4 id="sampling-in-virtual-lab-iit-k">Sampling in Virtual Lab IIT-K</h4>
+<ul>
+<li>
+<p>Effect of Under Sampling<br>
+<img src="Results\exp1\underSampling.png" alt="Pic"></p>
+</li>
+<li>
+<p>Effect of Perfect Sampling<br>
+<img src="Results\exp1\perfectSampling.png" alt="Pic"></p>
+</li>
+</ul>
+<h4 id="sampling-in-matlab">Sampling in MATLAB</h4>
+<p>Code:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">% THIS IS THE VERISON 2 OF THE EXPERIMENT 1 - VERIFICATION OF THE NYQUIST'S THEOREM FOR SAMPLING</span>
+<span class="hljs-comment">% AUTHOR: MOHAMED FARHAN FAZAL</span>
+
+clear all;
+close all;
+clc;
+<span class="hljs-comment">% Clearing the Workspace and Command Window</span>
+
+<span class="hljs-comment">% Initiallizing the Variables</span>
+
+widthOfTheLine = <span class="hljs-number">1.5</span>;
+numberOfWaves = <span class="hljs-number">5</span>; <span class="hljs-comment">% Number of waveforms to be shown</span>
+messageSignalFrequency = input(<span class="hljs-string">"Enter the Message Signal Frequency: "</span>); <span class="hljs-comment">% Taking the user's input for Message Signal Frequency</span>
+initialSamplingFreq = <span class="hljs-number">50</span>*messageSignalFrequency; <span class="hljs-comment">% Sampling Frequency for Unsampled Signal</span>
+timePerSample = <span class="hljs-number">1</span>/initialSamplingFreq; <span class="hljs-comment">% Time needed for a single sample</span>
+stopTime = <span class="hljs-number">1</span>; <span class="hljs-comment">% Samples to be generated up to.</span>
+timeAxis = <span class="hljs-number">0</span>:timePerSample:stopTime-timePerSample; <span class="hljs-comment">% Generating the time axis</span>
+totalNumberOfSamples = <span class="hljs-built_in">size</span>(timeAxis,<span class="hljs-number">2</span>); <span class="hljs-comment">% Calculating the number of samples</span>
+samplingFrequencyInterval = initialSamplingFreq/totalNumberOfSamples; <span class="hljs-comment">% Calculating the frequency interval to generate the frequency axis;</span>
+frequencyAxis = -initialSamplingFreq/<span class="hljs-number">2</span>:samplingFrequencyInterval:initialSamplingFreq/<span class="hljs-number">2</span>-samplingFrequencyInterval; <span class="hljs-comment">% Generating the Frequency Axis</span>
+phiDegrees = <span class="hljs-number">90</span>; <span class="hljs-comment">% in degrees</span>
+
+phi = phiDegrees * <span class="hljs-built_in">pi</span> / <span class="hljs-number">180</span>;
+
+
+
+<span class="hljs-comment">% Plotting the Unsampled Signal</span>
+<span class="hljs-comment">% In time Domain</span>
+subplot(<span class="hljs-number">421</span>);
+xData = <span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*messageSignalFrequency*timeAxis + phi);
+<span class="hljs-built_in">plot</span>(<span class="hljs-number">1000</span>*timeAxis, xData, <span class="hljs-string">"lineWidth"</span>, widthOfTheLine);
+set(get(gca, <span class="hljs-string">'XLabel'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Time in milliSeconds  (ms)'</span>);
+set(get(gca, <span class="hljs-string">'YLabel'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Amplitude'</span>);
+set(get(gca, <span class="hljs-string">'Title'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Un-Sampled Signal'</span>);
+grid on;
+axis([<span class="hljs-number">0</span> <span class="hljs-number">1000</span>*numberOfWaves/messageSignalFrequency <span class="hljs-number">-1</span> <span class="hljs-number">1</span>]);
+
+<span class="hljs-comment">% In Frequency Domain</span>
+subplot(<span class="hljs-number">422</span>);
+xDataFFT = fftshift(fft(xData));
+semilogx(frequencyAxis, <span class="hljs-built_in">abs</span>(xDataFFT)/totalNumberOfSamples, <span class="hljs-string">"lineWidth"</span>, widthOfTheLine);
+set(get(gca, <span class="hljs-string">'XLabel'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Frequency in Hertz  (Hz)'</span>);
+set(get(gca, <span class="hljs-string">'Title'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Un-Sampled Signal'</span>);
+grid on;
+axis([<span class="hljs-number">0</span> messageSignalFrequency+messageSignalFrequency/<span class="hljs-number">3</span> <span class="hljs-number">0</span> <span class="hljs-built_in">inf</span>]);
+
+
+<span class="hljs-comment">% Plotting Under Sampled Signal</span>
+
+underSamplingFrequency = <span class="hljs-number">1.2</span>*messageSignalFrequency; <span class="hljs-comment">% Deciding the Frequency for demonstraring undersampling</span>
+under_timePerSample = <span class="hljs-number">1</span>/underSamplingFrequency; <span class="hljs-comment">% Time needed for a single sample</span>
+under_timeAxis = <span class="hljs-number">0</span>:under_timePerSample:stopTime-under_timePerSample; <span class="hljs-comment">% Generating the time axis</span>
+under_totalNumberOfSamples = <span class="hljs-built_in">size</span>(under_timeAxis,<span class="hljs-number">2</span>); <span class="hljs-comment">% Calculating the number of samples</span>
+under_samplingFrequencyInterval = underSamplingFrequency/under_totalNumberOfSamples; <span class="hljs-comment">% Calculating the frequency interval to generate the frequency axis;</span>
+under_frequencyAxis = -underSamplingFrequency/<span class="hljs-number">2</span>:under_samplingFrequencyInterval:underSamplingFrequency/<span class="hljs-number">2</span>-under_samplingFrequencyInterval; <span class="hljs-comment">% Generating the Frequency Axis</span>
+
+<span class="hljs-comment">% In time Domain</span>
+subplot(<span class="hljs-number">423</span>);
+under_xData = <span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*messageSignalFrequency*under_timeAxis + phi);
+<span class="hljs-built_in">hold</span> on;
+<span class="hljs-built_in">plot</span>(<span class="hljs-number">1000</span>*under_timeAxis, under_xData, <span class="hljs-string">"lineWidth"</span>, widthOfTheLine);
+stem(<span class="hljs-number">1000</span>*under_timeAxis, under_xData);
+set(get(gca, <span class="hljs-string">'XLabel'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Time in milliSeconds  (ms)'</span>);
+set(get(gca, <span class="hljs-string">'YLabel'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Amplitude'</span>);
+set(get(gca, <span class="hljs-string">'Title'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Under-Sampled Signal'</span>);
+<span class="hljs-built_in">hold</span> off;
+grid on;
+axis([<span class="hljs-number">0</span> <span class="hljs-number">1000</span>*numberOfWaves/messageSignalFrequency <span class="hljs-number">-1</span> <span class="hljs-number">1</span>]);
+
+<span class="hljs-comment">% In Frequency Domain</span>
+subplot(<span class="hljs-number">424</span>);
+under_xDataFFT = fftshift(fft(under_xData));
+semilogx(under_frequencyAxis, <span class="hljs-built_in">abs</span>(under_xDataFFT)/under_totalNumberOfSamples, <span class="hljs-string">"lineWidth"</span>, widthOfTheLine);
+set(get(gca, <span class="hljs-string">'XLabel'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Frequency in Hertz  (Hz)'</span>);
+set(get(gca, <span class="hljs-string">'Title'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Under-Sampled Signal'</span>);
+grid on;
+axis([<span class="hljs-number">0</span> messageSignalFrequency+messageSignalFrequency/<span class="hljs-number">2</span> <span class="hljs-number">0</span> <span class="hljs-built_in">inf</span>]);
+
+
+
+<span class="hljs-comment">% Plotting Perfect Sampled Signal</span>
+
+perfectSamplingFrequency = <span class="hljs-number">2</span>*messageSignalFrequency; <span class="hljs-comment">% Deciding the Frequency for demonstraring perfectsampling</span>
+perfect_timePerSample = <span class="hljs-number">1</span>/perfectSamplingFrequency; <span class="hljs-comment">% Time needed for a single sample</span>
+perfect_timeAxis = <span class="hljs-number">0</span>:perfect_timePerSample:stopTime; <span class="hljs-comment">% Generating the time axis %removed "-perfect_timePerSample"</span>
+perfect_totalNumberOfSamples = <span class="hljs-built_in">size</span>(perfect_timeAxis,<span class="hljs-number">2</span>); <span class="hljs-comment">% Calculating the number of samples</span>
+perfect_samplingFrequencyInterval = perfectSamplingFrequency/perfect_totalNumberOfSamples; <span class="hljs-comment">% Calculating the frequency interval to generate the frequency axis;</span>
+perfect_frequencyAxis = -perfectSamplingFrequency/<span class="hljs-number">2</span>:perfect_samplingFrequencyInterval:perfectSamplingFrequency/<span class="hljs-number">2</span>-perfect_samplingFrequencyInterval; <span class="hljs-comment">% Generating the Frequency Axis</span>
+
+<span class="hljs-comment">% In time Domain</span>
+subplot(<span class="hljs-number">425</span>);
+perfect_xData = <span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*messageSignalFrequency*perfect_timeAxis + phi);
+<span class="hljs-built_in">hold</span> on;
+<span class="hljs-built_in">plot</span>(<span class="hljs-number">1000</span>*perfect_timeAxis, perfect_xData, <span class="hljs-string">"lineWidth"</span>, widthOfTheLine);
+stem(<span class="hljs-number">1000</span>*perfect_timeAxis, perfect_xData);
+set(get(gca, <span class="hljs-string">'XLabel'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Time in milliSeconds  (ms)'</span>);
+set(get(gca, <span class="hljs-string">'YLabel'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Amplitude'</span>);
+set(get(gca, <span class="hljs-string">'Title'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Perfectly-Sampled Signal'</span>);
+<span class="hljs-built_in">hold</span> off;
+grid on;
+axis([<span class="hljs-number">0</span> <span class="hljs-number">1000</span>*numberOfWaves/messageSignalFrequency <span class="hljs-number">-1</span> <span class="hljs-number">1</span>]);
+
+<span class="hljs-comment">% In Frequency Domain</span>
+subplot(<span class="hljs-number">426</span>);
+perfect_xDataFFT = fftshift(fft(perfect_xData));
+semilogx(perfect_frequencyAxis, <span class="hljs-built_in">abs</span>(perfect_xDataFFT)/perfect_totalNumberOfSamples, <span class="hljs-string">"lineWidth"</span>, widthOfTheLine);
+set(get(gca, <span class="hljs-string">'XLabel'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Frequency in Hertz  (Hz)'</span>);
+set(get(gca, <span class="hljs-string">'Title'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Perfectly-Sampled Signal'</span>);
+grid on;
+axis([<span class="hljs-number">0</span> messageSignalFrequency+messageSignalFrequency/<span class="hljs-number">2</span> <span class="hljs-number">0</span> <span class="hljs-built_in">inf</span>]);
+
+
+<span class="hljs-comment">% Plotting Over Sampled Signal</span>
+
+overSamplingFrequency = <span class="hljs-number">8</span>*messageSignalFrequency; <span class="hljs-comment">% Deciding the Frequency for demonstraring oversampling</span>
+over_timePerSample = <span class="hljs-number">1</span>/overSamplingFrequency; <span class="hljs-comment">% Time needed for a single sample</span>
+over_timeAxis = <span class="hljs-number">0</span>:over_timePerSample:stopTime-over_timePerSample; <span class="hljs-comment">% Generating the time axis</span>
+over_totalNumberOfSamples = <span class="hljs-built_in">size</span>(over_timeAxis,<span class="hljs-number">2</span>); <span class="hljs-comment">% Calculating the number of samples</span>
+over_samplingFrequencyInterval = overSamplingFrequency/over_totalNumberOfSamples; <span class="hljs-comment">% Calculating the frequency interval to generate the frequency axis;</span>
+over_frequencyAxis = -overSamplingFrequency/<span class="hljs-number">2</span>:over_samplingFrequencyInterval:overSamplingFrequency/<span class="hljs-number">2</span>-over_samplingFrequencyInterval; <span class="hljs-comment">% Generating the Frequency Axis</span>
+
+<span class="hljs-comment">% In time Domain</span>
+subplot(<span class="hljs-number">427</span>);
+over_xData = <span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*messageSignalFrequency*over_timeAxis + phi);
+<span class="hljs-built_in">hold</span> on;
+<span class="hljs-built_in">plot</span>(<span class="hljs-number">1000</span>*over_timeAxis, over_xData, <span class="hljs-string">"lineWidth"</span>, widthOfTheLine);
+stem(<span class="hljs-number">1000</span>*over_timeAxis, over_xData);
+set(get(gca, <span class="hljs-string">'XLabel'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Time in milliSeconds  (ms)'</span>);
+set(get(gca, <span class="hljs-string">'YLabel'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Amplitude'</span>);
+set(get(gca, <span class="hljs-string">'Title'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Over-Sampled Signal'</span>);
+<span class="hljs-built_in">hold</span> off;
+grid on;
+axis([<span class="hljs-number">0</span> <span class="hljs-number">1000</span>*numberOfWaves/messageSignalFrequency <span class="hljs-number">-1</span> <span class="hljs-number">1</span>]);
+
+<span class="hljs-comment">% In Frequency Domain</span>
+subplot(<span class="hljs-number">428</span>);
+over_xDataFFT = fftshift(fft(over_xData));
+semilogx(over_frequencyAxis, <span class="hljs-built_in">abs</span>(over_xDataFFT)/over_totalNumberOfSamples, <span class="hljs-string">"lineWidth"</span>, widthOfTheLine);
+set(get(gca, <span class="hljs-string">'XLabel'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Frequency in Hertz  (Hz)'</span>);
+set(get(gca, <span class="hljs-string">'Title'</span>), <span class="hljs-string">'String'</span>, <span class="hljs-string">'Over-Sampled Signal'</span>);
+grid on;
+axis([<span class="hljs-number">0</span> messageSignalFrequency+messageSignalFrequency/<span class="hljs-number">2</span> <span class="hljs-number">0</span> <span class="hljs-built_in">inf</span>]);
+
+<span class="hljs-comment">% Clearing the Workspace and the Command Window</span>
+clear all;
+clc;
+</div></code></pre>
+<h4 id="results">Results</h4>
+<p><img src="Results\exp1\samplingInMatlab.svg" alt="SamplingMatlab"></p>
+<h2 id="experiment-2-dft-idft-dtft">Experiment 2: DFT, IDFT, DTFT</h2>
+<p>Code:</p>
+<ol>
+<li>dft.m</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">DFT</span> = <span class="hljs-title">dft</span><span class="hljs-params">(sequence)</span></span>
+
+sequenceLength = <span class="hljs-built_in">length</span>(sequence);
+twiddleFactorMatrix = twiddleFactor(sequenceLength);
+DFT = twiddleFactorMatrix*sequence.';
+    
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<ol start="2">
+<li>dtft.m</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[DTFT dtftPointLength]</span> = <span class="hljs-title">dtft</span><span class="hljs-params">(sequence)</span></span>
+    sequenceLength = <span class="hljs-built_in">length</span>(sequence);
+    dtftPointLength = <span class="hljs-number">1000</span>;
+    DTFT = dft([sequence <span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>,dtftPointLength-sequenceLength)]);
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<ol start="3">
+<li>idft.m</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">IDFT</span> = <span class="hljs-title">idft</span><span class="hljs-params">(sequence)</span></span>
+    IDFT = <span class="hljs-built_in">conj</span>(dft(<span class="hljs-built_in">conj</span>(sequence.')))/<span class="hljs-built_in">length</span>(sequence);
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<ol start="4">
+<li>setAxisLimits.m</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setAxisLimits</span><span class="hljs-params">(axisData)</span></span>
+    padding = <span class="hljs-number">0.1</span>; <span class="hljs-comment">% Relative to the overall output</span>
+    axisLength = axisData(<span class="hljs-number">2</span>) - axisData(<span class="hljs-number">1</span>);
+    axisHeight = axisData(<span class="hljs-number">4</span>) - axisData(<span class="hljs-number">3</span>);
+    axis([axisData(<span class="hljs-number">1</span>) - padding * axisLength axisData(<span class="hljs-number">2</span>) + padding * axisLength axisData(<span class="hljs-number">3</span>) - padding * axisHeight axisData(<span class="hljs-number">4</span>) + padding * axisHeight]);
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<ol start="5">
+<li>setPlotAttributes.m</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setPlotAttributes</span><span class="hljs-params">(xAxisLabel, yAxisLabel, plotTitle)</span></span>
+    set(get(gca, <span class="hljs-string">'XLabel'</span>), <span class="hljs-string">'String'</span>, xAxisLabel);
+    set(get(gca, <span class="hljs-string">'YLabel'</span>), <span class="hljs-string">'String'</span>, yAxisLabel);
+    set(get(gca, <span class="hljs-string">'Title'</span>), <span class="hljs-string">'String'</span>, plotTitle);
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<ol start="6">
+<li>twiddleFactor.m</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">twiddleMatrix</span> = <span class="hljs-title">twiddleFactor</span><span class="hljs-params">(sequenceLenght, needMatrix)</span></span>
+    <span class="hljs-comment">%arguments</span>
+    <span class="hljs-comment">%sequenceLenght</span>
+    <span class="hljs-comment">%needMatrix = 1;</span>
+    <span class="hljs-comment">%end</span>
+    needMatrix = <span class="hljs-number">1</span>;
+    twiddleMatrix = <span class="hljs-built_in">complex</span>(<span class="hljs-built_in">ones</span>([sequenceLenght sequenceLenght]));
+    theta = <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span> / sequenceLenght;
+
+    <span class="hljs-keyword">for</span> index1 = <span class="hljs-number">2</span>:sequenceLenght
+        <span class="hljs-keyword">for</span> index2 = <span class="hljs-number">2</span>:sequenceLenght
+            twiddleMatrix(index1, index2) = <span class="hljs-built_in">cos</span>(theta * (index2 - <span class="hljs-number">1</span>) * (index1 - <span class="hljs-number">1</span>)) - <span class="hljs-built_in">i</span> * <span class="hljs-built_in">sin</span>(theta * (index2 - <span class="hljs-number">1</span>) * (index1 - <span class="hljs-number">1</span>));
+        <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">end</span>
+
+    <span class="hljs-keyword">if</span> ~needMatrix
+        twiddleMatrix = twiddleMatrix(:, <span class="hljs-number">2</span>);
+    <span class="hljs-keyword">end</span>
+</div></code></pre>
+<h4 id="results">Results</h4>
+<h3 id="dft-and-dtft">DFT and DTFT</h3>
+<ul>
+<li>Input Sequence: <code>4 3 2 6 8 4 6 3</code></li>
+</ul>
+<pre class="hljs"><code><div>Enter the Sequence in time domain: [<span class="hljs-number">4</span> <span class="hljs-number">3</span> <span class="hljs-number">2</span> <span class="hljs-number">6</span> <span class="hljs-number">8</span> <span class="hljs-number">4</span> <span class="hljs-number">6</span> <span class="hljs-number">3</span>]
+
+<span class="hljs-built_in">ans</span> = 
+
+    <span class="hljs-string">"Calculated using manually coded function"</span>
+
+
+<span class="hljs-built_in">ans</span> =
+
+  <span class="hljs-number">36.0000</span> + <span class="hljs-number">0.0000</span><span class="hljs-built_in">i</span>
+  <span class="hljs-number">-6.8280</span> + <span class="hljs-number">2.5860</span><span class="hljs-built_in">i</span>
+   <span class="hljs-number">4.0000</span> + <span class="hljs-number">2.0000</span><span class="hljs-built_in">i</span>
+  <span class="hljs-number">-1.1720</span> - <span class="hljs-number">5.4140</span><span class="hljs-built_in">i</span>
+   <span class="hljs-number">4.0000</span> + <span class="hljs-number">0.0000</span><span class="hljs-built_in">i</span>
+  <span class="hljs-number">-1.1720</span> + <span class="hljs-number">5.4140</span><span class="hljs-built_in">i</span>
+   <span class="hljs-number">4.0000</span> - <span class="hljs-number">2.0000</span><span class="hljs-built_in">i</span>
+  <span class="hljs-number">-6.8280</span> - <span class="hljs-number">2.5860</span><span class="hljs-built_in">i</span>
+
+
+<span class="hljs-built_in">ans</span> = 
+
+    <span class="hljs-string">"Calculated using builtin coded function"</span>
+
+
+<span class="hljs-built_in">ans</span> =
+
+  <span class="hljs-number">36.0000</span> + <span class="hljs-number">0.0000</span><span class="hljs-built_in">i</span>
+  <span class="hljs-number">-6.8280</span> + <span class="hljs-number">2.5860</span><span class="hljs-built_in">i</span>
+   <span class="hljs-number">4.0000</span> + <span class="hljs-number">2.0000</span><span class="hljs-built_in">i</span>
+  <span class="hljs-number">-1.1720</span> - <span class="hljs-number">5.4140</span><span class="hljs-built_in">i</span>
+   <span class="hljs-number">4.0000</span> + <span class="hljs-number">0.0000</span><span class="hljs-built_in">i</span>
+  <span class="hljs-number">-1.1720</span> + <span class="hljs-number">5.4140</span><span class="hljs-built_in">i</span>
+   <span class="hljs-number">4.0000</span> - <span class="hljs-number">2.0000</span><span class="hljs-built_in">i</span>
+  <span class="hljs-number">-6.8280</span> - <span class="hljs-number">2.5860</span><span class="hljs-built_in">i</span>
+</div></code></pre>
+<p><img src="Results\exp2\dft-8-point.svg" alt=""></p>
+<h3 id="idft">IDFT</h3>
+<ul>
+<li>Input Sequence:</li>
+</ul>
+<pre class="hljs"><code><div>  <span class="hljs-number">36.0000</span> + <span class="hljs-number">0.0000</span><span class="hljs-built_in">i</span>
+  <span class="hljs-number">-6.8280</span> + <span class="hljs-number">2.5860</span><span class="hljs-built_in">i</span>
+   <span class="hljs-number">4.0000</span> + <span class="hljs-number">2.0000</span><span class="hljs-built_in">i</span>
+  <span class="hljs-number">-1.1720</span> - <span class="hljs-number">5.4140</span><span class="hljs-built_in">i</span>
+   <span class="hljs-number">4.0000</span> + <span class="hljs-number">0.0000</span><span class="hljs-built_in">i</span>
+  <span class="hljs-number">-1.1720</span> + <span class="hljs-number">5.4140</span><span class="hljs-built_in">i</span>
+   <span class="hljs-number">4.0000</span> - <span class="hljs-number">2.0000</span><span class="hljs-built_in">i</span>
+  <span class="hljs-number">-6.8280</span> - <span class="hljs-number">2.5860</span><span class="hljs-built_in">i</span>
+</div></code></pre>
+<p><img src="Results\exp2\idft-8-point.svg" alt=""></p>
+<h2 id="experiment-3-properties-of-dft-1">Experiment 3: Properties of DFT 1</h2>
+<h3 id="1-linearity">1. Linearity</h3>
+<p>Code:</p>
+<pre class="hljs"><code><div>clear all;
+close all;
+clc;
+
+widthOfLine = <span class="hljs-number">1</span>;
+
+sequence1 = input(<span class="hljs-string">"Enter sequence 1: \n"</span>);
+sequence2 = input(<span class="hljs-string">"Enter sequence 2: \n"</span>);
+
+<span class="hljs-comment">% sequence1 = [1 2 3 4];</span>
+<span class="hljs-comment">% sequence2 = [5 6 7 8];</span>
+
+<span class="hljs-built_in">figure</span>(<span class="hljs-string">"Name"</span>, <span class="hljs-string">"Using manually coded functions !"</span>);
+
+DFT1 = dft(sequence1);
+DFT2 = dft(sequence2);
+combinedDFT = dft(sequence1 + sequence2);
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Using manually coded functions !"</span>);
+
+<span class="hljs-built_in">disp</span>(strcat([<span class="hljs-string">'DFT of sequence 1: x1(n)'</span>]));
+<span class="hljs-built_in">disp</span>(<span class="hljs-built_in">round</span>(DFT1, <span class="hljs-number">3</span>));
+
+<span class="hljs-built_in">disp</span>(strcat([<span class="hljs-string">'DFT of sequence 2: x2(n)'</span>]));
+<span class="hljs-built_in">disp</span>(<span class="hljs-built_in">round</span>(DFT2, <span class="hljs-number">3</span>));
+
+<span class="hljs-built_in">disp</span>(strcat([<span class="hljs-string">'DFT of sum of x1(n) and x2(n): '</span>]));
+<span class="hljs-built_in">disp</span>(<span class="hljs-built_in">round</span>(combinedDFT, <span class="hljs-number">3</span>));
+
+<span class="hljs-built_in">disp</span>(strcat([<span class="hljs-string">'Sum of DFTs x1(n) and x2(n): '</span>]));
+<span class="hljs-built_in">disp</span>(<span class="hljs-built_in">round</span>(DFT1 + DFT2, <span class="hljs-number">3</span>));
+
+xAxis = <span class="hljs-built_in">linspace</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">length</span>(sequence2) - <span class="hljs-number">1</span>, <span class="hljs-built_in">length</span>(sequence2));
+
+subplot(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>);
+localY = <span class="hljs-built_in">abs</span>(DFT1);
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of sequence 1 $$ x_1(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+
+
+subplot(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(DFT1,<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of sequence 1 $$ x_1(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+
+subplot(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+localY = <span class="hljs-built_in">abs</span>(DFT2);
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of sequence 2 $$ x_2(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+
+
+subplot(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(DFT2,<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of sequence 2 $$ x_2(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+
+subplot(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>);
+localY = <span class="hljs-built_in">abs</span>(combinedDFT);
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of sum of $$ x_1(n) $$ and $$ x_2(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+
+
+subplot(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(combinedDFT,<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of sum of $$ x_1(n) $$ and $$ x_2(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+
+subplot(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>);
+localY = <span class="hljs-built_in">abs</span>(DFT1+DFT2);
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"Sum of DFTs of $$ x_1(n) $$ and $$ x_2(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+
+
+subplot(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">8</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(DFT1+DFT2,<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"Sum of DFTs of $$ x_1(n) $$ and $$ x_2(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+
+
+
+<span class="hljs-built_in">figure</span>(<span class="hljs-string">"Name"</span>, <span class="hljs-string">"Using builtin functions !"</span>)
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Using builtin functions !"</span>);
+
+DFT1 = fft(sequence1);
+DFT2 = fft(sequence2);
+combinedDFT = fft(sequence1 + sequence2);
+
+<span class="hljs-built_in">disp</span>(strcat([<span class="hljs-string">'DFT of sequence 1: x1(n)'</span>]));
+<span class="hljs-built_in">disp</span>(<span class="hljs-built_in">round</span>(DFT1.', <span class="hljs-number">3</span>));
+
+<span class="hljs-built_in">disp</span>(strcat([<span class="hljs-string">'DFT of sequence 2: x2(n)'</span>]));
+<span class="hljs-built_in">disp</span>(<span class="hljs-built_in">round</span>(DFT2.', <span class="hljs-number">3</span>));
+
+<span class="hljs-built_in">disp</span>(strcat([<span class="hljs-string">'DFT of sum of x1(n) and x2(n): '</span>]));
+<span class="hljs-built_in">disp</span>(<span class="hljs-built_in">round</span>(combinedDFT.', <span class="hljs-number">3</span>));
+
+<span class="hljs-built_in">disp</span>(strcat([<span class="hljs-string">'Sum of DFTs x1(n) and x2(n): '</span>]));
+<span class="hljs-built_in">disp</span>(<span class="hljs-built_in">round</span>((DFT1 + DFT2).', <span class="hljs-number">3</span>));
+
+xAxis = <span class="hljs-built_in">linspace</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">length</span>(sequence2) - <span class="hljs-number">1</span>, <span class="hljs-built_in">length</span>(sequence2));
+
+subplot(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>);
+localY = <span class="hljs-built_in">abs</span>(DFT1.');
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of sequence 1 $$ x_1(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+
+
+subplot(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(DFT1.',<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of sequence 1 $$ x_1(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+
+subplot(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+localY = <span class="hljs-built_in">abs</span>(DFT2.');
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of sequence 2 $$ x_2(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+
+
+subplot(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(DFT2.',<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of sequence 2 $$ x_2(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+
+subplot(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>);
+localY = <span class="hljs-built_in">abs</span>(combinedDFT.');
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of sum of $$ x_1(n) $$ and $$ x_2(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+
+
+subplot(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(combinedDFT.',<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of sum of $$ x_1(n) $$ and $$ x_2(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+
+subplot(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>);
+localY = <span class="hljs-built_in">abs</span>((DFT1+DFT2).');
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"Sum of DFTs of $$ x_1(n) $$ and $$ x_2(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+
+
+subplot(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">8</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>((DFT1+DFT2).',<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"Sum of DFTs of $$ x_1(n) $$ and $$ x_2(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+</div></code></pre>
+<h3 id="2-periodicity">2. Periodicity</h3>
+<p>Code:</p>
+<pre class="hljs"><code><div>clear all;
+close all;
+clc;
+
+sequence = input(<span class="hljs-string">"Enter the input sequence: "</span>);
+
+
+N = <span class="hljs-built_in">length</span>(sequence);
+<span class="hljs-built_in">disp</span>(strcat(<span class="hljs-string">"Period N: "</span>, num2str(N)))
+n = <span class="hljs-number">1</span>:N;
+k = n;
+xAxis = n<span class="hljs-number">-1</span>;
+widthOfLine = <span class="hljs-number">1.5</span>;
+
+
+DFT(k) = dft(sequence(n));
+shiftedDFT(k) = dft(sequence(<span class="hljs-built_in">mod</span>(N+n,N+<span class="hljs-number">1</span>)+<span class="hljs-number">1</span>));
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"DFT of x(n): "</span>);
+<span class="hljs-built_in">disp</span>(DFT.');
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"DFT of x(n+N): "</span>);
+<span class="hljs-built_in">disp</span>(shiftedDFT.');
+
+<span class="hljs-built_in">figure</span>(<span class="hljs-string">'Name'</span>,<span class="hljs-string">'Using manually coded functions !'</span>)
+
+subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>);
+localY = <span class="hljs-built_in">abs</span>(DFT.');
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of $$ x(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+grid on;
+
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(DFT.',<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of $$ x(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+grid on;
+
+subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
+localY = <span class="hljs-built_in">abs</span>(shiftedDFT.');
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of $$ x(n+N) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+grid on;
+
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(shiftedDFT.',<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of $$ x(n+N) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+grid on;
+
+
+<span class="hljs-comment">% Using builtin functions</span>
+
+DFT(k) = fft(sequence(n));
+shiftedDFT(k) = fft(sequence(<span class="hljs-built_in">mod</span>(N+n,N+<span class="hljs-number">1</span>)+<span class="hljs-number">1</span>));
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"DFT of x(n): "</span>);
+<span class="hljs-built_in">disp</span>(DFT.');
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"DFT of x(n+N): "</span>);
+<span class="hljs-built_in">disp</span>(shiftedDFT.');
+
+<span class="hljs-built_in">figure</span>(<span class="hljs-string">'Name'</span>,<span class="hljs-string">'Using builtin matlab functions !'</span>)
+
+subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>);
+localY = <span class="hljs-built_in">abs</span>(DFT.');
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of $$ x(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+grid on;
+
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(DFT.',<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of $$ x(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+grid on;
+
+subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
+localY = <span class="hljs-built_in">abs</span>(shiftedDFT.');
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of $$ x(n+N) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+grid on;
+
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(shiftedDFT.',<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of $$ x(n+N) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+grid on;
+</div></code></pre>
+<h3 id="3-circular-time-shift-property-of-a-sequence">3. Circular time shift property of a sequence</h3>
+<p>Code:</p>
+<pre class="hljs"><code><div>clear all;
+close all;
+clc
+
+sequence = input(<span class="hljs-string">"Enter the sequence: "</span>);
+m = input(<span class="hljs-string">"Enter the number of shifts: "</span>);
+
+<span class="hljs-comment">% sequence = [4 -4 5 -5];</span>
+<span class="hljs-comment">% m = 2;</span>
+
+N = <span class="hljs-built_in">length</span>(sequence);
+
+n = <span class="hljs-number">1</span>:N;
+k = n;
+xAxis = n - <span class="hljs-number">1</span>;
+widthOfLine = <span class="hljs-number">1</span>;
+
+x(n) = sequence;
+
+DFT(k) = dft(x(n));
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Input Sequence:"</span>);
+<span class="hljs-built_in">disp</span>(sequence);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"DFT of the input sequence is:"</span>);
+<span class="hljs-built_in">disp</span>(DFT(k));
+
+shiftedDFT(k) = dft(x(<span class="hljs-built_in">circshift</span>(n, m)));
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Circularly Shifted Signal:"</span>);
+<span class="hljs-built_in">disp</span>(x(<span class="hljs-built_in">circshift</span>(n, m)));
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"DFT of circularly shifted signal:"</span>);
+<span class="hljs-built_in">disp</span>(shiftedDFT);
+
+shiftedUsingProperty(k) = DFT * (<span class="hljs-built_in">exp</span>(-<span class="hljs-built_in">i</span> * <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span> * (k - <span class="hljs-number">1</span>) * m / N) .* <span class="hljs-built_in">eye</span>(N));
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"DFT of circularly shifted signal using property:"</span>);
+<span class="hljs-built_in">disp</span>(shiftedUsingProperty);
+
+<span class="hljs-comment">% DFT of signal</span>
+
+subplot(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>);
+localY = <span class="hljs-built_in">abs</span>(DFT.');
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of $$ x(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+grid on;
+
+subplot(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(DFT.', <span class="hljs-number">5</span>)) * <span class="hljs-number">180</span> / <span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of $$ x(n) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+grid on;
+
+<span class="hljs-comment">% DFT of shifted signal</span>
+
+subplot(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+localY = <span class="hljs-built_in">abs</span>(shiftedDFT.');
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of $$ x(n+m) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+grid on;
+
+subplot(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(shiftedDFT.', <span class="hljs-number">5</span>)) * <span class="hljs-number">180</span> / <span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of $$ x(n+m) $$"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+grid on;
+
+<span class="hljs-comment">% DFT of shifted signal using property</span>
+
+subplot(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>);
+localY = <span class="hljs-built_in">abs</span>(shiftedUsingProperty.');
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of $$ x(n+m) $$ using property"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+grid on;
+
+subplot(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(shiftedUsingProperty.', <span class="hljs-number">5</span>)) * <span class="hljs-number">180</span> / <span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of $$ x(n+m) $$ using property"</span>);
+text(xAxis, localY, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY, <span class="hljs-number">1</span>))));
+grid on;
+</div></code></pre>
+<h2 id="experiment-4-properties-of-dft-2">Experiment 4: Properties of DFT 2</h2>
+<p>Code:</p>
+<ol>
+<li>reverse.m</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">REVERSED</span> = <span class="hljs-title">reverse</span><span class="hljs-params">(sequence)</span></span>
+    REVERSED = <span class="hljs-built_in">circshift</span>(<span class="hljs-built_in">fliplr</span>(sequence), <span class="hljs-number">1</span>);
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<ol start="2">
+<li>circularConvolution.m</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convolutionResult</span> = <span class="hljs-title">circularConv</span><span class="hljs-params">(sequence1, sequence2)</span></span>
+    N1 = <span class="hljs-built_in">length</span>(sequence1);
+    N2 = <span class="hljs-built_in">length</span>(sequence2);
+
+    <span class="hljs-comment">% CHECKING IF LENGTH OF 2 SEQUENCES IS EQUAL</span>
+    <span class="hljs-keyword">if</span> N1 ~= N2
+        <span class="hljs-comment">% FIND OUT THE MAX LENGTH OF 2 SEQUENCES</span>
+        N = <span class="hljs-built_in">max</span>(N1, N2);
+
+        <span class="hljs-comment">% APPENDING ZEROS</span>
+        sequence1 = [sequence1 <span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>,N-N1)];
+        sequence2 = [sequence2 <span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>,N-N2)];
+    <span class="hljs-keyword">end</span>
+    circularMatrix = <span class="hljs-built_in">toeplitz</span>(sequence1, reverse(sequence1));
+    convolutionResult = circularMatrix * sequence2.';
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="circular-convolution">Circular Convolution</h3>
+<pre class="hljs"><code><div>clear all;
+close all;
+clc
+
+widthOfLine = <span class="hljs-number">1</span>;
+
+sequence1 = input(<span class="hljs-string">"Enter the Sequence 1: "</span>);
+sequence2 = input(<span class="hljs-string">"Enter the Sequence 2: "</span>);
+
+DFT1 = dft(sequence1);
+DFT2 = dft(sequence2);
+
+<span class="hljs-comment">% CIRCULAR CONVOLUTION IN TIME DOMAIN</span>
+timeDomain = circularConvolution(sequence1, sequence2);
+
+<span class="hljs-comment">% CIRCULAR CONVOLUTION IN FREQUENCY DOMAIN</span>
+N1 = <span class="hljs-built_in">length</span>(sequence1);
+N2 = <span class="hljs-built_in">length</span>(sequence2);
+
+<span class="hljs-comment">% FIND OUT THE MAX LENGTH OF 2 SEQUENCES</span>
+N = <span class="hljs-built_in">max</span>(N1, N2);
+
+<span class="hljs-comment">% CHECKING IF LENGTH OF 2 SEQUENCES IS EQUAL</span>
+<span class="hljs-keyword">if</span> N1 ~= N2
+    <span class="hljs-comment">% APPENDING ZEROS</span>
+    sequence1 = [sequence1 <span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>,N-N1)];
+    sequence2 = [sequence2 <span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>,N-N2)];
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment">% % METHOD 1</span>
+<span class="hljs-comment">% freqDomain = zeros(1,N);</span>
+
+<span class="hljs-comment">% for i = 0:N-1</span>
+<span class="hljs-comment">%     for j = 0:N-1</span>
+<span class="hljs-comment">%         freqDomain(mod(i+j,N)+1) = freqDomain(mod(i+j,N)+1) + sequence1(i+1)*sequence2(j+1);</span>
+<span class="hljs-comment">%     end</span>
+<span class="hljs-comment">% end</span>
+
+<span class="hljs-comment">% % METHOD 2</span>
+freqDomain = idft(dft(sequence1).*dft(sequence2));
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Circular Convolution in time domain: "</span>);
+<span class="hljs-built_in">disp</span>(timeDomain.');
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Circular Convolution in frequency domain: "</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-built_in">abs</span>(freqDomain).');
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"DFT of sequence 1: "</span>);
+<span class="hljs-built_in">disp</span>(DFT1);
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'DFT of sequence 2: '</span>);
+<span class="hljs-built_in">disp</span>(DFT2);
+
+xAxis = <span class="hljs-number">0</span>:N1<span class="hljs-number">-1</span>;
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>);
+localY = <span class="hljs-built_in">abs</span>(DFT1);
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of sequence1 $$ \rightarrow X(k) $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(DFT1,<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of sequence1 $$ \rightarrow X(k) $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+xAxis = <span class="hljs-number">0</span>:N2<span class="hljs-number">-1</span>;
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+localY = <span class="hljs-built_in">abs</span>(DFT2);
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of sequence2 $$ \rightarrow X(k) $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(DFT2,<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of sequence2 $$ \rightarrow X(k) $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+
+<span class="hljs-built_in">figure</span>(<span class="hljs-number">2</span>);
+
+xAxis = <span class="hljs-number">0</span>:N<span class="hljs-number">-1</span>;
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
+localY = timeDomain;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"Convolution in Time Domain"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+localY = <span class="hljs-built_in">abs</span>(freqDomain);
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"n \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"Convolution in Frequency Domain"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="circular-frequency-shift">Circular Frequency Shift</h3>
+<pre class="hljs"><code><div>clear all;
+close all;
+clc;
+
+widthOfLine = <span class="hljs-number">1</span>;
+
+sequence = input(<span class="hljs-string">"Enter the sequence x(n): "</span>);
+m = input(<span class="hljs-string">"Enter the value (m) to be shifted: "</span>);
+
+
+<span class="hljs-comment">% sequence = [4 5 6 7];</span>
+<span class="hljs-comment">% m = 1;</span>
+
+N = <span class="hljs-built_in">length</span>(sequence);
+
+n = <span class="hljs-number">1</span>:N;
+k = n;
+
+x(n) = sequence;
+
+X(k) = fft(x);
+
+x1(n) = x.*<span class="hljs-built_in">exp</span>(<span class="hljs-built_in">i</span>*<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*m*(n<span class="hljs-number">-1</span>)/N);
+X1(k) = fft(x1(n));
+
+X2(k) = <span class="hljs-built_in">circshift</span>(X, m);
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"DFT of x(n) is: "</span>);
+<span class="hljs-built_in">disp</span>(X);
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Circularly Shifted X(l-k)N: "</span>);
+<span class="hljs-built_in">disp</span>(X2);
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"DFT of x(n)*e^(j*2*pi*m*n/N) is: "</span>);
+<span class="hljs-built_in">disp</span>(X1);
+
+xAxis = <span class="hljs-number">0</span>:N<span class="hljs-number">-1</span>;
+
+
+subplot(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>);
+localY = <span class="hljs-built_in">abs</span>(X);
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of $$ x(n) \rightarrow X(k) $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+subplot(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(X,<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of $$ x(n) \rightarrow X(k) $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+
+subplot(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+localY = <span class="hljs-built_in">abs</span>(X1);
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"Circularly Shifted DFT signal by $$ m \rightarrow X(m-k)_N $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+subplot(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(X1,<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"Circularly Shifted DFT signal by $$ m \rightarrow X(m-k)_N $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+subplot(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>);
+localY = <span class="hljs-built_in">abs</span>(X2);
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of $$ x(n)*e^(j*2*pi*m*n/N) \rightarrow X(m-k)_N $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+subplot(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(X2,<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of $$ x(n)*e^{(j*2*pi*m*n/N)} \rightarrow X(m-k)_N $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="conjugate-symmetry">Conjugate Symmetry</h3>
+<pre class="hljs"><code><div>clear all;
+close all;
+clc
+
+sequence = input(<span class="hljs-string">"Enter a 'Real' sequence: "</span>);
+N = <span class="hljs-built_in">length</span>(sequence);
+
+n = <span class="hljs-number">1</span>:N;
+
+x(n) = sequence;    <span class="hljs-comment">% INPUT SEQUENCE</span>
+X = dft(x);         <span class="hljs-comment">% DFT OF INPUT SEQUENCE</span>
+
+x1 = reverse(x);    <span class="hljs-comment">% REVERSED INPUT SEQUENCE x(-n)</span>
+X1 = <span class="hljs-built_in">conj</span>(dft(x1));;  <span class="hljs-comment">% DFT OF CONJUGATE OF INPUT SEQUENCE</span>
+
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"x(n) is: "</span>);
+<span class="hljs-built_in">disp</span>(x);
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"DFT of x(n) ==&gt; X(k)"</span>)
+<span class="hljs-built_in">disp</span>(X);
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"X(-n) is: "</span>);
+<span class="hljs-built_in">disp</span>(x1);
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Conjugate of DFT of x(-n) ==&gt; X*((-k))N"</span>);
+<span class="hljs-built_in">disp</span>(X1);
+
+<span class="hljs-keyword">if</span> <span class="hljs-built_in">round</span>(X,<span class="hljs-number">2</span>) == <span class="hljs-built_in">round</span>(X1,<span class="hljs-number">2</span>)
+    <span class="hljs-built_in">disp</span>(<span class="hljs-string">"The Sequence is Conjugate Symmetric"</span>);
+<span class="hljs-keyword">else</span>
+    <span class="hljs-built_in">disp</span>(<span class="hljs-string">"The Sequence is not Conjugate Symmetric"</span>);
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h2 id="experiment-5-properties-of-dft-3">Experiment 5: Properties of DFT 3</h2>
+<p>Code:</p>
+<ol>
+<li>toeplitzDSP.m</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">A</span> = <span class="hljs-title">toeplitzDSP</span><span class="hljs-params">(xn, hn)</span></span>
+
+length_of_xn = <span class="hljs-built_in">length</span>(xn);
+length_of_hn = <span class="hljs-built_in">length</span>(hn);
+dimensions = length_of_xn + length_of_hn - <span class="hljs-number">1</span>;
+
+number_of_zeros = dimensions - length_of_hn;
+
+z = [hn(<span class="hljs-number">1</span>) <span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>,number_of_zeros)];
+A = <span class="hljs-built_in">toeplitz</span>([hn <span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>,number_of_zeros)],z);
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<ol start="2">
+<li>linearConvolution.m</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">yn</span> = <span class="hljs-title">linearConvolution</span><span class="hljs-params">(xn, hn)</span></span>
+    yn = toeplitzDSP(xn, hn)*xn';
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="linear-convolution--linear-convolution-using-circular">Linear Convolution &amp; Linear Convolution using Circular</h3>
+<pre class="hljs"><code><div>clear all;
+close all;
+clc;
+
+
+xn = input(<span class="hljs-string">"Enter the first sequence: "</span>);
+hn = input(<span class="hljs-string">"Enter the second sequence: "</span>);
+
+length_of_xn = <span class="hljs-built_in">length</span>(xn);
+length_of_hn = <span class="hljs-built_in">length</span>(hn);
+
+linearConvLength = length_of_xn + length_of_hn - <span class="hljs-number">1</span>;
+
+xn = [xn <span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>, linearConvLength - length_of_xn)];
+hn = [hn <span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>, linearConvLength - length_of_hn)];
+
+linearConv = circularConvolution(xn, hn).';
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"x(n) and h(n) after making their length equal to length of Linear Conv. sequence"</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"x(n):"</span>);
+<span class="hljs-built_in">disp</span>(xn);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"h(n)"</span>);
+<span class="hljs-built_in">disp</span>(hn);
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Linear Convolution calculated using Circular Convolution is: "</span>);
+<span class="hljs-built_in">disp</span>(linearConv);
+
+<span class="hljs-comment">%% PLOTS</span>
+
+widthOfLine = <span class="hljs-number">1</span>;
+
+xAxis = <span class="hljs-number">0</span>:<span class="hljs-built_in">length</span>(linearConv)<span class="hljs-number">-1</span>;
+<span class="hljs-comment">% subplot(1, 2, 1);</span>
+localY = <span class="hljs-built_in">abs</span>(linearConv);
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"Linear Convolution of $$ x(n) $$ with $$ h(n) $$ using Circular Convolution"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="circular-convolution--circular-convolution-using-linear">Circular Convolution &amp; Circular Convolution using Linear</h3>
+<pre class="hljs"><code><div>clear all;
+close all;
+clc;
+
+
+xn = input(<span class="hljs-string">"Enter the sequence 1: "</span>);
+hn = input(<span class="hljs-string">"Enter the sequence 2: "</span>);
+
+LinearConv = linearConvolution(xn, hn).';
+lengthOfCircConv = <span class="hljs-built_in">max</span>(<span class="hljs-built_in">length</span>(xn), <span class="hljs-built_in">length</span>(hn));
+
+circularConv = <span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>,lengthOfCircConv);
+
+<span class="hljs-keyword">for</span> index = <span class="hljs-number">0</span>:<span class="hljs-built_in">length</span>(LinearConv)<span class="hljs-number">-1</span>
+    index1 = <span class="hljs-built_in">mod</span>(index, lengthOfCircConv) + <span class="hljs-number">1</span>;
+    circularConv(index1) = circularConv(index1) + LinearConv(index + <span class="hljs-number">1</span>);
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Linear Convolution of x(n) with h(n) is: "</span>);
+<span class="hljs-built_in">disp</span>(LinearConv);
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Circular Convolution using Linear Convolution is: "</span>);
+<span class="hljs-built_in">disp</span>(circularConv);
+
+
+<span class="hljs-comment">%% PLOTS</span>
+
+widthOfLine = <span class="hljs-number">1</span>;
+
+xAxis = <span class="hljs-number">0</span>:<span class="hljs-built_in">length</span>(LinearConv)<span class="hljs-number">-1</span>;
+subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>);
+localY = <span class="hljs-built_in">abs</span>(LinearConv);
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"Linear Convolution of $$ x(n) $$ with $$ h(n) $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+xAxis = <span class="hljs-number">0</span>:<span class="hljs-built_in">length</span>(circularConv)<span class="hljs-number">-1</span>;
+subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);
+localY = <span class="hljs-built_in">abs</span>(circularConv);
+stem(xAxis, localY, <span class="hljs-string">"r"</span>, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"Circular Convolution of $$ x(n) $$ with $$ h(n) $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="time-reversal-property">Time Reversal Property</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">% Time reversal property</span>
+<span class="hljs-comment">% DFT[x(N-n)] is given by X(N-k)</span>
+
+clear all;
+close all
+clc;
+
+<span class="hljs-comment">% TAKING THE INPUT FROM THE USER</span>
+sequence = input(<span class="hljs-string">"Enter the sequence: "</span>);
+
+N = <span class="hljs-built_in">length</span>(sequence);
+n = <span class="hljs-number">1</span>:N;
+k = n;
+
+widthOfLine = <span class="hljs-number">1</span>;
+
+<span class="hljs-comment">% MAIN SEQUENCE AND IT'S DFT</span>
+x(n) = sequence;
+X(k) = dft(x(n));
+
+<span class="hljs-comment">% TIME REVERSED SEQUENCE AND IT'S DFT</span>
+x1(n) = reverse(sequence);
+X1(k) = dft(x1(n));
+
+<span class="hljs-comment">% CONJUGATE OF THE MAIN SEQUENCE'S DFT</span>
+X2(k) = <span class="hljs-built_in">conj</span>(X(k));
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"DFT of x(n) is: "</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-built_in">round</span>(X(k), <span class="hljs-number">3</span>));
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'The time reversed sequence x(-n) is: '</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-built_in">round</span>(x1(n), <span class="hljs-number">3</span>));
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"DFT of time reversed sequence x(-n) is: "</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-built_in">round</span>(X1(k), <span class="hljs-number">3</span>));
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Conjugate of X(k) is: "</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-built_in">round</span>(X2(k), <span class="hljs-number">3</span>));
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"The DFT of time reversed sequence is equal to the conjugate of x(n)"</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Thus the time reversal property is verified."</span>)
+
+
+<span class="hljs-comment">% PLOTTING THE DFT OF MAIN SEQUENCE</span>
+xAxis = <span class="hljs-number">0</span>:N<span class="hljs-number">-1</span>;
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>);
+localY = <span class="hljs-built_in">abs</span>(X);
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of $$ x(n) \rightarrow X(k) $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(X,<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of $$ x(n) \rightarrow X(k) $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment">% PLOTTING THE DFT OF TIME REVERSED SEQUENCE</span>
+xAxis = <span class="hljs-number">0</span>:N<span class="hljs-number">-1</span>;
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>);
+localY = <span class="hljs-built_in">abs</span>(X1);
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of $$ x(-n) \rightarrow $$ $$ DFT[x(-n)] $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(X1,<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"DFT of $$ x(-n) \rightarrow $$ $$ DFT[x(-n)] $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment">% PLOTTING THE CONJUGATE OF THE DFT OF MAIN SEQUENCE</span>
+xAxis = <span class="hljs-number">0</span>:N<span class="hljs-number">-1</span>;
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>);
+localY = <span class="hljs-built_in">abs</span>(X1);
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"Conjugate of DFT of $$ x(n) \rightarrow X(N-k) $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">6</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(X1,<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Phase (°)"</span>, <span class="hljs-string">"Conjugate of DFT of $$ x(n) \rightarrow X(N-k) $$"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="parsevals-theorem">Parseval's Theorem</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">% Parseval's Theorem defines energy in time domain </span>
+<span class="hljs-comment">% is equivalent represented in frequency </span>
+
+clear all;
+close all
+clc;
+
+
+sequence = input(<span class="hljs-string">"Enter the sequence: "</span>);
+DFT = dft(sequence);
+N = <span class="hljs-built_in">length</span>(sequence);
+
+
+energyInTime = <span class="hljs-built_in">abs</span>(sum(sequence.*<span class="hljs-built_in">conj</span>(sequence)));
+energyInFreq = <span class="hljs-built_in">abs</span>(sum(DFT.*<span class="hljs-built_in">conj</span>(DFT))/N);
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Energy in time domain is: "</span>);
+<span class="hljs-built_in">disp</span>(energyInTime);
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Energy in freq domain is: "</span>);
+<span class="hljs-built_in">disp</span>(energyInFreq);
+
+<span class="hljs-keyword">if</span> <span class="hljs-built_in">round</span>(energyInTime, <span class="hljs-number">5</span>) == <span class="hljs-built_in">round</span>(energyInFreq, <span class="hljs-number">5</span>)
+    <span class="hljs-built_in">disp</span>(<span class="hljs-string">"Thus the Parseval's theorem is verified...!"</span>);
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h2 id="experiment-6-radix">Experiment 6: Radix</h2>
+<p>Code:</p>
+<ol>
+<li>dit_fft.m</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-comment">% 1. Radix 2 | DIT FFT Algorhithm</span>
+
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[y, outputStages]</span> = <span class="hljs-title">dit_fft</span><span class="hljs-params">(x)</span></span>
+
+    p = <span class="hljs-built_in">nextpow2</span>(<span class="hljs-built_in">length</span>(x));
+    x = [x <span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>, (<span class="hljs-number">2</span>^p) - <span class="hljs-built_in">length</span>(x))];
+    N = <span class="hljs-built_in">length</span>(x);
+    totalStages = <span class="hljs-built_in">log2</span>(N);
+    Half = <span class="hljs-number">1</span>;
+    x = bitrevorder(x);
+
+    outputStages = <span class="hljs-built_in">zeros</span>(N, <span class="hljs-number">1</span>);
+
+    <span class="hljs-keyword">for</span> stage = <span class="hljs-number">1</span>:totalStages;
+
+        <span class="hljs-keyword">for</span> index = <span class="hljs-number">0</span>:(<span class="hljs-number">2</span>^stage):(N - <span class="hljs-number">1</span>);
+
+            <span class="hljs-keyword">for</span> n = <span class="hljs-number">0</span>:(Half - <span class="hljs-number">1</span>); <span class="hljs-comment">% creating "butterfly" and saving the results</span>
+                pos = n + index + <span class="hljs-number">1</span>;
+                pow = (<span class="hljs-number">2</span>^(totalStages - stage)) * n;
+                w = <span class="hljs-built_in">exp</span>((<span class="hljs-number">-1</span><span class="hljs-built_in">i</span>) * (<span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span>) * pow / N);
+                a = x(pos) + x(pos + Half) .* w;
+                b = x(pos) - x(pos + Half) .* w;
+                x(pos) = a;
+                x(pos + Half) = b;
+            <span class="hljs-keyword">end</span>
+
+        <span class="hljs-keyword">end</span>
+
+        outputStages = [outputStages transpose(x)];
+        Half = <span class="hljs-number">2</span> * Half;
+    <span class="hljs-keyword">end</span>
+
+    outputStages = outputStages(:, <span class="hljs-number">2</span>:<span class="hljs-keyword">end</span>);
+
+    y = transpose(x); <span class="hljs-comment">% returning the result from function</span>
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<ol start="2">
+<li>dif_fft.m</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[y outputStages]</span> = <span class="hljs-title">dif_fft</span><span class="hljs-params">(x)</span></span>
+    p = <span class="hljs-built_in">nextpow2</span>(<span class="hljs-built_in">length</span>(x));
+    x = [x <span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>, (<span class="hljs-number">2</span>^p) - <span class="hljs-built_in">length</span>(x))];
+    N = <span class="hljs-built_in">length</span>(x);
+    S = <span class="hljs-built_in">log2</span>(N);
+    Half = N / <span class="hljs-number">2</span>;
+
+    outputStages = <span class="hljs-built_in">zeros</span>(N, <span class="hljs-number">1</span>);
+
+    <span class="hljs-keyword">for</span> stage = <span class="hljs-number">1</span>:S;
+
+        <span class="hljs-keyword">for</span> index = <span class="hljs-number">0</span>:(N / (<span class="hljs-number">2</span>^(stage - <span class="hljs-number">1</span>))):(N - <span class="hljs-number">1</span>);
+
+            <span class="hljs-keyword">for</span> n = <span class="hljs-number">0</span>:(Half - <span class="hljs-number">1</span>);
+                pos = n + index + <span class="hljs-number">1</span>; 
+                pow = (<span class="hljs-number">2</span>^(stage - <span class="hljs-number">1</span>)) * n;
+                w = <span class="hljs-built_in">exp</span>((<span class="hljs-number">-1</span><span class="hljs-built_in">i</span>) * (<span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span>) * pow / N);
+                a = x(pos) + x(pos + Half);
+                b = (x(pos) - x(pos + Half)) .* w;
+                x(pos) = a;
+                x(pos + Half) = b;
+            <span class="hljs-keyword">end</span>
+
+        <span class="hljs-keyword">end</span>
+
+        outputStages = [outputStages transpose(x)];
+        Half = Half / <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">end</span>
+
+    outputStages = outputStages(:, <span class="hljs-number">2</span>:<span class="hljs-keyword">end</span>);
+    y = transpose(bitrevorder(x));
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="radix-2-dft-dit--dif">Radix-2 DFT (DIT &amp; DIF)</h3>
+<pre class="hljs"><code><div>clear all;
+close all;
+clc;
+
+sequence = input(<span class="hljs-string">"Enter a sequence: "</span>);
+
+[DITFFT, ditOutputStages] = dit_fft(sequence);
+[DIFFFT, difOutputStages] = dif_fft(sequence);
+
+N = <span class="hljs-built_in">length</span>(DIFFFT);
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Intermediate stages of DIT FFT"</span>);
+<span class="hljs-built_in">disp</span>(ditOutputStages);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Final DFT using DIT algorhithm: "</span>);
+<span class="hljs-built_in">disp</span>(DITFFT);
+
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Intermediate stages of DIF FFT"</span>);
+<span class="hljs-built_in">disp</span>(difOutputStages);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Final DFT using DIF algorhithm: '</span>);
+<span class="hljs-built_in">disp</span>(DIFFFT);
+
+<span class="hljs-comment">% PLOTS</span>
+widthOfLine = <span class="hljs-number">1</span>;
+
+xAxis = <span class="hljs-number">0</span>:N<span class="hljs-number">-1</span>;
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>);
+localY = <span class="hljs-built_in">abs</span>(DIFFFT);
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of $$ x(n) \rightarrow X(k) $$ using DIF FFT algorhithm"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(DIFFFT,<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Phase"</span>, <span class="hljs-string">"DFT of $$ x(n) \rightarrow X(k) $$ using DIF FFT algorhithm"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+localY = <span class="hljs-built_in">abs</span>(fft(sequence));
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Amplitude"</span>, <span class="hljs-string">"DFT of $$ x(n) \rightarrow X(k) $$ using built in MATLAB function"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+
+subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+localY = <span class="hljs-built_in">angle</span>(<span class="hljs-built_in">round</span>(fft(sequence),<span class="hljs-number">5</span>))*<span class="hljs-number">180</span>/<span class="hljs-built_in">pi</span>;
+stem(xAxis, localY, <span class="hljs-string">"lineWidth"</span>, widthOfLine);
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"k \rightarrow"</span>, <span class="hljs-string">"Phase"</span>, <span class="hljs-string">"DFT of $$ x(n) \rightarrow X(k) $$ using built in MATLAB function"</span>);
+<span class="hljs-keyword">for</span> index = xAxis
+    localY1 = localY(index + <span class="hljs-number">1</span>);
+    text(index, localY1, strcat(<span class="hljs-string">"\leftarrow"</span>, num2str(<span class="hljs-built_in">round</span>(localY1, <span class="hljs-number">1</span>))));
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="radix-2-idft-dit--dif">Radix-2 IDFT (DIT &amp; DIF)</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">% clear all;</span>
+<span class="hljs-comment">% close all;</span>
+<span class="hljs-comment">% clc;</span>
+
+inputSequence = input(<span class="hljs-string">"Enter a sequence: "</span>);
+sequence = <span class="hljs-built_in">conj</span>(inputSequence);
+
+[DITIFFT, ditOutputStages] = dit_fft(sequence);
+[DIFIFFT, difOutputStages] = dif_fft(sequence);
+
+DIFIFFT = DIFIFFT/<span class="hljs-built_in">length</span>(DIFIFFT);
+DITIFFT = DITIFFT/<span class="hljs-built_in">length</span>(DITIFFT);
+
+ditOutputStages(:,<span class="hljs-keyword">end</span>) = ditOutputStages(:,<span class="hljs-keyword">end</span>)/<span class="hljs-built_in">length</span>(ditOutputStages(:,<span class="hljs-keyword">end</span>));
+difOutputStages(:,<span class="hljs-keyword">end</span>) = difOutputStages(:,<span class="hljs-keyword">end</span>)/<span class="hljs-built_in">length</span>(difOutputStages(:,<span class="hljs-keyword">end</span>));
+
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Intermediate stages of DIT FFT"</span>);
+<span class="hljs-built_in">disp</span>(ditOutputStages);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Final IDFT using DIT algorhithm: "</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-built_in">conj</span>(DITIFFT));
+
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Intermediate stages of DIF FFT"</span>);
+<span class="hljs-built_in">disp</span>(difOutputStages);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Final IDFT using DIF algorhithm: '</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-built_in">conj</span>(DIFIFFT));
+</div></code></pre>
+<h3 id="mix-radix-2x3">Mix-Radix 2x3</h3>
+<pre class="hljs"><code><div>clear all;
+close all;
+clc;
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"MixRadix 6 point DIT-FFT 2x3"</span>);
+
+x = input(<span class="hljs-string">"Enter a 6 point sequence: "</span>);
+<span class="hljs-comment">% x = [1 -1 2 -2 3 -3];</span>
+N = <span class="hljs-built_in">length</span>(x);
+
+X1 = <span class="hljs-built_in">zeros</span>(<span class="hljs-number">3</span>,<span class="hljs-number">1</span>);
+X2 = X1;
+
+<span class="hljs-keyword">for</span> k = <span class="hljs-number">0</span>:<span class="hljs-number">2</span>
+    <span class="hljs-keyword">for</span> n = <span class="hljs-number">0</span>:<span class="hljs-number">2</span>
+        X1(k + <span class="hljs-number">1</span>) = X1(k + <span class="hljs-number">1</span>) + x((<span class="hljs-number">2</span> * n) + <span class="hljs-number">1</span>) * twiddleFactor(<span class="hljs-number">2</span>*k*n, N);
+        X2(k + <span class="hljs-number">1</span>) = X2(k + <span class="hljs-number">1</span>) + x((<span class="hljs-number">2</span> * n + <span class="hljs-number">1</span>) + <span class="hljs-number">1</span>) * twiddleFactor(<span class="hljs-number">2</span>*k*n, N);
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+outputStages = [X1; X2];
+
+X = <span class="hljs-built_in">zeros</span>(N, <span class="hljs-number">1</span>);
+<span class="hljs-keyword">for</span> k = <span class="hljs-number">0</span>:N<span class="hljs-number">-1</span>
+    X(k+<span class="hljs-number">1</span>) = X1(<span class="hljs-built_in">mod</span>(k,<span class="hljs-number">3</span>) + <span class="hljs-number">1</span>) + X2(<span class="hljs-built_in">mod</span>(k,<span class="hljs-number">3</span>) + <span class="hljs-number">1</span>) * twiddleFactor(k,<span class="hljs-number">6</span>);
+<span class="hljs-keyword">end</span>
+
+outputStages = [outputStages X];
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Output of stages: '</span>);
+<span class="hljs-built_in">disp</span>(outputStages);
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Final DFT using Mix Radix DIT FFT 2x3"</span>);
+<span class="hljs-built_in">disp</span>(X);
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"DFT calculated using builtin-function: fft():"</span>)
+<span class="hljs-built_in">disp</span>(fft(x).');
+</div></code></pre>
+<h3 id="mix-radix-3x2">Mix-Radix 3x2</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">% MIX RADIX ALGORHITHM FOR N=6</span>
+<span class="hljs-comment">% 6 = 3 x 2 | M1 = 3 | M2 = 6</span>
+
+clear all;
+close all;
+clc;
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"MixRadix 6 point DIT-FFT 3x2"</span>);
+
+x = input(<span class="hljs-string">"Enter a 6 point sequence: "</span>);
+N = <span class="hljs-built_in">length</span>(x);
+
+X1(<span class="hljs-number">1</span>) = x(<span class="hljs-number">1</span>) + x(<span class="hljs-number">4</span>);
+X1(<span class="hljs-number">2</span>) = x(<span class="hljs-number">1</span>) - x(<span class="hljs-number">4</span>);
+X2(<span class="hljs-number">1</span>) = x(<span class="hljs-number">2</span>) + x(<span class="hljs-number">5</span>);
+X2(<span class="hljs-number">2</span>) = x(<span class="hljs-number">2</span>) - x(<span class="hljs-number">5</span>);
+X3(<span class="hljs-number">1</span>) = x(<span class="hljs-number">3</span>) + x(<span class="hljs-number">6</span>);
+X3(<span class="hljs-number">2</span>) = x(<span class="hljs-number">3</span>) - x(<span class="hljs-number">6</span>);
+
+outputStages = [X1.'; X2.'; X3.'];
+X = <span class="hljs-built_in">zeros</span>(N, <span class="hljs-number">1</span>);
+
+<span class="hljs-keyword">for</span> k = <span class="hljs-number">0</span>:N - <span class="hljs-number">1</span>
+    l = <span class="hljs-built_in">mod</span>(k, <span class="hljs-number">2</span>) + <span class="hljs-number">1</span>;
+    X(k + <span class="hljs-number">1</span>) = X1(l) + X2(l) * twiddleFactor(k, N) + X3(l) * twiddleFactor(<span class="hljs-number">2</span> * k, N);
+<span class="hljs-keyword">end</span>
+
+outputStages = [outputStages X];
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Output of stages: '</span>);
+<span class="hljs-built_in">disp</span>(outputStages);
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Final DFT using Mix Radix DIT FFT 3x2"</span>);
+<span class="hljs-built_in">disp</span>(X);
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"DFT calculated using builtin-function: fft():"</span>)
+<span class="hljs-built_in">disp</span>(fft(x).');
+</div></code></pre>
+<h2 id="experiment-7-ccs">Experiment 7: CCS</h2>
+<h3 id="circular-convolution">Circular Convolution</h3>
+<h4 id="time-domain">Time Domain</h4>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-keyword">int</span> m, n, x[<span class="hljs-number">30</span>], h[<span class="hljs-number">30</span>], y[<span class="hljs-number">30</span>], i, j, k, x2[<span class="hljs-number">30</span>], a[<span class="hljs-number">30</span>];
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter the length of the first sequence: "</span>);
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;m);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter the length of the second sequence: "</span>);
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;n);
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter the first sequence: "</span>);
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; m; i++)
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;x[i]);
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter the second sequence: "</span>);
+    <span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; n; j++)
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;h[j]);
+
+    <span class="hljs-keyword">if</span> (m - n != <span class="hljs-number">0</span>) <span class="hljs-comment">/*If length of both sequences are not equal*/</span>
+    {
+        <span class="hljs-keyword">if</span> (m &gt; n) <span class="hljs-comment">/* Pad the smaller sequence with zero*/</span>
+        {
+            <span class="hljs-keyword">for</span> (i = n; i &lt; m; i++)
+                h[i] = <span class="hljs-number">0</span>;
+            n = m;
+        }
+        <span class="hljs-keyword">for</span> (i = m; i &lt; n; i++)
+            x[i] = <span class="hljs-number">0</span>;
+        m = n;
+    }
+
+    y[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;
+    a[<span class="hljs-number">0</span>] = h[<span class="hljs-number">0</span>];
+
+    <span class="hljs-keyword">for</span> (j = <span class="hljs-number">1</span>; j &lt; n; j++) <span class="hljs-comment">/*folding h(n) to h(-n)*/</span>
+        a[j] = h[n - j];
+
+    <span class="hljs-comment">/*Circular convolution*/</span>
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n; i++)
+        y[<span class="hljs-number">0</span>] += x[i] * a[i];
+
+    <span class="hljs-keyword">for</span> (k = <span class="hljs-number">1</span>; k &lt; n; k++)
+    {
+        y[k] = <span class="hljs-number">0</span>;
+        <span class="hljs-comment">/*circular shift*/</span>
+
+        <span class="hljs-keyword">for</span> (j = <span class="hljs-number">1</span>; j &lt; n; j++)
+            x2[j] = a[j - <span class="hljs-number">1</span>];
+        x2[<span class="hljs-number">0</span>] = a[n - <span class="hljs-number">1</span>];
+        <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n; i++)
+        {
+            a[i] = x2[i];
+            y[k] += x[i] * x2[i];
+        }
+    }
+
+    <span class="hljs-comment">/*displaying the result*/</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Circular convolution of x(n) and h(n) is:\n"</span>);
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n; i++)
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"y[%d]=\t%d\n"</span>, i, y[i]);
+}
+</div></code></pre>
+<h4 id="frequency-domain">Frequency Domain</h4>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-keyword">int</span> x[<span class="hljs-number">20</span>], h[<span class="hljs-number">20</span>], y[<span class="hljs-number">7</span>];
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    <span class="hljs-keyword">int</span> i, j, m, n, N;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter the size of x(n): "</span>);
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;m);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter the size of h(n): "</span>);
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;n);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter the values of x(n): "</span>);
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; m; i++)
+    {
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;x[i]);
+    }
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter the values of h(n): "</span>);
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n; i++)
+    {
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;h[i]);
+    }
+    N = m &gt; n ? m : n;
+    <span class="hljs-comment">// Zero Padding the sequences</span>
+    <span class="hljs-keyword">for</span> (i = m; i &lt; N; i++)
+    {
+        x[i] = <span class="hljs-number">0</span>;
+    }
+    <span class="hljs-keyword">for</span> (i = n; i &lt; N; i++)
+    {
+        h[i] = <span class="hljs-number">0</span>;
+    }
+    <span class="hljs-comment">// Circ Conv</span>
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; N; i++)
+    {
+        <span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt;= N; j++)
+        {
+            y[(i + j) % N] = y[(i + j) % N] + (x[i] * h[j]);
+        }
+    }
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; N; i++)
+    {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"y[%d]=\t%d\n"</span>,i, y[i]);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h3 id="linear-convolution">Linear Convolution</h3>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-keyword">int</span> x[<span class="hljs-number">20</span>], h[<span class="hljs-number">20</span>], y[<span class="hljs-number">20</span>];
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">int</span> i, j, m, n;
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter length of x(n): "</span>);
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;m); <span class="hljs-comment">// Getting Length of x(n)</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\nEnter the length of h(n): "</span>);
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;n); <span class="hljs-comment">// Getting Length of h(n)</span>
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\nEnter x(n): "</span>);
+
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; m; i++)
+    {
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;x[i]); <span class="hljs-comment">// Getting x(n)</span>
+    }
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\nEnter h(n): "</span>);
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n; i++)
+    {
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;h[i]); <span class="hljs-comment">// Getting h(n)</span>
+    }
+
+
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; m + n - <span class="hljs-number">1</span>; i++)
+    {
+        y[i] = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt;= i; j++)
+        {
+            y[i] = y[i] + (x[j] * h[i - j]); <span class="hljs-comment">// Calculating Linear Convolution</span>
+        }
+    }
+
+    <span class="hljs-comment">//displaying the o/p</span>
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; m + n - <span class="hljs-number">1</span>; i++)
+    {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"The Value of output y[%d]=%d\n"</span>, i, y[i]); <span class="hljs-comment">// Printing it to STDOUT</span>
+    }
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n\n"</span>);
+}
+</div></code></pre>
+<h3 id="dft">DFT</h3>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;math.h&gt;</span></span>
+<span class="hljs-comment">/*
+ * main.c
+ */</span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>{
+	<span class="hljs-keyword">int</span> N,k,n,i;
+	<span class="hljs-keyword">float</span> pi=<span class="hljs-number">3.1416</span>,sumre=<span class="hljs-number">0</span>,sumim=<span class="hljs-number">0</span>,out_real[<span class="hljs-number">8</span>]={<span class="hljs-number">0</span>,<span class="hljs-number">0</span>},out_imag[<span class="hljs-number">8</span>]={<span class="hljs-number">0</span>,<span class="hljs-number">0</span>};
+	<span class="hljs-keyword">int</span> x[<span class="hljs-number">32</span>];
+	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter the length of sequence: "</span>);
+	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;N);
+	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter the sequence: "</span>);
+	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;N;i++){
+		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;x[i]);
+	}
+	<span class="hljs-keyword">for</span>(k=<span class="hljs-number">0</span>;k&lt;N;k++){
+		sumre=<span class="hljs-number">0</span>;
+		sumim=<span class="hljs-number">0</span>;
+		<span class="hljs-keyword">for</span>(n=<span class="hljs-number">0</span>;n&lt;N;n++){
+			sumre=sumre+x[n]*<span class="hljs-built_in">cos</span>(<span class="hljs-number">2</span>*pi*k*n/N);
+			sumim=sumim-x[n]*<span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*pi*k*n/N);
+		}
+		out_real[k]=sumre;
+		out_imag[k]=sumim;
+		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"x([%d])=\t%f\t+\t%fj\n"</span>,k,out_real[k],out_imag[k]);
+	}
+
+	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h3 id="idft">IDFT</h3>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;math.h&gt;</span></span>
+<span class="hljs-comment">/*
+ * main.c
+ */</span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>{
+	<span class="hljs-keyword">int</span> N,k,n,i;
+	<span class="hljs-keyword">float</span> pi=<span class="hljs-number">3.1416</span>,sumre=<span class="hljs-number">0</span>,sumim=<span class="hljs-number">0</span>,out_real[<span class="hljs-number">8</span>]={<span class="hljs-number">0</span>,<span class="hljs-number">0</span>},out_imag[<span class="hljs-number">8</span>]={<span class="hljs-number">0</span>,<span class="hljs-number">0</span>};
+	<span class="hljs-keyword">int</span> x[<span class="hljs-number">32</span>];
+	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter the length of sequence: "</span>);
+	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;N);
+	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter the sequence: "</span>);
+	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;N;i++){
+		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;x[i]);
+	}
+	<span class="hljs-keyword">for</span>(k=<span class="hljs-number">0</span>;k&lt;N;k++){
+		sumre=<span class="hljs-number">0</span>;
+		sumim=<span class="hljs-number">0</span>;
+		<span class="hljs-keyword">for</span>(n=<span class="hljs-number">0</span>;n&lt;N;n++){
+			sumre=sumre+x[n]*<span class="hljs-built_in">cos</span>(<span class="hljs-number">2</span>*pi*k*n/N);
+			sumim=sumim-x[n]*<span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span>*pi*k*n/N);
+		}
+		out_real[k]=sumre;
+		out_imag[k]=sumim;
+		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"x([%d])=\t%f\t+\t%fj\n"</span>,k,out_real[k]/<span class="hljs-number">8</span>,-out_imag[k]/<span class="hljs-number">8</span>);
+	}
+
+	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h3 id="correlation">Correlation</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">// Code for corelation of two sequences</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-keyword">int</span> x[<span class="hljs-number">20</span>], h[<span class="hljs-number">20</span>], y[<span class="hljs-number">20</span>], z[<span class="hljs-number">20</span>], result;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">int</span> i, j, m, n;
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"For Auto-Corelation, enter the same sequence twice.\n"</span>);
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter length of x(n): "</span>);
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;m); <span class="hljs-comment">// Getting Length of x(n)</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter the length of h(n): "</span>);
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;n); <span class="hljs-comment">// Getting Length of h(n)</span>
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter x(n): "</span>);
+
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; m; i++)
+    {
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;x[i]); <span class="hljs-comment">// Getting x(n)</span>
+    }
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Enter h(n): "</span>);
+    <span class="hljs-keyword">for</span> (i = n - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--)
+    {
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;h[i]); <span class="hljs-comment">// Getting h(n)</span>
+    }
+
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; m + n - <span class="hljs-number">1</span>; i++)
+    {
+        y[i] = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt;= i; j++)
+        {
+            y[i] = y[i] + (x[j] * h[i - j]); <span class="hljs-comment">// Calculating Co relation</span>
+        }
+    }
+
+    <span class="hljs-comment">//displaying the o/p</span>
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; m + n - <span class="hljs-number">1</span>; i++)
+    {
+    	result = y[i];
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"y[%d]=%d\n"</span>, i, y[i]); <span class="hljs-comment">// Printing it to STDOUT</span>
+    }
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);
+}
+</div></code></pre>
+<h2 id="experiment-8-digital-filter-design">Experiment 8: Digital Filter Design</h2>
+<h3 id="butterworth-iit">Butterworth IIT</h3>
+<pre class="hljs"><code><div>clear all;
+close all;
+clc;
+
+gainType = input(<span class="hljs-string">"Select Gain Type:\n1 for Normal\n2 for Decibels: "</span>);
+
+minPassBandGain = input(<span class="hljs-string">"Enter Passband Gain: "</span>);
+maxStopBandGain = input(<span class="hljs-string">"Enter Stopband Gain: "</span>);
+
+frequencyType = input(<span class="hljs-string">"Frequency Unit:\n1 for Hz\n2 for Rad/s: "</span>);
+
+passBandFrequency = input(<span class="hljs-string">'Enter Passband Frequency (Analog Domain): '</span>);
+stopBandFrequency = input(<span class="hljs-string">'Enter Stopband Frequency (Analog Domain): '</span>);
+
+samplingTime = input(<span class="hljs-string">'Enter the sampling time: '</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Low Pass =&gt; 1'</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'High Pass =&gt; 2'</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Band Pass =&gt; 3'</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Band Stop =&gt; 4'</span>);
+
+filterType = input(<span class="hljs-string">"Enter filter type: "</span>)
+
+<span class="hljs-comment">% minPassBandGain = 1.9328;</span>
+<span class="hljs-comment">% maxStopBandGain = 13.9794;</span>
+<span class="hljs-comment">% passBandFrequency = 0.62;</span>
+<span class="hljs-comment">% stopBandFrequency = 1.88;</span>
+<span class="hljs-comment">% samplingTime = 1;</span>
+<span class="hljs-comment">% gainType = 2;</span>
+<span class="hljs-comment">% frequencyType = 2;</span>
+
+<span class="hljs-keyword">if</span> gainType == <span class="hljs-number">1</span>
+    minPassBandGain = <span class="hljs-number">-20</span> * <span class="hljs-built_in">log10</span>(minPassBandGain);
+    maxStopBandGain = <span class="hljs-number">-20</span> * <span class="hljs-built_in">log10</span>(maxStopBandGain);
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-keyword">if</span> frequencyType == <span class="hljs-number">1</span>
+    passBandFrequency = <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span> * passBandFrequency;
+    stopBandFrequency = <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span> * stopBandFrequency;
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment">% Finding all the parameters needed in analog domain</span>
+selectedOrder = <span class="hljs-built_in">ceil</span>(<span class="hljs-built_in">log10</span>((<span class="hljs-number">10</span>^(<span class="hljs-number">0.1</span> * maxStopBandGain) - <span class="hljs-number">1</span>) / (<span class="hljs-number">10</span>^(<span class="hljs-number">0.1</span> * minPassBandGain) - <span class="hljs-number">1</span>)) / (<span class="hljs-number">2</span> * <span class="hljs-built_in">log10</span>(stopBandFrequency / passBandFrequency)));
+omegaCp = passBandFrequency / (<span class="hljs-number">10</span>^(<span class="hljs-number">0.1</span> * minPassBandGain) - <span class="hljs-number">1</span>)^(<span class="hljs-number">1</span> / (<span class="hljs-number">2</span> * selectedOrder));
+omegaCs = stopBandFrequency / (<span class="hljs-number">10</span>^(<span class="hljs-number">0.1</span> * maxStopBandGain) - <span class="hljs-number">1</span>)^(<span class="hljs-number">1</span> / (<span class="hljs-number">2</span> * selectedOrder));
+omegaC = <span class="hljs-built_in">mean</span>([omegaCp omegaCs]);
+
+<span class="hljs-comment">% Getting transfer function coefficients for analog butterworth filter</span>
+[normallisedAnalogNumerator, normallisedAnalogDenominator] = butter(selectedOrder, <span class="hljs-number">1</span>, <span class="hljs-string">"low"</span>, <span class="hljs-string">"s"</span>); <span class="hljs-comment">% Normallised</span>
+
+<span class="hljs-comment">% Getting the actual transfer function</span>
+normallisedAnalogTransferFunction = tf(normallisedAnalogNumerator, normallisedAnalogDenominator); <span class="hljs-comment">% Normallised</span>
+
+<span class="hljs-keyword">switch</span> filterType
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>
+        <span class="hljs-comment">% low pass</span>
+        [deNormallisedAnalogNumerator, deNormallisedAnalogDenominator] = butter(selectedOrder, omegaC, <span class="hljs-string">"low"</span>, <span class="hljs-string">"s"</span>); <span class="hljs-comment">% Denormallised</span>
+        [digitalNumerator, digitalDenominator] = impinvar(deNormallisedAnalogNumerator, deNormallisedAnalogDenominator, <span class="hljs-number">1</span> / samplingTime);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>
+        <span class="hljs-comment">% High Pass</span>
+        [deNormallisedAnalogNumerator, deNormallisedAnalogDenominator] = butter(selectedOrder, omegaC, <span class="hljs-string">"high"</span>, <span class="hljs-string">"s"</span>); <span class="hljs-comment">% Denormallised</span>
+        digitalCutoff = <span class="hljs-number">2</span> * omegaC;
+        [digitalNumerator, digitalDenominator] = butter(selectedOrder, digitalCutoff / <span class="hljs-built_in">pi</span>, <span class="hljs-string">'high'</span>);
+        <span class="hljs-comment">% [digitalNumerator, digitalDenominator] = impinvar(deNormallisedAnalogNumerator, deNormallisedAnalogDenominator, 1 / samplingTime);</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>
+        <span class="hljs-comment">% Band Pass</span>
+        [deNormallisedAnalogNumerator, deNormallisedAnalogDenominator] = butter(selectedOrder, [omegaCp omegaCs], <span class="hljs-string">"bandpass"</span>, <span class="hljs-string">"s"</span>); <span class="hljs-comment">% Denormallised</span>
+        digitalCutoff = <span class="hljs-number">2</span> * [omegaCp omegaCs];
+        [digitalNumerator, digitalDenominator] = butter(selectedOrder, digitalCutoff / <span class="hljs-built_in">pi</span>, <span class="hljs-string">'bandpass'</span>);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>
+        <span class="hljs-comment">% Band stop</span>
+        [deNormallisedAnalogNumerator, deNormallisedAnalogDenominator] = butter(selectedOrder, [omegaCp omegaCs], <span class="hljs-string">"stop"</span>, <span class="hljs-string">"s"</span>); <span class="hljs-comment">% Denormallised</span>
+        digitalCutoff = <span class="hljs-number">2</span> * [omegaCp omegaCs];
+        [digitalNumerator, digitalDenominator] = butter(selectedOrder, digitalCutoff / <span class="hljs-built_in">pi</span>, <span class="hljs-string">'stop'</span>);
+<span class="hljs-keyword">end</span>
+
+deNormallisedAnalogTransferFunction = tf(deNormallisedAnalogNumerator, deNormallisedAnalogDenominator); <span class="hljs-comment">% Denormallised</span>
+digitalTransferFunction = tf(digitalNumerator, digitalDenominator, <span class="hljs-number">1</span> / samplingTime);
+
+<span class="hljs-comment">% Frequency Response of digital filter</span>
+[h, w] = freqz(digitalNumerator, digitalDenominator, <span class="hljs-number">1024</span>);
+
+<span class="hljs-comment">% Displaying the values in MATLAB command window</span>
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"OmegaCp:"</span>);
+<span class="hljs-built_in">disp</span>(omegaCp); <span class="hljs-comment">% omegaCp</span>
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"OmegaCs:"</span>);
+<span class="hljs-built_in">disp</span>(omegaCs); <span class="hljs-comment">% omegaCs</span>
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"OmegaC:"</span>);
+<span class="hljs-built_in">disp</span>(omegaC); <span class="hljs-comment">% omegaCs</span>
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Calculated Order is:'</span>);
+<span class="hljs-built_in">disp</span>(selectedOrder); <span class="hljs-comment">% Order N</span>
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Normallised H(s) is:'</span>);
+normallisedAnalogTransferFunction<span class="hljs-comment">% Show normallised analog filter</span>
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Denormallised H(s) is:'</span>);
+deNormallisedAnalogTransferFunction<span class="hljs-comment">% Show de-normallised analog filter</span>
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'H(z) is:'</span>);
+digitalTransferFunction<span class="hljs-comment">% Show digital filter transfer function</span>
+
+<span class="hljs-built_in">plot</span>(w / <span class="hljs-built_in">pi</span>, <span class="hljs-number">20</span> * <span class="hljs-built_in">log10</span>(<span class="hljs-built_in">abs</span>(h))); <span class="hljs-comment">% plot the frequency response</span>
+<span class="hljs-comment">% w =&gt; ranges from 0 to pi so dividing by pi gives x axis ranging from 0 to 1</span>
+<span class="hljs-comment">% 20*log10 =&gt; to convert the gain to db</span>
+grid on;
+<span class="hljs-comment">% axis([0 22/7 -inf inf]);</span>
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"Frequency in r/s"</span>, <span class="hljs-string">"Gain in db"</span>, <span class="hljs-string">"Frequency response of Digital Butterworth Filter"</span>);
+</div></code></pre>
+<h3 id="butterworth-blt">Butterworth BLT</h3>
+<pre class="hljs"><code><div>clear all;
+close all;
+clc;
+
+<span class="hljs-comment">% minPassBandGain = 1.9328;</span>
+<span class="hljs-comment">% maxStopBandGain = 13.9794;</span>
+<span class="hljs-comment">% passBandFrequency = 0.62;</span>
+<span class="hljs-comment">% stopBandFrequency = 1.88;</span>
+<span class="hljs-comment">% samplingTime = 1;</span>
+<span class="hljs-comment">% gainType = 2;</span>
+<span class="hljs-comment">% frequencyType = 2;</span>
+
+gainType = input(<span class="hljs-string">"Select Gain Type: 1 for Normal, 2 for Decibels: "</span>);
+
+minPassBandGain = input(<span class="hljs-string">"Enter Passband Gain: "</span>);
+maxStopBandGain = input(<span class="hljs-string">"Enter Stopband Gain: "</span>);
+
+frequencyType = input(<span class="hljs-string">"Frequency Unit: 1 for Hz, 2 for Rad/s: "</span>);
+
+passBandFrequency = input(<span class="hljs-string">'Enter Passband Frequency (Analog Domain): '</span>);
+stopBandFrequency = input(<span class="hljs-string">'Enter Stopband Frequency (Analog Domain): '</span>);
+
+samplingTime = input(<span class="hljs-string">'Enter the sampling time: '</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Low Pass =&gt; 1'</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'High Pass =&gt; 2'</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Band Pass =&gt; 3'</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Band Stop =&gt; 4'</span>);
+
+filterType = input(<span class="hljs-string">"Enter filter type: "</span>)
+
+<span class="hljs-keyword">if</span> gainType == <span class="hljs-number">1</span>
+    minPassBandGain = <span class="hljs-number">-20</span> * <span class="hljs-built_in">log10</span>(minPassBandGain);
+    maxStopBandGain = <span class="hljs-number">-20</span> * <span class="hljs-built_in">log10</span>(maxStopBandGain);
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-keyword">if</span> frequencyType == <span class="hljs-number">1</span>
+    passBandFrequency = <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span> * passBandFrequency;
+    stopBandFrequency = <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span> * stopBandFrequency;
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment">% Finding all the parameters needed in analog domain</span>
+selectedOrder = <span class="hljs-built_in">ceil</span>(<span class="hljs-built_in">log10</span>((<span class="hljs-number">10</span>^(<span class="hljs-number">0.1</span> * maxStopBandGain) - <span class="hljs-number">1</span>) / (<span class="hljs-number">10</span>^(<span class="hljs-number">0.1</span> * minPassBandGain) - <span class="hljs-number">1</span>)) / (<span class="hljs-number">2</span> * <span class="hljs-built_in">log10</span>(stopBandFrequency / passBandFrequency)));
+omegaCp = passBandFrequency / (<span class="hljs-number">10</span>^(<span class="hljs-number">0.1</span> * minPassBandGain) - <span class="hljs-number">1</span>)^(<span class="hljs-number">1</span> / (<span class="hljs-number">2</span> * selectedOrder));
+omegaCs = stopBandFrequency / (<span class="hljs-number">10</span>^(<span class="hljs-number">0.1</span> * maxStopBandGain) - <span class="hljs-number">1</span>)^(<span class="hljs-number">1</span> / (<span class="hljs-number">2</span> * selectedOrder));
+omegaC = <span class="hljs-built_in">mean</span>([omegaCp omegaCs]);
+
+<span class="hljs-comment">% Getting transfer function coefficients for analog butterworth filter</span>
+[normallisedAnalogNumerator, normallisedAnalogDenominator] = butter(selectedOrder, <span class="hljs-number">1</span>, <span class="hljs-string">"low"</span>, <span class="hljs-string">"s"</span>); <span class="hljs-comment">% Normallised</span>
+
+<span class="hljs-comment">% Getting the actual transfer function</span>
+normallisedAnalogTransferFunction = tf(normallisedAnalogNumerator, normallisedAnalogDenominator); <span class="hljs-comment">% Normallised</span>
+
+<span class="hljs-keyword">switch</span> filterType
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>
+        <span class="hljs-comment">% low pass</span>
+        [deNormallisedAnalogNumerator, deNormallisedAnalogDenominator] = butter(selectedOrder, omegaC, <span class="hljs-string">"low"</span>, <span class="hljs-string">"s"</span>); <span class="hljs-comment">% Denormallised</span>
+        [digitalNumerator, digitalDenominator] = bilinear(deNormallisedAnalogNumerator, deNormallisedAnalogDenominator, <span class="hljs-number">1</span> / samplingTime);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>
+        <span class="hljs-comment">% High Pass</span>
+        [deNormallisedAnalogNumerator, deNormallisedAnalogDenominator] = butter(selectedOrder, omegaC, <span class="hljs-string">"high"</span>, <span class="hljs-string">"s"</span>); <span class="hljs-comment">% Denormallised</span>
+        digitalCutoff = <span class="hljs-number">2</span> * omegaC;
+        [digitalNumerator, digitalDenominator] = bilinear(deNormallisedAnalogNumerator, deNormallisedAnalogDenominator, <span class="hljs-number">1</span> / samplingTime);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>
+        <span class="hljs-comment">% Band Pass</span>
+        [deNormallisedAnalogNumerator, deNormallisedAnalogDenominator] = butter(selectedOrder, [omegaCp omegaCs], <span class="hljs-string">"bandpass"</span>, <span class="hljs-string">"s"</span>); <span class="hljs-comment">% Denormallised</span>
+        digitalCutoff = <span class="hljs-number">2</span> * [omegaCp omegaCs];
+        [digitalNumerator, digitalDenominator] = butter(selectedOrder, digitalCutoff / <span class="hljs-built_in">pi</span>, <span class="hljs-string">'bandpass'</span>);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>
+        <span class="hljs-comment">% Band stop</span>
+        [deNormallisedAnalogNumerator, deNormallisedAnalogDenominator] = butter(selectedOrder, [omegaCp omegaCs], <span class="hljs-string">"stop"</span>, <span class="hljs-string">"s"</span>); <span class="hljs-comment">% Denormallised</span>
+        digitalCutoff = <span class="hljs-number">2</span> * [omegaCp omegaCs];
+        [digitalNumerator, digitalDenominator] = butter(selectedOrder, digitalCutoff / <span class="hljs-built_in">pi</span>, <span class="hljs-string">'stop'</span>);
+<span class="hljs-keyword">end</span>
+
+deNormallisedAnalogTransferFunction = tf(deNormallisedAnalogNumerator, deNormallisedAnalogDenominator); <span class="hljs-comment">% Denormallised</span>
+digitalTransferFunction = tf(digitalNumerator, digitalDenominator, <span class="hljs-number">1</span> / samplingTime);
+
+<span class="hljs-comment">% Frequency Response of digital filter</span>
+[h, w] = freqz(digitalNumerator, digitalDenominator, <span class="hljs-number">1024</span>);
+
+<span class="hljs-comment">% Displaying the values in MATLAB command window</span>
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"OmegaCp:"</span>);
+<span class="hljs-built_in">disp</span>(omegaCp); <span class="hljs-comment">% omegaCp</span>
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"OmegaCs:"</span>);
+<span class="hljs-built_in">disp</span>(omegaCs); <span class="hljs-comment">% omegaCs</span>
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"OmegaC:"</span>);
+<span class="hljs-built_in">disp</span>(omegaC); <span class="hljs-comment">% omegaCs</span>
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Calculated Order is:'</span>);
+<span class="hljs-built_in">disp</span>(selectedOrder); <span class="hljs-comment">% Order N</span>
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Normallised H(s) is:'</span>);
+normallisedAnalogTransferFunction<span class="hljs-comment">% Show normallised analog filter</span>
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Denormallised H(s) is:'</span>);
+deNormallisedAnalogTransferFunction<span class="hljs-comment">% Show de-normallised analog filter</span>
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'H(z) is:'</span>);
+digitalTransferFunction<span class="hljs-comment">% Show digital filter transfer function</span>
+
+<span class="hljs-built_in">plot</span>(w / <span class="hljs-built_in">pi</span>, <span class="hljs-number">20</span> * <span class="hljs-built_in">log10</span>(<span class="hljs-built_in">abs</span>(h))); <span class="hljs-comment">% plot the frequency response</span>
+<span class="hljs-comment">% w =&gt; ranges from 0 to pi so dividing by pi gives x axis ranging from 0 to 1</span>
+<span class="hljs-comment">% 20*log10 =&gt; to convert the gain to db</span>
+grid on;
+<span class="hljs-comment">% axis([0 22/7 -inf inf]);</span>
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"Frequency in r/s"</span>, <span class="hljs-string">"Gain in db"</span>, <span class="hljs-string">"Frequency response of Digital Butterworth Filter"</span>);
+</div></code></pre>
+<h3 id="chebyschev-iit">Chebyschev IIT</h3>
+<pre class="hljs"><code><div>clear all;
+close all;
+clc;
+
+<span class="hljs-comment">% minPassBandGain = 0.75;</span>
+<span class="hljs-comment">% maxStopBandGain = 0.23;</span>
+<span class="hljs-comment">% % passBandFrequency = 0.62;</span>
+<span class="hljs-comment">% % stopBandFrequency = 1.88;</span>
+<span class="hljs-comment">% digitalPassBandFrequency = 0.25 * pi;</span>
+<span class="hljs-comment">% digitalStopBandFrequency = 0.63 * pi;</span>
+<span class="hljs-comment">% samplingTime = 2;</span>
+<span class="hljs-comment">% gainType = 1;</span>
+<span class="hljs-comment">% frequencyType = 2;</span>
+<span class="hljs-comment">% % digitalPassBandFrequency = 2 * atan(samplingTime * passBandFrequency / 2);</span>
+<span class="hljs-comment">% % digitalStopBandFrequency = 2 * atan(samplingTime * stopBandFrequency / 2);</span>
+<span class="hljs-comment">% passBandFrequency = (2 * tan(digitalPassBandFrequency / 2)) / samplingTime;</span>
+<span class="hljs-comment">% stopBandFrequency = (2 * tan(digitalStopBandFrequency / 2)) / samplingTime;</span>
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Enter the frequencies type'</span>);
+inputDomain = input(<span class="hljs-string">"Enter 1 for analog frequencies, 2 for digital: "</span>);
+
+samplingTime = input(<span class="hljs-string">'Enter the sampling time: '</span>);
+gainType = input(<span class="hljs-string">"Select Gain Type: 1 for Normal, 2 for Decibels: "</span>);
+
+minPassBandGain = input(<span class="hljs-string">"Enter Passband Gain: "</span>);
+maxStopBandGain = input(<span class="hljs-string">"Enter Stopband Gain: "</span>);
+
+frequencyType = input(<span class="hljs-string">"Frequency Unit: 1 for Hz, 2 for Rad/s: "</span>);
+
+<span class="hljs-keyword">if</span> inputDomain == <span class="hljs-number">1</span>
+    passBandFrequency = input(<span class="hljs-string">'Enter Passband Frequency (Analog Domain): '</span>);
+    stopBandFrequency = input(<span class="hljs-string">'Enter Stopband Frequency (Analog Domain): '</span>);
+
+    <span class="hljs-keyword">if</span> frequencyType == <span class="hljs-number">1</span>
+        passBandFrequency = <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span> * passBandFrequency;
+        stopBandFrequency = <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span> * stopBandFrequency;
+    <span class="hljs-keyword">end</span>
+
+    digitalPassBandFrequency = <span class="hljs-number">2</span> * <span class="hljs-built_in">atan</span>(samplingTime * passBandFrequency / <span class="hljs-number">2</span>);
+    digitalStopBandFrequency = <span class="hljs-number">2</span> * <span class="hljs-built_in">atan</span>(samplingTime * stopBandFrequency / <span class="hljs-number">2</span>);
+<span class="hljs-keyword">else</span>
+    digitalPassBandFrequency = input(<span class="hljs-string">'Enter Passband Frequency (Digital Domain): '</span>);
+    digitalStopBandFrequency = input(<span class="hljs-string">'Enter Stopband Frequency (Digital Domain): '</span>);
+
+    <span class="hljs-keyword">if</span> frequencyType == <span class="hljs-number">1</span>
+        digitalPassBandFrequency = <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span> * digitalPassBandFrequency;
+        digitalStopBandFrequency = <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span> * digitalStopBandFrequency;
+    <span class="hljs-keyword">end</span>
+
+    passBandFrequency = (<span class="hljs-number">2</span> * <span class="hljs-built_in">tan</span>(digitalPassBandFrequency / <span class="hljs-number">2</span>)) / samplingTime;
+    stopBandFrequency = (<span class="hljs-number">2</span> * <span class="hljs-built_in">tan</span>(digitalStopBandFrequency / <span class="hljs-number">2</span>)) / samplingTime;
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Low Pass =&gt; 1'</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'High Pass =&gt; 2'</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Band Pass =&gt; 3'</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Band Stop =&gt; 4'</span>);
+
+filterType = input(<span class="hljs-string">"Enter filter type: "</span>);
+
+<span class="hljs-keyword">if</span> gainType == <span class="hljs-number">1</span>
+    minPassBandGain = <span class="hljs-number">-20</span> * <span class="hljs-built_in">log10</span>(minPassBandGain);
+    maxStopBandGain = <span class="hljs-number">-20</span> * <span class="hljs-built_in">log10</span>(maxStopBandGain);
+<span class="hljs-keyword">end</span>
+
+normallisedPassBandFrequency = passBandFrequency / passBandFrequency;
+normallisedStopBandFrequency = stopBandFrequency / passBandFrequency;
+
+epsilon = <span class="hljs-built_in">sqrt</span>((<span class="hljs-number">10</span>^(<span class="hljs-number">0.1</span> * minPassBandGain)) - <span class="hljs-number">1</span>);
+
+selectedOrder = <span class="hljs-built_in">ceil</span>((maxStopBandGain - <span class="hljs-number">20</span> * <span class="hljs-built_in">log10</span>(epsilon) + <span class="hljs-number">6</span>) / (<span class="hljs-number">6</span> + <span class="hljs-number">20</span> * <span class="hljs-built_in">log10</span>(normallisedStopBandFrequency)));
+
+<span class="hljs-keyword">switch</span> filterType
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>
+        <span class="hljs-comment">% low pass</span>
+        [normallisedAnalogNumerator, normallisedAnalogDenominator] = cheby1(selectedOrder, minPassBandGain, normallisedPassBandFrequency, <span class="hljs-string">"low"</span>, <span class="hljs-string">"s"</span>);
+        [digitalNumerator, digitalDenominator] = cheby1(normallisedAnalogNumerator, normallisedAnalogDenominator, <span class="hljs-number">1</span> / samplingTime);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>
+        <span class="hljs-comment">% High Pass</span>
+        [normallisedAnalogNumerator, normallisedAnalogDenominator] = cheby1(selectedOrder, minPassBandGain, normallisedPassBandFrequency, <span class="hljs-string">"high"</span>, <span class="hljs-string">"s"</span>);
+        [digitalNumerator, digitalDenominator] = cheby1(selectedOrder, minPassBandGain, digitalPassBandFrequency / <span class="hljs-built_in">pi</span>, <span class="hljs-string">"high"</span>);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>
+        <span class="hljs-comment">% Band Pass</span>
+        [normallisedAnalogNumerator, normallisedAnalogDenominator] = cheby1(selectedOrder, minPassBandGain, [normallisedPassBandFrequency normallisedStopBandFrequency], <span class="hljs-string">"bandpass"</span>, <span class="hljs-string">"s"</span>);
+        [digitalNumerator, digitalDenominator] = cheby1(selectedOrder, minPassBandGain, [digitalPassBandFrequency, digitalStopBandFrequency] / <span class="hljs-built_in">pi</span>, <span class="hljs-string">"bandpass"</span>);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>
+        <span class="hljs-comment">% Band stop</span>
+        [normallisedAnalogNumerator, normallisedAnalogDenominator] = cheby1(selectedOrder, minPassBandGain, [normallisedPassBandFrequency normallisedStopBandFrequency], <span class="hljs-string">"stop"</span>, <span class="hljs-string">"s"</span>);
+        [digitalNumerator, digitalDenominator] = cheby1(selectedOrder, minPassBandGain, [digitalPassBandFrequency, digitalStopBandFrequency] / <span class="hljs-built_in">pi</span>, <span class="hljs-string">"stop"</span>);
+<span class="hljs-keyword">end</span>
+
+normallisedAnalogTransferFunction = tf(normallisedAnalogNumerator, normallisedAnalogDenominator);
+digitalTransferFunction = tf(digitalNumerator, digitalDenominator, <span class="hljs-number">1</span> / samplingTime);
+
+[h, w] = freqz(digitalNumerator, digitalDenominator, <span class="hljs-number">1024</span>);
+
+<span class="hljs-comment">% Display Given</span>
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Given: "</span>)
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'   Min Pass Band Gain - Ap: (in db)'</span>);
+<span class="hljs-built_in">disp</span>(minPassBandGain);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'   Max Stop Band Gain - As: (in db)'</span>);
+<span class="hljs-built_in">disp</span>(maxStopBandGain);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'   Pass Band Frequency (Analog Domain) in rad/s'</span>);
+<span class="hljs-built_in">disp</span>(passBandFrequency);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'   Stop Band Frequency (Analog Domain) in rad/s'</span>);
+<span class="hljs-built_in">disp</span>(stopBandFrequency);
+
+<span class="hljs-comment">% Display Normallised Frequencies</span>
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Normallised Frequencies'</span>)
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'   Normallised Pass Band Frequency: '</span>);
+<span class="hljs-built_in">disp</span>(normallisedPassBandFrequency);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'   Normallised Stop Band Frequency: '</span>);
+<span class="hljs-built_in">disp</span>(normallisedStopBandFrequency);
+
+<span class="hljs-comment">% Display Ripple Factor</span>
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Epsilon =&gt; ε: '</span>);
+<span class="hljs-built_in">disp</span>(epsilon);
+
+<span class="hljs-comment">% DIsplay Order N</span>
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Order =&gt; N'</span>);
+<span class="hljs-built_in">disp</span>(selectedOrder);
+
+<span class="hljs-comment">% Display Normallised Transferfunction</span>
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Normallised Analog Transfer Function H1(s)'</span>);
+normallisedAnalogTransferFunction
+
+<span class="hljs-comment">% Display Digital butterworth filter</span>
+digitalTransferFunction
+
+<span class="hljs-built_in">plot</span>(w / <span class="hljs-built_in">pi</span>, <span class="hljs-number">20</span> * <span class="hljs-built_in">log10</span>(<span class="hljs-built_in">abs</span>(h))); <span class="hljs-comment">% plot the frequency response</span>
+<span class="hljs-comment">% w =&gt; ranges from 0 to pi so dividing by pi gives x axis ranging from 0 to 1</span>
+<span class="hljs-comment">% 20*log10 =&gt; to convert the gain to db</span>
+grid on;
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"Frequency in r/s"</span>, <span class="hljs-string">"Gain in db"</span>, <span class="hljs-string">"Frequency response of Digital Chebyschev Filter"</span>);
+</div></code></pre>
+<h3 id="chebyschev-blt">Chebyschev BLT</h3>
+<pre class="hljs"><code><div>clear all;
+close all;
+clc;
+
+<span class="hljs-comment">% minPassBandGain = 0.75;</span>
+<span class="hljs-comment">% maxStopBandGain = 0.23;</span>
+<span class="hljs-comment">% % passBandFrequency = 0.62;</span>
+<span class="hljs-comment">% % stopBandFrequency = 1.88;</span>
+<span class="hljs-comment">% digitalPassBandFrequency = 0.25 * pi;</span>
+<span class="hljs-comment">% digitalStopBandFrequency = 0.63 * pi;</span>
+<span class="hljs-comment">% samplingTime = 2;</span>
+<span class="hljs-comment">% gainType = 1;</span>
+<span class="hljs-comment">% frequencyType = 2;</span>
+<span class="hljs-comment">% % digitalPassBandFrequency = 2 * atan(samplingTime * passBandFrequency / 2);</span>
+<span class="hljs-comment">% % digitalStopBandFrequency = 2 * atan(samplingTime * stopBandFrequency / 2);</span>
+<span class="hljs-comment">% passBandFrequency = (2 * tan(digitalPassBandFrequency / 2)) / samplingTime;</span>
+<span class="hljs-comment">% stopBandFrequency = (2 * tan(digitalStopBandFrequency / 2)) / samplingTime;</span>
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Enter the frequencies type'</span>);
+inputDomain = input(<span class="hljs-string">"Enter 1 for analog frequencies, 2 for digital: "</span>);
+
+samplingTime = input(<span class="hljs-string">'Enter the sampling time: '</span>);
+gainType = input(<span class="hljs-string">"Select Gain Type: 1 for Normal, 2 for Decibels: "</span>);
+
+minPassBandGain = input(<span class="hljs-string">"Enter Passband Gain: "</span>);
+maxStopBandGain = input(<span class="hljs-string">"Enter Stopband Gain: "</span>);
+
+frequencyType = input(<span class="hljs-string">"Frequency Unit: 1 for Hz, 2 for Rad/s: "</span>);
+
+<span class="hljs-keyword">if</span> inputDomain == <span class="hljs-number">1</span>
+    passBandFrequency = input(<span class="hljs-string">'Enter Passband Frequency (Analog Domain): '</span>);
+    stopBandFrequency = input(<span class="hljs-string">'Enter Stopband Frequency (Analog Domain): '</span>);
+
+    <span class="hljs-keyword">if</span> frequencyType == <span class="hljs-number">1</span>
+        passBandFrequency = <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span> * passBandFrequency;
+        stopBandFrequency = <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span> * stopBandFrequency;
+    <span class="hljs-keyword">end</span>
+
+    digitalPassBandFrequency = <span class="hljs-number">2</span> * <span class="hljs-built_in">atan</span>(samplingTime * passBandFrequency / <span class="hljs-number">2</span>);
+    digitalStopBandFrequency = <span class="hljs-number">2</span> * <span class="hljs-built_in">atan</span>(samplingTime * stopBandFrequency / <span class="hljs-number">2</span>);
+<span class="hljs-keyword">else</span>
+    digitalPassBandFrequency = input(<span class="hljs-string">'Enter Passband Frequency (Digital Domain): '</span>);
+    digitalStopBandFrequency = input(<span class="hljs-string">'Enter Stopband Frequency (Digital Domain): '</span>);
+
+    <span class="hljs-keyword">if</span> frequencyType == <span class="hljs-number">1</span>
+        digitalPassBandFrequency = <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span> * digitalPassBandFrequency;
+        digitalStopBandFrequency = <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span> * digitalStopBandFrequency;
+    <span class="hljs-keyword">end</span>
+
+    passBandFrequency = (<span class="hljs-number">2</span> * <span class="hljs-built_in">tan</span>(digitalPassBandFrequency / <span class="hljs-number">2</span>)) / samplingTime;
+    stopBandFrequency = (<span class="hljs-number">2</span> * <span class="hljs-built_in">tan</span>(digitalStopBandFrequency / <span class="hljs-number">2</span>)) / samplingTime;
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Low Pass =&gt; 1'</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'High Pass =&gt; 2'</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Band Pass =&gt; 3'</span>);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Band Stop =&gt; 4'</span>);
+
+filterType = input(<span class="hljs-string">"Enter filter type: "</span>);
+
+<span class="hljs-keyword">if</span> gainType == <span class="hljs-number">1</span>
+    minPassBandGain = <span class="hljs-number">-20</span> * <span class="hljs-built_in">log10</span>(minPassBandGain);
+    maxStopBandGain = <span class="hljs-number">-20</span> * <span class="hljs-built_in">log10</span>(maxStopBandGain);
+<span class="hljs-keyword">end</span>
+
+normallisedPassBandFrequency = passBandFrequency / passBandFrequency;
+normallisedStopBandFrequency = stopBandFrequency / passBandFrequency;
+
+epsilon = <span class="hljs-built_in">sqrt</span>((<span class="hljs-number">10</span>^(<span class="hljs-number">0.1</span> * minPassBandGain)) - <span class="hljs-number">1</span>);
+
+selectedOrder = <span class="hljs-built_in">ceil</span>((maxStopBandGain - <span class="hljs-number">20</span> * <span class="hljs-built_in">log10</span>(epsilon) + <span class="hljs-number">6</span>) / (<span class="hljs-number">6</span> + <span class="hljs-number">20</span> * <span class="hljs-built_in">log10</span>(normallisedStopBandFrequency)));
+
+<span class="hljs-keyword">switch</span> filterType
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>
+        <span class="hljs-comment">% low pass</span>
+        [normallisedAnalogNumerator, normallisedAnalogDenominator] = cheby1(selectedOrder, minPassBandGain, normallisedPassBandFrequency, <span class="hljs-string">"low"</span>, <span class="hljs-string">"s"</span>);
+        [digitalNumerator, digitalDenominator] = cheby1(selectedOrder, minPassBandGain, digitalPassBandFrequency / <span class="hljs-built_in">pi</span>, <span class="hljs-string">"low"</span>);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>
+        <span class="hljs-comment">% High Pass</span>
+        [normallisedAnalogNumerator, normallisedAnalogDenominator] = cheby1(selectedOrder, minPassBandGain, normallisedPassBandFrequency, <span class="hljs-string">"high"</span>, <span class="hljs-string">"s"</span>);
+        [digitalNumerator, digitalDenominator] = cheby1(selectedOrder, minPassBandGain, digitalPassBandFrequency / <span class="hljs-built_in">pi</span>, <span class="hljs-string">"high"</span>);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>
+        <span class="hljs-comment">% Band Pass</span>
+        [normallisedAnalogNumerator, normallisedAnalogDenominator] = cheby1(selectedOrder, minPassBandGain, [normallisedPassBandFrequency normallisedStopBandFrequency], <span class="hljs-string">"bandpass"</span>, <span class="hljs-string">"s"</span>);
+        [digitalNumerator, digitalDenominator] = cheby1(selectedOrder, minPassBandGain, [digitalPassBandFrequency, digitalStopBandFrequency] / <span class="hljs-built_in">pi</span>, <span class="hljs-string">"bandpass"</span>);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>
+        <span class="hljs-comment">% Band stop</span>
+        [normallisedAnalogNumerator, normallisedAnalogDenominator] = cheby1(selectedOrder, minPassBandGain, [normallisedPassBandFrequency normallisedStopBandFrequency], <span class="hljs-string">"bandpass"</span>, <span class="hljs-string">"s"</span>);
+        [digitalNumerator, digitalDenominator] = cheby1(selectedOrder, minPassBandGain, [digitalPassBandFrequency, digitalStopBandFrequency] / <span class="hljs-built_in">pi</span>, <span class="hljs-string">"stop"</span>);
+<span class="hljs-keyword">end</span>
+
+normallisedAnalogTransferFunction = tf(normallisedAnalogNumerator, normallisedAnalogDenominator);
+digitalTransferFunction = tf(digitalNumerator, digitalDenominator, <span class="hljs-number">1</span> / samplingTime);
+
+[h, w] = freqz(digitalNumerator, digitalDenominator, <span class="hljs-number">1024</span>);
+
+<span class="hljs-comment">% Display Given</span>
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">"Given: "</span>)
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'   Min Pass Band Gain - Ap: (in db)'</span>);
+<span class="hljs-built_in">disp</span>(minPassBandGain);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'   Max Stop Band Gain - As: (in db)'</span>);
+<span class="hljs-built_in">disp</span>(maxStopBandGain);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'   Pass Band Frequency (Analog Domain) in rad/s'</span>);
+<span class="hljs-built_in">disp</span>(passBandFrequency);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'   Stop Band Frequency (Analog Domain) in rad/s'</span>);
+<span class="hljs-built_in">disp</span>(stopBandFrequency);
+
+<span class="hljs-comment">% Display Normallised Frequencies</span>
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Normallised Frequencies'</span>)
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'   Normallised Pass Band Frequency: '</span>);
+<span class="hljs-built_in">disp</span>(normallisedPassBandFrequency);
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'   Normallised Stop Band Frequency: '</span>);
+<span class="hljs-built_in">disp</span>(normallisedStopBandFrequency);
+
+<span class="hljs-comment">% Display Ripple Factor</span>
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Epsilon =&gt; ε: '</span>);
+<span class="hljs-built_in">disp</span>(epsilon);
+
+<span class="hljs-comment">% DIsplay Order N</span>
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Order =&gt; N'</span>);
+<span class="hljs-built_in">disp</span>(selectedOrder);
+
+<span class="hljs-comment">% Display Normallised Transferfunction</span>
+<span class="hljs-built_in">disp</span>(<span class="hljs-string">'Normallised Analog Transfer Function H1(s)'</span>);
+normallisedAnalogTransferFunction
+
+<span class="hljs-comment">% Display Digital butterworth filter</span>
+digitalTransferFunction
+
+<span class="hljs-built_in">plot</span>(w / <span class="hljs-built_in">pi</span>, <span class="hljs-number">20</span> * <span class="hljs-built_in">log10</span>(<span class="hljs-built_in">abs</span>(h))); <span class="hljs-comment">% plot the frequency response</span>
+<span class="hljs-comment">% w =&gt; ranges from 0 to pi so dividing by pi gives x axis ranging from 0 to 1</span>
+<span class="hljs-comment">% 20*log10 =&gt; to convert the gain to db</span>
+grid on;
+setAxisLimits(axis);
+setPlotAttributes(<span class="hljs-string">"Frequency in r/s"</span>, <span class="hljs-string">"Gain in db"</span>, <span class="hljs-string">"Frequency response of Digital Chebyschev Filter"</span>);
+</div></code></pre>
+<h3 id="hanning-filter">Hanning Filter</h3>
+<pre class="hljs"><code><div>lengthofsequence = input(<span class="hljs-string">'Enter the length of Hanning filter: '</span>);
+Ftype = input(<span class="hljs-string">"Select An option for which ftype filter\n1. Low pass filter\n2. High pass \n3. Bandpass filter\n4. Stopband filter"</span>);
+
+<span class="hljs-keyword">switch</span> Ftype
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>
+        Cuttofffreq = input(<span class="hljs-string">'Enter the Cuttoff Frequency: '</span>);
+        hanningFilterOutput = fir1(lengthofsequence, Cuttofffreq / <span class="hljs-built_in">pi</span>, <span class="hljs-string">"low"</span>, hann(lengthofsequence + <span class="hljs-number">1</span>));
+        freqz(hanningFilterOutput, <span class="hljs-number">1</span>, <span class="hljs-number">1024</span>);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>
+        Cuttofffreq = input(<span class="hljs-string">'Enter the Cuttoff Frequency: '</span>);
+        hanningFilterOutput = fir1(lengthofsequence, Cuttofffreq / <span class="hljs-built_in">pi</span>, <span class="hljs-string">"high"</span>, hann(lengthofsequence + <span class="hljs-number">1</span>));
+        freqz(hanningFilterOutput, <span class="hljs-number">1</span>, <span class="hljs-number">1024</span>);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>
+        FirstCutofffreq = input(<span class="hljs-string">'Enter the Cutoff freq Omega(L): '</span>);
+        SecondCuttofffreq = input(<span class="hljs-string">'Enter the cutoff freq Omega(U): '</span>);
+        Cuttofffreq = [FirstCutofffreq SecondCuttofffreq]
+        hanningFilterOutput = fir1(lengthofsequence, Cuttofffreq / <span class="hljs-built_in">pi</span>, <span class="hljs-string">"bandpass"</span>, hann(lengthofsequence + <span class="hljs-number">1</span>));
+        freqz(hanningFilterOutput, <span class="hljs-number">1</span>, <span class="hljs-number">1024</span>);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>
+        typeOfFilter = <span class="hljs-string">"stop"</span>
+        FirstCutofffreq = input(<span class="hljs-string">'Enter the Cutoff freq Omega(L): '</span>);
+        SecondCuttofffreq = input(<span class="hljs-string">'Enter the cutoff freq Omega(U): '</span>);
+        Cuttofffreq = [FirstCutofffreq SecondCuttofffreq]
+        hanningFilterOutput = fir1(lengthofsequence, Cuttofffreq / <span class="hljs-built_in">pi</span>, <span class="hljs-string">"stop"</span>, hann(lengthofsequence + <span class="hljs-number">1</span>));
+        freqz(hanningFilterOutput, <span class="hljs-number">1</span>, <span class="hljs-number">1024</span>);
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="hamming-filter">Hamming Filter</h3>
+<pre class="hljs"><code><div>lengthofsequence = input(<span class="hljs-string">'Enter the length of Hamming Filter: '</span>);
+Ftype = input(<span class="hljs-string">"Select An option for which ftype filter\n1. Low pass filter\n2. High pass \n3. Bandpass filter\n4. Stopband filter: "</span>);
+
+<span class="hljs-keyword">switch</span> Ftype
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>
+        Cuttofffreq = input(<span class="hljs-string">'Enter the Cuttoff Frequency: '</span>);
+        hammingFilterOutput = fir1(lengthofsequence, Cuttofffreq / <span class="hljs-built_in">pi</span>, <span class="hljs-string">"low"</span>, hamming(lengthofsequence + <span class="hljs-number">1</span>));
+        freqz(hammingFilterOutput, <span class="hljs-number">1</span>, <span class="hljs-number">1024</span>);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>
+        Cuttofffreq = input(<span class="hljs-string">'Enter the Cuttoff Frequency: '</span>);
+        hammingFilterOutput = fir1(lengthofsequence, Cuttofffreq / <span class="hljs-built_in">pi</span>, <span class="hljs-string">"high"</span>, hamming(lengthofsequence + <span class="hljs-number">1</span>));
+        freqz(hammingFilterOutput, <span class="hljs-number">1</span>, <span class="hljs-number">1024</span>);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>
+        FirstCutofffreq = input(<span class="hljs-string">'Enter the Cutoff freq Omega(L): '</span>);
+        SecondCuttofffreq = input(<span class="hljs-string">'Enter the cutoff freq Omega(U): '</span>);
+        Cuttofffreq = [FirstCutofffreq SecondCuttofffreq]
+        hammingFilterOutput = fir1(lengthofsequence, Cuttofffreq / <span class="hljs-built_in">pi</span>, <span class="hljs-string">"bandpass"</span>, hamming(lengthofsequence + <span class="hljs-number">1</span>));
+        freqz(hammingFilterOutput, <span class="hljs-number">1</span>, <span class="hljs-number">1024</span>);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>
+        typeOfFilter = <span class="hljs-string">"stop"</span>
+        FirstCutofffreq = input(<span class="hljs-string">'Enter the Cutoff freq Omega(L): '</span>);
+        SecondCuttofffreq = input(<span class="hljs-string">'Enter the cutoff freq Omega(U): '</span>);
+        Cuttofffreq = [FirstCutofffreq SecondCuttofffreq]
+        hammingFilterOutput = fir1(lengthofsequence, Cuttofffreq / <span class="hljs-built_in">pi</span>, <span class="hljs-string">"stop"</span>, hamming(lengthofsequence + <span class="hljs-number">1</span>));
+        freqz(hammingFilterOutput, <span class="hljs-number">1</span>, <span class="hljs-number">1024</span>);
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+
+</body>
+</html>
