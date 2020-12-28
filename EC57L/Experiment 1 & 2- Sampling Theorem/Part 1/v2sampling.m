@@ -140,7 +140,3 @@ set(get(gca, 'XLabel'), 'String', 'Frequency in Hertz  (Hz)');
 set(get(gca, 'Title'), 'String', 'Over-Sampled Signal');
 grid on;
 axis([0 messageSignalFrequency+messageSignalFrequency/2 0 inf]);
-
-% Clearing the Workspace and the Command Window
-clear all;
-clc;
