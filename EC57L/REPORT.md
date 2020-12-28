@@ -162,7 +162,7 @@ clc;
 ```
 
 #### Results
-![SamplingMatlab](Results\exp1\samplingInMatlab.svg)
+![SamplingMatlab](Results/exp1/samplingInMatlab.svg)
 
 ## Experiment 2: DFT, IDFT, DTFT
 Code:
@@ -268,7 +268,7 @@ ans =
    4.0000 - 2.0000i
   -6.8280 - 2.5860i
 ```
-![](Results\exp2\dft-8-point.svg)
+![](Results/exp2/dft-8-point.svg)
 
 ### IDFT
 
@@ -283,7 +283,7 @@ ans =
    4.0000 - 2.0000i
   -6.8280 - 2.5860i
   ```
-![](Results\exp2\idft-8-point.svg)
+![](Results/exp2/idft-8-point.svg)
 
 ## Experiment 3: Properties of DFT 1
 ### 1. Linearity
