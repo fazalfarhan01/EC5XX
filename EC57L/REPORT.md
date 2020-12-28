@@ -5,10 +5,10 @@
 ## Experiment 1: Sampling Theorem
 #### Sampling in Virtual Lab IIT-K
 - Effect of Under Sampling
-![Pic](Results\exp1\underSampling.png)
+![Pic](Results/exp1/underSampling.png)
 
 - Effect of Perfect Sampling
-![Pic](Results\exp1\perfectSampling.png)
+![Pic](Results/exp1/perfectSampling.png)
 
 #### Sampling in MATLAB
 Code:
